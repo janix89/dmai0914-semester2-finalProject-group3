@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>656</x>
+      <y>312</y>
+      <w>168</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Merchandise
+--
+String name
+double price
+boolean exists
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>368</x>
+      <y>128</y>
+      <w>168</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Table
+--
+int noOfSeats
+int tableNo
+boolean isAvailable
+boolean exists
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>464</x>
+      <y>464</y>
+      <w>168</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Course
+--
+String ingredients
+boolean isVegetarian</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>64</x>
+      <y>312</y>
+      <w>176</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>Order
+--
+double totalPrice
+ArrayList&lt;OrderLine&gt; orderLines
+ArrayList&lt;Table&gt; tables
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>368</x>
+      <y>312</y>
+      <w>168</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>OrderLine
+--
+String nameOfMerchandise
+int quantity
+double totalPrice</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>72</x>
+      <y>128</y>
+      <w>168</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Reservation
+--
+String customersName
+String phoneNo</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>216</x>
+      <y>136</y>
+      <w>168</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1..*
+</panel_attributes>
+    <additional_attributes>24;24;152;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>216</x>
+      <y>320</y>
+      <w>168</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+m1=1
+m2=1..*
+</panel_attributes>
+    <additional_attributes>24;24;152;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>144</x>
+      <y>176</y>
+      <w>320</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1..*
+</panel_attributes>
+    <additional_attributes>24;136;24;48;304;48;304;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>512</x>
+      <y>320</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1..*
+</panel_attributes>
+    <additional_attributes>24;24;144;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>512</x>
+      <y>368</y>
+      <w>240</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>224;24;224;64;24;64;24;96</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>656</x>
+      <y>464</y>
+      <w>168</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Snack
+--
+int quantityInStock</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>712</x>
+      <y>368</y>
+      <w>40</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;96</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>848</x>
+      <y>464</y>
+      <w>168</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Drink
+--
+int quantityInStock
+double alcoholConcentration</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>712</x>
+      <y>368</y>
+      <w>240</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;64;224;64;224;96</additional_attributes>
+  </element>
+</diagram>
