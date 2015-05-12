@@ -22,7 +22,7 @@ exists
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>336</x>
-      <y>96</y>
+      <y>56</y>
       <w>168</w>
       <h>72</h>
     </coordinates>
@@ -83,33 +83,35 @@ partialPrice</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>40</x>
-      <y>64</y>
+      <x>16</x>
+      <y>24</y>
       <w>168</w>
-      <h>88</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Reservation
 --
 customersName
 phoneNo
-date
+reservationDate
 preorder
-checkIn</panel_attributes>
+checkIn
+numberOfGuests
+reservationRegistrationDate</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>184</x>
-      <y>104</y>
-      <w>168</w>
+      <x>160</x>
+      <y>64</y>
+      <w>192</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
 m2=1..*
 </panel_attributes>
-    <additional_attributes>24;24;152;24</additional_attributes>
+    <additional_attributes>24;24;176;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -129,15 +131,15 @@ m2=1..*
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>112</x>
-      <y>144</y>
+      <y>104</y>
       <w>320</w>
-      <h>152</h>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
 m2=1..*
 </panel_attributes>
-    <additional_attributes>24;136;24;48;304;48;304;24</additional_attributes>
+    <additional_attributes>24;176;24;88;304;88;304;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
