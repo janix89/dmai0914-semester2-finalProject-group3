@@ -88,7 +88,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>700</x>
-      <y>530</y>
+      <y>500</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -101,10 +101,10 @@
       <x>340</x>
       <y>250</y>
       <w>430</w>
-      <h>300</h>
+      <h>270</h>
     </coordinates>
     <panel_attributes>lt=-
 4. insertMerchandise(m)</panel_attributes>
-    <additional_attributes>10.0;20.0;410.0;20.0;410.0;280.0</additional_attributes>
+    <additional_attributes>10.0;20.0;410.0;20.0;410.0;250.0</additional_attributes>
   </element>
 </diagram>
