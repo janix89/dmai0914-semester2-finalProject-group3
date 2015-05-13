@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.0">
+<diagram program="umlet" version="13.2">
   <zoom_level>10</zoom_level>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>130</x>
+      <x>160</x>
       <y>120</y>
       <w>720</w>
       <h>50</h>
@@ -13,9 +13,9 @@
     <additional_attributes>30;30;700;30</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>130</x>
+      <x>160</x>
       <y>320</y>
       <w>720</w>
       <h>50</h>
@@ -24,9 +24,9 @@
     <additional_attributes>30;30;700;30</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>450</x>
+      <x>480</x>
       <y>50</y>
       <w>200</w>
       <h>30</h>
@@ -36,10 +36,10 @@
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>300</x>
-      <y>170</y>
+      <x>210</x>
+      <y>180</y>
       <w>250</w>
       <h>30</h>
     </coordinates>
@@ -47,9 +47,9 @@
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>130</x>
+      <x>160</x>
       <y>460</y>
       <w>250</w>
       <h>30</h>
@@ -58,9 +58,9 @@
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>460</x>
+      <x>490</x>
       <y>460</y>
       <w>250</w>
       <h>30</h>
@@ -70,36 +70,36 @@
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>200</x>
+      <x>170</x>
       <y>50</y>
       <w>562</w>
-      <h>140</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>lt=-
 1. makeReservation(customersName, phoneNo, date, preorder,amountOfPeople)
 2. insertTableNo(tableNo)
 3. confirmReservation()</panel_attributes>
-    <additional_attributes>210;120;360;30</additional_attributes>
+    <additional_attributes>150;130;420;30</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>30</x>
-      <y>170</y>
+      <x>0</x>
+      <y>180</y>
       <w>456</w>
-      <h>310</h>
+      <h>300</h>
     </coordinates>
     <panel_attributes>lt=-
 1.1 new Reservation(customersName, phoneNo, date, preorder)
 3.1 printConfirmation()</panel_attributes>
-    <additional_attributes>110;290;350;30</additional_attributes>
+    <additional_attributes>170;280;290;30</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>500</x>
+      <x>530</x>
       <y>290</y>
       <w>250</w>
       <h>30</h>
@@ -108,9 +108,9 @@
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>480</x>
+      <x>510</x>
       <y>290</y>
       <w>194</w>
       <h>190</h>
@@ -120,23 +120,23 @@
     <additional_attributes>90;170;120;30</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>410</x>
-      <y>150</y>
+      <x>380</x>
+      <y>160</y>
       <w>220</w>
-      <h>170</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=-
 2.1 findTableByNo(tableNo)
 2.4 checkIfExists()
 2.5 checkIfAvailable()</panel_attributes>
-    <additional_attributes>90;150;140;30</additional_attributes>
+    <additional_attributes>150;140;80;30</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>730</x>
+      <x>760</x>
       <y>460</y>
       <w>250</w>
       <h>30</h>
@@ -146,9 +146,9 @@
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>650</x>
+      <x>680</x>
       <y>290</y>
       <w>216</w>
       <h>190</h>

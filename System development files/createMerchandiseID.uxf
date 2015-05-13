@@ -53,7 +53,7 @@
       <w>220</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Merchandise</panel_attributes>
+    <panel_attributes>merchandise: Merchandise</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -87,12 +87,12 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>700</x>
+      <x>600</x>
       <y>500</y>
-      <w>100</w>
+      <w>210</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>dbMerchandise</panel_attributes>
+    <panel_attributes>dbmerchandise: DbMerchandise</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
