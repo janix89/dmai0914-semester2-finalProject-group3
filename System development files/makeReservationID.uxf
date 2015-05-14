@@ -5,7 +5,7 @@
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>160</x>
-      <y>120</y>
+      <y>110</y>
       <w>720</w>
       <h>50</h>
     </coordinates>
@@ -16,7 +16,7 @@
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>160</x>
-      <y>320</y>
+      <y>310</y>
       <w>720</w>
       <h>50</h>
     </coordinates>
@@ -27,7 +27,7 @@
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>480</x>
-      <y>50</y>
+      <y>40</y>
       <w>200</w>
       <h>30</h>
     </coordinates>
@@ -38,8 +38,8 @@
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>210</x>
-      <y>180</y>
+      <x>200</x>
+      <y>250</y>
       <w>250</w>
       <h>30</h>
     </coordinates>
@@ -49,8 +49,8 @@
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>160</x>
-      <y>460</y>
+      <x>350</x>
+      <y>510</y>
       <w>250</w>
       <h>30</h>
     </coordinates>
@@ -58,49 +58,36 @@
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
-    <coordinates>
-      <x>490</x>
-      <y>460</y>
-      <w>250</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>table: Table
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>170</x>
-      <y>50</y>
+      <x>160</x>
+      <y>40</y>
       <w>562</w>
-      <h>150</h>
+      <h>230</h>
     </coordinates>
     <panel_attributes>lt=-
 1. makeReservation(customersName, phoneNo, date, preorder,amountOfPeople)
-2. insertTableNo(tableNo)
+2. enterTableNo(tableNo)
 3. confirmReservation()</panel_attributes>
-    <additional_attributes>150;130;420;30</additional_attributes>
+    <additional_attributes>150;210;430;30</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>0</x>
-      <y>180</y>
-      <w>456</w>
-      <h>300</h>
+      <x>190</x>
+      <y>250</y>
+      <w>472</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>lt=-
-1.1 new Reservation(customersName, phoneNo, date, preorder)
-3.1 printConfirmation()</panel_attributes>
-    <additional_attributes>170;280;290;30</additional_attributes>
+1.1 r= new Reservation(customersName, phoneNo, date, preorder)</panel_attributes>
+    <additional_attributes>280;260;200;30</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>530</x>
-      <y>290</y>
+      <x>690</x>
+      <y>240</y>
       <w>250</w>
       <h>30</h>
     </coordinates>
@@ -110,34 +97,22 @@
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>510</x>
-      <y>290</y>
-      <w>194</w>
-      <h>190</h>
-    </coordinates>
-    <panel_attributes>lt=-
-2.3 getTable(tableNo)</panel_attributes>
-    <additional_attributes>90;170;120;30</additional_attributes>
-  </element>
-  <element>
-    <type>com.baselet.element.old.element.Relation</type>
-    <coordinates>
-      <x>380</x>
-      <y>160</y>
-      <w>220</w>
-      <h>160</h>
+      <x>420</x>
+      <y>210</y>
+      <w>290</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=-
 2.1 findTableByNo(tableNo)
-2.4 checkIfExists()
+2.3 checkIfExists()
 2.5 checkIfAvailable()</panel_attributes>
-    <additional_attributes>150;140;80;30</additional_attributes>
+    <additional_attributes>270;40;30;50</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>760</x>
-      <y>460</y>
+      <x>700</x>
+      <y>450</y>
       <w>250</w>
       <h>30</h>
     </coordinates>
@@ -148,13 +123,37 @@
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>680</x>
-      <y>290</y>
-      <w>216</w>
-      <h>190</h>
+      <x>700</x>
+      <y>240</y>
+      <w>230</w>
+      <h>230</h>
     </coordinates>
     <panel_attributes>lt=-
-2.2 searchTable(tableNo)</panel_attributes>
-    <additional_attributes>140;170;80;30</additional_attributes>
+2.2 findTableByNo(tableNo)
+2.4 checkIfExists()</panel_attributes>
+    <additional_attributes>120;210;120;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>10</x>
+      <y>470</y>
+      <w>250</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>dbReservation: DBReservation</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>50</x>
+      <y>250</y>
+      <w>204</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=-
+1.2 insertReservation(r)</panel_attributes>
+    <additional_attributes>50;220;170;30</additional_attributes>
   </element>
 </diagram>
