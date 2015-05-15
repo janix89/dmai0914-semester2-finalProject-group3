@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.2">
+  <zoom_level>9</zoom_level>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>621</x>
+      <y>243</y>
+      <w>189</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Merchandise
+--
+name
+price
+exists
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>387</x>
+      <y>27</y>
+      <w>189</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Table
+--
+noOfSeats
+tableNo
+isAvailable
+exists
+tableOnTheNorth
+tableOnTheEast
+tableOnTheSouth
+tableOnTheWest</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>396</x>
+      <y>414</y>
+      <w>189</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Course
+--
+ingredients
+isVegetarian</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>63</x>
+      <y>243</y>
+      <w>189</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Order
+--
+totalPrice
+isPaid
+isActive
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>324</x>
+      <y>243</y>
+      <w>189</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>OrderLine
+--
+nameOfMerchandise
+quantity
+partialPrice</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>63</x>
+      <y>27</y>
+      <w>189</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Reservation
+--
+customersName
+phoneNo
+reservationDate
+preorder
+checkIn
+numberOfGuests
+reservationRegistrationDate
+reservedTime</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>225</x>
+      <y>72</y>
+      <w>179</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1..*
+</panel_attributes>
+    <additional_attributes>27;27;162;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>225</x>
+      <y>252</y>
+      <w>116</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+m1=1
+m2=1..*
+</panel_attributes>
+    <additional_attributes>27;27;99;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>126</x>
+      <y>144</y>
+      <w>44</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=0..1
+</panel_attributes>
+    <additional_attributes>27;99;27;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>486</x>
+      <y>252</y>
+      <w>152</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1..*
+</panel_attributes>
+    <additional_attributes>27;27;135;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>450</x>
+      <y>306</y>
+      <w>278</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>261;27;261;72;27;72;27;108</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>621</x>
+      <y>414</y>
+      <w>189</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Snack
+--
+quantityInStock</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>684</x>
+      <y>306</y>
+      <w>44</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>27;27;27;108</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>846</x>
+      <y>414</y>
+      <w>189</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Drink
+--
+quantityInStock
+alcoholConcentration</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>684</x>
+      <y>306</y>
+      <w>278</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>27;27;27;72;261;72;261;108</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>63</x>
+      <y>396</y>
+      <w>189</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>Staff
+--
+name
+bankAccount
+address
+proffesion
+phoneNo
+cprNo</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>63</x>
+      <y>558</y>
+      <w>189</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Waiter
+--
+workTables
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>126</x>
+      <y>486</y>
+      <w>44</w>
+      <h>89</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>27;27;27;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>126</x>
+      <y>306</y>
+      <w>44</w>
+      <h>107</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1..1
+</panel_attributes>
+    <additional_attributes>27;27;27;90</additional_attributes>
+  </element>
+</diagram>
