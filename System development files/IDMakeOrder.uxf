@@ -5,7 +5,7 @@
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>532</x>
-      <y>126</y>
+      <y>84</y>
       <w>133</w>
       <h>28</h>
     </coordinates>
@@ -17,7 +17,7 @@
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>7</x>
-      <y>280</y>
+      <y>238</y>
       <w>1035</w>
       <h>34</h>
     </coordinates>
@@ -28,7 +28,7 @@
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>0</x>
-      <y>399</y>
+      <y>357</y>
       <w>1035</w>
       <h>34</h>
     </coordinates>
@@ -39,7 +39,7 @@
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>504</x>
-      <y>329</y>
+      <y>287</y>
       <w>203</w>
       <h>21</h>
     </coordinates>
@@ -49,19 +49,20 @@
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>595</x>
-      <y>329</y>
-      <w>111</w>
-      <h>160</h>
+      <x>560</x>
+      <y>287</y>
+      <w>144</w>
+      <h>153</h>
     </coordinates>
-    <panel_attributes>insertOrder(o)</panel_attributes>
-    <additional_attributes>21;21;98;147</additional_attributes>
+    <panel_attributes>1.2 tables = findTables()
+1.4. insertOrder(o)</panel_attributes>
+    <additional_attributes>77;21;77;140</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>637</x>
-      <y>476</y>
+      <x>581</x>
+      <y>427</y>
       <w>105</w>
       <h>21</h>
     </coordinates>
@@ -72,7 +73,7 @@
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>427</x>
-      <y>469</y>
+      <y>427</y>
       <w>105</w>
       <h>21</h>
     </coordinates>
@@ -83,7 +84,7 @@
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>504</x>
-      <y>133</y>
+      <y>91</y>
       <w>192</w>
       <h>209</h>
     </coordinates>
@@ -95,19 +96,19 @@
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>448</x>
-      <y>329</y>
-      <w>185</w>
+      <x>406</x>
+      <y>287</y>
+      <w>186</w>
       <h>153</h>
     </coordinates>
-    <panel_attributes>1.1 o = makeOrder(tables, waiter)</panel_attributes>
-    <additional_attributes>154;21;35;140</additional_attributes>
+    <panel_attributes>1.3 o = makeOrder(tables, waiter)</panel_attributes>
+    <additional_attributes>98;21;98;140</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>189</x>
-      <y>329</y>
+      <y>287</y>
       <w>217</w>
       <h>21</h>
     </coordinates>
@@ -118,18 +119,18 @@
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>266</x>
-      <y>133</y>
+      <y>91</y>
       <w>279</w>
       <h>209</h>
     </coordinates>
-    <panel_attributes>2. m= findMerchandise(merchandise)</panel_attributes>
+    <panel_attributes>2.0. m= findMerchandise(merchandise)</panel_attributes>
     <additional_attributes>266;21;21;196</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>210</x>
-      <y>469</y>
+      <y>427</y>
       <w>154</w>
       <h>21</h>
     </coordinates>
@@ -140,11 +141,33 @@
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>189</x>
-      <y>329</y>
+      <y>287</y>
       <w>192</w>
       <h>153</h>
     </coordinates>
     <panel_attributes>2.1 findMerchandise(merchandise)</panel_attributes>
     <additional_attributes>98;21;98;140</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>777</x>
+      <y>427</y>
+      <w>105</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>waiter: DBStaff</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>686</x>
+      <y>280</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>1.1 waiter=findWaiter()</panel_attributes>
+    <additional_attributes>21;21;147;147</additional_attributes>
   </element>
 </diagram>
