@@ -4,8 +4,8 @@
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>621</x>
-      <y>243</y>
+      <x>729</x>
+      <y>216</y>
       <w>189</w>
       <h>90</h>
     </coordinates>
@@ -21,8 +21,8 @@ exists
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>387</x>
-      <y>27</y>
+      <x>495</x>
+      <y>0</y>
       <w>189</w>
       <h>144</h>
     </coordinates>
@@ -41,8 +41,8 @@ tableOnTheWest</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>396</x>
-      <y>414</y>
+      <x>504</x>
+      <y>387</y>
       <w>189</w>
       <h>72</h>
     </coordinates>
@@ -55,8 +55,8 @@ isVegetarian</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>63</x>
-      <y>243</y>
+      <x>171</x>
+      <y>216</y>
       <w>189</w>
       <h>90</h>
     </coordinates>
@@ -71,23 +71,24 @@ isActive
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>324</x>
-      <y>243</y>
+      <x>432</x>
+      <y>216</y>
       <w>189</w>
       <h>81</h>
     </coordinates>
     <panel_attributes>OrderLine
 --
-nameOfMerchandise
 quantity
-partialPrice</panel_attributes>
+partialPrice
+
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>63</x>
-      <y>27</y>
+      <x>171</x>
+      <y>0</y>
       <w>189</w>
       <h>144</h>
     </coordinates>
@@ -106,8 +107,8 @@ reservedTime</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>225</x>
-      <y>72</y>
+      <x>333</x>
+      <y>45</y>
       <w>179</w>
       <h>44</h>
     </coordinates>
@@ -120,8 +121,8 @@ m2=1..*
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>225</x>
-      <y>252</y>
+      <x>333</x>
+      <y>225</y>
       <w>116</w>
       <h>44</h>
     </coordinates>
@@ -134,8 +135,8 @@ m2=1..*
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>126</x>
-      <y>144</y>
+      <x>234</x>
+      <y>117</y>
       <w>44</w>
       <h>116</h>
     </coordinates>
@@ -148,22 +149,22 @@ m2=0..1
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>486</x>
-      <y>252</y>
+      <x>594</x>
+      <y>225</y>
       <w>152</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
-m2=1..*
+m2=1..1
 </panel_attributes>
     <additional_attributes>27;27;135;27</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>450</x>
-      <y>306</y>
+      <x>558</x>
+      <y>279</y>
       <w>278</w>
       <h>125</h>
     </coordinates>
@@ -173,8 +174,8 @@ m2=1..*
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>621</x>
-      <y>414</y>
+      <x>729</x>
+      <y>387</y>
       <w>189</w>
       <h>72</h>
     </coordinates>
@@ -186,8 +187,8 @@ quantityInStock</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>684</x>
-      <y>306</y>
+      <x>792</x>
+      <y>279</y>
       <w>44</w>
       <h>125</h>
     </coordinates>
@@ -197,8 +198,8 @@ quantityInStock</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>846</x>
-      <y>414</y>
+      <x>954</x>
+      <y>387</y>
       <w>189</w>
       <h>72</h>
     </coordinates>
@@ -211,8 +212,8 @@ alcoholConcentration</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>684</x>
-      <y>306</y>
+      <x>792</x>
+      <y>279</y>
       <w>278</w>
       <h>125</h>
     </coordinates>
@@ -222,8 +223,8 @@ alcoholConcentration</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>63</x>
-      <y>396</y>
+      <x>171</x>
+      <y>369</y>
       <w>189</w>
       <h>117</h>
     </coordinates>
@@ -232,7 +233,7 @@ alcoholConcentration</panel_attributes>
 name
 bankAccount
 address
-proffesion
+profession
 phoneNo
 cprNo</panel_attributes>
     <additional_attributes/>
@@ -240,8 +241,8 @@ cprNo</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>63</x>
-      <y>558</y>
+      <x>171</x>
+      <y>531</y>
       <w>189</w>
       <h>63</h>
     </coordinates>
@@ -254,8 +255,8 @@ workTables
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>126</x>
-      <y>486</y>
+      <x>234</x>
+      <y>459</y>
       <w>44</w>
       <h>89</h>
     </coordinates>
@@ -265,8 +266,8 @@ workTables
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>126</x>
-      <y>306</y>
+      <x>234</x>
+      <y>279</y>
       <w>44</w>
       <h>107</h>
     </coordinates>
@@ -275,5 +276,19 @@ m1=0..*
 m2=1..1
 </panel_attributes>
     <additional_attributes>27;27;27;90</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>504</x>
+      <y>468</y>
+      <w>405</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>i removed nameOfMerchandise from OrderLine
+0..* - 1..* is wrong between OrderLine and Merchandise
+because you can have only one product in OrderLine
+bg=blue</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
