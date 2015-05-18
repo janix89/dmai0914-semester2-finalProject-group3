@@ -4,7 +4,7 @@
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>648</x>
+      <x>558</x>
       <y>216</y>
       <w>189</w>
       <h>90</h>
@@ -21,7 +21,7 @@ exists
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>414</x>
+      <x>324</x>
       <y>0</y>
       <w>189</w>
       <h>144</h>
@@ -41,7 +41,7 @@ tableOnTheWest</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>423</x>
+      <x>333</x>
       <y>387</y>
       <w>189</w>
       <h>72</h>
@@ -55,7 +55,7 @@ isVegetarian</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>90</x>
+      <x>0</x>
       <y>216</y>
       <w>189</w>
       <h>90</h>
@@ -71,7 +71,7 @@ isActive
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>351</x>
+      <x>261</x>
       <y>216</y>
       <w>189</w>
       <h>81</h>
@@ -86,7 +86,7 @@ quantity
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>90</x>
+      <x>0</x>
       <y>0</y>
       <w>189</w>
       <h>144</h>
@@ -104,7 +104,7 @@ reservedTime</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>252</x>
+      <x>162</x>
       <y>45</y>
       <w>179</w>
       <h>44</h>
@@ -118,7 +118,7 @@ m2=1..*
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>252</x>
+      <x>162</x>
       <y>225</y>
       <w>116</w>
       <h>44</h>
@@ -132,7 +132,7 @@ m2=1..*
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>153</x>
+      <x>63</x>
       <y>117</y>
       <w>44</w>
       <h>116</h>
@@ -146,7 +146,7 @@ m2=0..1
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>513</x>
+      <x>423</x>
       <y>225</y>
       <w>152</w>
       <h>44</h>
@@ -160,7 +160,7 @@ m2=1
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>477</x>
+      <x>387</x>
       <y>279</y>
       <w>278</w>
       <h>125</h>
@@ -171,20 +171,21 @@ m2=1
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>648</x>
+      <x>558</x>
       <y>387</y>
       <w>189</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>Snack
 --
-quantityInStock</panel_attributes>
+quantityInStock
+minQuantityInStock</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>711</x>
+      <x>621</x>
       <y>279</y>
       <w>44</w>
       <h>125</h>
@@ -195,7 +196,7 @@ quantityInStock</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>873</x>
+      <x>783</x>
       <y>387</y>
       <w>189</w>
       <h>72</h>
@@ -203,13 +204,14 @@ quantityInStock</panel_attributes>
     <panel_attributes>Drink
 --
 quantityInStock
-alcoholConcentration</panel_attributes>
+alcoholConcentration
+minQuantityInStock</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>711</x>
+      <x>621</x>
       <y>279</y>
       <w>278</w>
       <h>125</h>
@@ -220,7 +222,7 @@ alcoholConcentration</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>90</x>
+      <x>0</x>
       <y>540</y>
       <w>189</w>
       <h>135</h>
@@ -239,7 +241,7 @@ exists</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>90</x>
+      <x>0</x>
       <y>405</y>
       <w>189</w>
       <h>63</h>
@@ -253,7 +255,7 @@ workTables
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>153</x>
+      <x>63</x>
       <y>441</y>
       <w>44</w>
       <h>116</h>
@@ -264,7 +266,7 @@ workTables
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>153</x>
+      <x>63</x>
       <y>279</y>
       <w>44</w>
       <h>143</h>
@@ -278,7 +280,7 @@ m2=1..1
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>423</x>
+      <x>333</x>
       <y>468</y>
       <w>405</w>
       <h>207</h>
@@ -288,5 +290,30 @@ m2=1..1
 because you can have only one product in OrderLine
 bg=blue</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1008</x>
+      <y>387</y>
+      <w>189</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Miscellaneous
+--
+quantityInStock
+minQuantityInStock</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>621</x>
+      <y>279</y>
+      <w>503</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>27;27;27;72;486;72;486;108</additional_attributes>
   </element>
 </diagram>
