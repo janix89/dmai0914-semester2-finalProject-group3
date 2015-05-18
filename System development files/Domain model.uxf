@@ -5,7 +5,7 @@
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>648</x>
-      <y>225</y>
+      <y>216</y>
       <w>189</w>
       <h>90</h>
     </coordinates>
@@ -22,7 +22,7 @@ exists
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>414</x>
-      <y>9</y>
+      <y>0</y>
       <w>189</w>
       <h>144</h>
     </coordinates>
@@ -42,7 +42,7 @@ tableOnTheWest</panel_attributes>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>423</x>
-      <y>396</y>
+      <y>387</y>
       <w>189</w>
       <h>72</h>
     </coordinates>
@@ -56,7 +56,7 @@ isVegetarian</panel_attributes>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>90</x>
-      <y>225</y>
+      <y>216</y>
       <w>189</w>
       <h>90</h>
     </coordinates>
@@ -72,14 +72,13 @@ isActive
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>351</x>
-      <y>225</y>
+      <y>216</y>
       <w>189</w>
       <h>81</h>
     </coordinates>
     <panel_attributes>OrderLine
 --
 quantity
-partialPrice
 
 </panel_attributes>
     <additional_attributes/>
@@ -88,7 +87,7 @@ partialPrice
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>90</x>
-      <y>9</y>
+      <y>0</y>
       <w>189</w>
       <h>144</h>
     </coordinates>
@@ -97,8 +96,6 @@ partialPrice
 customersName
 phoneNo
 reservationDate
-preorder
-checkIn
 numberOfGuests
 reservationRegistrationDate
 reservedTime</panel_attributes>
@@ -108,7 +105,7 @@ reservedTime</panel_attributes>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>252</x>
-      <y>54</y>
+      <y>45</y>
       <w>179</w>
       <h>44</h>
     </coordinates>
@@ -122,7 +119,7 @@ m2=1..*
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>252</x>
-      <y>234</y>
+      <y>225</y>
       <w>116</w>
       <h>44</h>
     </coordinates>
@@ -136,7 +133,7 @@ m2=1..*
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>153</x>
-      <y>126</y>
+      <y>117</y>
       <w>44</w>
       <h>116</h>
     </coordinates>
@@ -150,13 +147,13 @@ m2=0..1
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>513</x>
-      <y>234</y>
+      <y>225</y>
       <w>152</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
-m2=1..1
+m2=1
 </panel_attributes>
     <additional_attributes>27;27;135;27</additional_attributes>
   </element>
@@ -164,7 +161,7 @@ m2=1..1
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>477</x>
-      <y>288</y>
+      <y>279</y>
       <w>278</w>
       <h>125</h>
     </coordinates>
@@ -175,7 +172,7 @@ m2=1..1
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>648</x>
-      <y>396</y>
+      <y>387</y>
       <w>189</w>
       <h>72</h>
     </coordinates>
@@ -188,7 +185,7 @@ quantityInStock</panel_attributes>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>711</x>
-      <y>288</y>
+      <y>279</y>
       <w>44</w>
       <h>125</h>
     </coordinates>
@@ -199,7 +196,7 @@ quantityInStock</panel_attributes>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>873</x>
-      <y>396</y>
+      <y>387</y>
       <w>189</w>
       <h>72</h>
     </coordinates>
@@ -213,7 +210,7 @@ alcoholConcentration</panel_attributes>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>711</x>
-      <y>288</y>
+      <y>279</y>
       <w>278</w>
       <h>125</h>
     </coordinates>
@@ -224,9 +221,9 @@ alcoholConcentration</panel_attributes>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>90</x>
-      <y>378</y>
+      <y>540</y>
       <w>189</w>
-      <h>117</h>
+      <h>135</h>
     </coordinates>
     <panel_attributes>Staff
 --
@@ -235,14 +232,15 @@ bankAccount
 address
 profession
 phoneNo
-cprNo</panel_attributes>
+cprNo
+exists</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>90</x>
-      <y>540</y>
+      <y>405</y>
       <w>189</w>
       <h>63</h>
     </coordinates>
@@ -256,32 +254,32 @@ workTables
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>153</x>
-      <y>468</y>
+      <y>441</y>
       <w>44</w>
-      <h>89</h>
+      <h>116</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>27;27;27;72</additional_attributes>
+    <additional_attributes>27;99;27;27</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>153</x>
-      <y>288</y>
+      <y>279</y>
       <w>44</w>
-      <h>107</h>
+      <h>143</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
 m2=1..1
 </panel_attributes>
-    <additional_attributes>27;27;27;90</additional_attributes>
+    <additional_attributes>27;27;27;126</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
       <x>423</x>
-      <y>477</y>
+      <y>468</y>
       <w>405</w>
       <h>207</h>
     </coordinates>
