@@ -4,8 +4,8 @@
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>603</x>
-      <y>216</y>
+      <x>621</x>
+      <y>225</y>
       <w>189</w>
       <h>90</h>
     </coordinates>
@@ -21,8 +21,8 @@ exists
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>369</x>
-      <y>0</y>
+      <x>387</x>
+      <y>9</y>
       <w>189</w>
       <h>144</h>
     </coordinates>
@@ -41,8 +41,8 @@ tableOnTheWest</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>378</x>
-      <y>387</y>
+      <x>396</x>
+      <y>396</y>
       <w>189</w>
       <h>72</h>
     </coordinates>
@@ -55,8 +55,8 @@ isVegetarian</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>45</x>
-      <y>216</y>
+      <x>63</x>
+      <y>225</y>
       <w>189</w>
       <h>90</h>
     </coordinates>
@@ -71,8 +71,8 @@ isActive
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>306</x>
-      <y>216</y>
+      <x>324</x>
+      <y>225</y>
       <w>189</w>
       <h>81</h>
     </coordinates>
@@ -86,8 +86,8 @@ quantity
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>45</x>
-      <y>0</y>
+      <x>63</x>
+      <y>9</y>
       <w>189</w>
       <h>117</h>
     </coordinates>
@@ -104,8 +104,8 @@ reservedTime</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>207</x>
-      <y>45</y>
+      <x>225</x>
+      <y>54</y>
       <w>179</w>
       <h>44</h>
     </coordinates>
@@ -118,8 +118,8 @@ m2=1..*
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>207</x>
-      <y>225</y>
+      <x>225</x>
+      <y>234</y>
       <w>116</w>
       <h>44</h>
     </coordinates>
@@ -132,8 +132,8 @@ m2=1..*
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>108</x>
-      <y>90</y>
+      <x>126</x>
+      <y>99</y>
       <w>44</w>
       <h>143</h>
     </coordinates>
@@ -146,8 +146,8 @@ m2=0..1
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>468</x>
-      <y>225</y>
+      <x>486</x>
+      <y>234</y>
       <w>152</w>
       <h>44</h>
     </coordinates>
@@ -160,8 +160,8 @@ m2=1
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>432</x>
-      <y>279</y>
+      <x>450</x>
+      <y>288</y>
       <w>278</w>
       <h>125</h>
     </coordinates>
@@ -171,8 +171,8 @@ m2=1
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>603</x>
-      <y>387</y>
+      <x>621</x>
+      <y>396</y>
       <w>189</w>
       <h>72</h>
     </coordinates>
@@ -185,8 +185,8 @@ minQuantityInStock</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>666</x>
-      <y>279</y>
+      <x>684</x>
+      <y>288</y>
       <w>44</w>
       <h>125</h>
     </coordinates>
@@ -196,8 +196,8 @@ minQuantityInStock</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>828</x>
-      <y>387</y>
+      <x>846</x>
+      <y>396</y>
       <w>189</w>
       <h>72</h>
     </coordinates>
@@ -211,8 +211,8 @@ minQuantityInStock</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>666</x>
-      <y>279</y>
+      <x>684</x>
+      <y>288</y>
       <w>278</w>
       <h>125</h>
     </coordinates>
@@ -222,8 +222,8 @@ minQuantityInStock</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>45</x>
-      <y>540</y>
+      <x>63</x>
+      <y>549</y>
       <w>189</w>
       <h>135</h>
     </coordinates>
@@ -241,8 +241,8 @@ exists</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>45</x>
-      <y>405</y>
+      <x>63</x>
+      <y>414</y>
       <w>189</w>
       <h>63</h>
     </coordinates>
@@ -255,8 +255,8 @@ workTables
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>108</x>
-      <y>441</y>
+      <x>126</x>
+      <y>450</y>
       <w>44</w>
       <h>116</h>
     </coordinates>
@@ -266,22 +266,22 @@ workTables
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>108</x>
-      <y>279</y>
+      <x>126</x>
+      <y>288</y>
       <w>44</w>
       <h>143</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
-m2=1..1
+m2=1
 </panel_attributes>
     <additional_attributes>27;27;27;126</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>378</x>
-      <y>468</y>
+      <x>396</x>
+      <y>477</y>
       <w>405</w>
       <h>207</h>
     </coordinates>
