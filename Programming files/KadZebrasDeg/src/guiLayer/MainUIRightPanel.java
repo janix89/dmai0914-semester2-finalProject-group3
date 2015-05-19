@@ -1,4 +1,4 @@
-import java.awt.Dimension;
+package guiLayer;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -9,13 +9,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class ManagerUILeftPanel extends JPanel {
+public class MainUIRightPanel extends JPanel {
 	
 	private ImageIcon imageIcon;
 	private JLabel logoLabel;
 	private JLabel titleLabel;
 	
-	public ManagerUILeftPanel() {
+	public MainUIRightPanel() {
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
@@ -23,10 +23,6 @@ public class ManagerUILeftPanel extends JPanel {
 		imageIcon = new ImageIcon("C://Eclipse workspace/KadZebrasDeg/Logo1.jpg");
 		titleLabel = new JLabel("Welcome Back!");
 		titleLabel.setFont(new Font("Serif", Font.BOLD, 40));
-		
-		Dimension dim = getPreferredSize();
-		dim.width = 650;
-		setPreferredSize(dim);
 		
 		logoLabel.setIcon(imageIcon);
 
@@ -58,6 +54,5 @@ public class ManagerUILeftPanel extends JPanel {
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(logoLabel, gc);
 	}
-
 
 }
