@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.0">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>2106</x>
+      <y>0</y>
+      <w>84</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>UILayer
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>2130</x>
+      <y>318</y>
+      <w>84</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>cntrolLayer
+--
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>2136</x>
+      <y>660</y>
+      <w>84</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>modelLayer
+--
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1242</x>
+      <y>6</y>
+      <w>198</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>MerchandiseUI
+bg=green
+--
+-TODO Methods in the UI class
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1194</x>
+      <y>252</y>
+      <w>198</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>MerchandiseController
+bg=yellow
+--
+-createMerchandise(name, price, type):Merchandise
+-setIngredients(ingredients):void
+-setIsVegetarian(isVegetarian):Merchandise
+-setQuantityStock(quantity): void
+-setAlcholohPercent(percent): void
+-findMerchandise(name): Merchandise</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1140</x>
+      <y>618</y>
+      <w>168</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>Merchandise
+bg=red
+--
+- name: String
+- price : double
+- exists : boolean
+--
++ set()
++ get()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1350</x>
+      <y>606</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>DBMerchandise
+bg=red
+--
+insertMerchandise(m):void
+findMerchandise(name): Merchandise</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1260</x>
+      <y>42</y>
+      <w>54</w>
+      <h>222</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;210;42;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1170</x>
+      <y>360</y>
+      <w>96</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;258;84;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1290</x>
+      <y>360</y>
+      <w>138</w>
+      <h>258</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>126;246;18;18</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1062</x>
+      <y>726</y>
+      <w>90</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Course
+bg=red
+--
+-ingredients: String
+-isVegetarian: boolean
+--
++set()
++get()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1164</x>
+      <y>726</y>
+      <w>78</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Snack
+bg=red
+--
+-quantityInStock: int
+--
++set()
++get()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1260</x>
+      <y>732</y>
+      <w>114</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Drink
+bg=red
+--
+-quantityInStock: int
+-alcoholConcentration: double
+--
++set()
++get()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1086</x>
+      <y>690</y>
+      <w>120</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1194</x>
+      <y>690</y>
+      <w>18</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1200</x>
+      <y>690</y>
+      <w>102</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1530</x>
+      <y>6</y>
+      <w>198</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>ReservationUI
+bg=green
+--
+- TODO Methods in the UI class</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1530</x>
+      <y>252</y>
+      <w>198</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>ReservationController
+bg=yellow
+--
+-createReservation(customersName, phoneNo, preorde, amountOfPeople): Reservation
+-insertTable(tableNo): int
+-confirmReservation(): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1530</x>
+      <y>366</y>
+      <w>198</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>TableController
+bg=yellow
+--
+-findTableByNo(tableNo): Table
+-checkIfExists(): bool
+-checkIfAvailable(): bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1770</x>
+      <y>606</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>DBTable
+bg=red
+--
+-searchTable(tableNo): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1584</x>
+      <y>606</y>
+      <w>126</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>Table
+bg=red
+--
+-customersName: string
+-phoneNo : string
+-reservationDate: string
+-preorderID: string
+-checkIn: string
+-numberOfGuests: int
+-registrationDate: string
+--
+-get()
+-set()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1614</x>
+      <y>300</y>
+      <w>30</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;66;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1608</x>
+      <y>402</y>
+      <w>48</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>36;204;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1614</x>
+      <y>402</y>
+      <w>228</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>216;204;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1608</x>
+      <y>42</y>
+      <w>30</w>
+      <h>222</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;210;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1692</x>
+      <y>606</y>
+      <w>90</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;54;78;18</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1920</x>
+      <y>606</y>
+      <w>144</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>DBReservation
+bg=red
+--
+-insertReservation(reservation): bool
+//searchReservation()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1632</x>
+      <y>300</y>
+      <w>366</w>
+      <h>318</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>354;306;114;36;24;36;18;18</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>834</x>
+      <y>6</y>
+      <w>198</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>OrderUI
+bg=green
+--
+-TODO Methods in the UI class
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>834</x>
+      <y>246</y>
+      <w>198</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>OrderController
+bg=yellow
+--
+-createOrder(waiter) : Order
+-insertMerchandise(merchandise, quantity): bool
+-makePayment(order) : bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>918</x>
+      <y>42</y>
+      <w>30</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;204;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1290</x>
+      <y>606</y>
+      <w>72</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;48;60;18</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>732</x>
+      <y>600</y>
+      <w>168</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>Order
+bg=red
+--
+- totalPrice: double
+- isPaid : bool
+- isActive : bool
+--
++ set()
++ get()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>966</x>
+      <y>606</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>DBOrder
+bg=red
+--
+insertOrder(order):bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>882</x>
+      <y>606</y>
+      <w>96</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;48;84;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>798</x>
+      <y>294</y>
+      <w>126</w>
+      <h>318</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;306;114;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>930</x>
+      <y>294</y>
+      <w>108</w>
+      <h>324</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>96;312;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>954</x>
+      <y>294</y>
+      <w>876</w>
+      <h>540</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>858;354;864;522;48;528;48;396;162;396;162;330;162;180;18;18</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>474</x>
+      <y>264</y>
+      <w>198</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>StaffController
+bg=yellow
+--
+-findWaiterByCpr(cprNo): Waiter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>654</x>
+      <y>258</y>
+      <w>192</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;42;180;18</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>612</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>DBStaff
+bg=red
+--
+findWaiterByCpr(cprNo): Waiter
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>546</x>
+      <y>312</y>
+      <w>42</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;300;30;18</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>276</x>
+      <y>600</y>
+      <w>168</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>Staff
+bg=red
+--
+-name : string
+-bankAccount : string
+-address : string
+-profession : string
+-phoneNo : string
+-cprNo : string
+-exists : bool
+--
++ set()
++ get()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>354</x>
+      <y>702</y>
+      <w>78</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>444</x>
+      <y>636</y>
+      <w>126</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;150;114;150;114;18</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>372</x>
+      <y>756</y>
+      <w>90</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Waiter
+bg=red
+--
+-workTables: ArrayList&lt;Integer&gt;
+--
++set()
++get()</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
