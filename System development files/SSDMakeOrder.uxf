@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.2">
+<diagram program="umlet" version="13.0">
   <zoom_level>10</zoom_level>
   <element>
     <id>Relation</id>
@@ -13,7 +13,7 @@
     <additional_attributes>10.0;10.0;10.0;400.0</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Actor</type>
+    <type>com.umlet.element.Actor</type>
     <coordinates>
       <x>150</x>
       <y>90</y>
@@ -54,7 +54,7 @@
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-makeOrder(tables:ArrayList&lt;Table&gt; , staff:Waiter)</panel_attributes>
+makeOrder(waiter:Waiter)</panel_attributes>
     <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -82,7 +82,7 @@ insertMerchandise(product:Merchandise,quantity)
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>170</x>
       <y>390</y>
@@ -107,7 +107,7 @@ makePayment(order:Order)
     <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>170</x>
       <y>520</y>
