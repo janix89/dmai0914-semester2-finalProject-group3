@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.2">
-  <zoom_level>13</zoom_level>
+<diagram program="umlet" version="13.0">
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>3965</x>
+      <x>1830</x>
       <y>0</y>
-      <w>182</w>
-      <h>91</h>
+      <w>84</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>UILayer
 --
@@ -17,10 +17,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>4017</x>
-      <y>689</y>
-      <w>182</w>
-      <h>91</h>
+      <x>1854</x>
+      <y>318</y>
+      <w>84</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>cntrolLayer
 --
@@ -30,10 +30,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>4030</x>
-      <y>1430</y>
-      <w>182</w>
-      <h>91</h>
+      <x>1860</x>
+      <y>660</y>
+      <w>84</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>modelLayer
 --
@@ -43,10 +43,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2093</x>
-      <y>13</y>
-      <w>429</w>
-      <h>117</h>
+      <x>966</x>
+      <y>6</y>
+      <w>198</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>MerchandiseUI
 bg=green
@@ -58,10 +58,10 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1989</x>
-      <y>546</y>
-      <w>429</w>
-      <h>273</h>
+      <x>918</x>
+      <y>252</y>
+      <w>198</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>MerchandiseController
 bg=yellow
@@ -70,17 +70,17 @@ bg=yellow
 -setIngredients(ingredients):void
 -setIsVegetarian(isVegetarian):Merchandise
 -setQuantityStock(quantity): void
--setAlcholohPercent(percent): void
+-setAlchoholPercent(percent): void
 -findMerchandise(name): Merchandise</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1872</x>
-      <y>1339</y>
-      <w>364</w>
-      <h>169</h>
+      <x>864</x>
+      <y>618</y>
+      <w>168</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>Merchandise
 bg=red
@@ -96,10 +96,10 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2327</x>
-      <y>1313</y>
-      <w>273</w>
-      <h>91</h>
+      <x>1074</x>
+      <y>606</y>
+      <w>126</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>DBMerchandise
 bg=red
@@ -109,45 +109,45 @@ findMerchandise(name): Merchandise</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2132</x>
-      <y>91</y>
-      <w>116</w>
-      <h>480</h>
+      <x>984</x>
+      <y>42</y>
+      <w>54</w>
+      <h>222</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;455;91;39</additional_attributes>
+    <additional_attributes>18;210;42;18</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1937</x>
-      <y>780</y>
-      <w>207</w>
-      <h>584</h>
+      <x>894</x>
+      <y>360</y>
+      <w>96</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;559;182;39</additional_attributes>
+    <additional_attributes>18;258;84;18</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2197</x>
-      <y>780</y>
-      <w>298</w>
-      <h>558</h>
+      <x>1014</x>
+      <y>360</y>
+      <w>138</w>
+      <h>258</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>273;533;39;39</additional_attributes>
+    <additional_attributes>126;246;18;18</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1703</x>
-      <y>1573</y>
-      <w>195</w>
-      <h>130</h>
+      <x>786</x>
+      <y>726</y>
+      <w>90</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Course
 bg=red
@@ -162,15 +162,16 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1924</x>
-      <y>1573</y>
-      <w>169</w>
-      <h>104</h>
+      <x>888</x>
+      <y>726</y>
+      <w>78</w>
+      <h>48</h>
     </coordinates>
-    <panel_attributes>Snack
+    <panel_attributes>Miscellaneous
 bg=red
 --
 -quantityInStock: int
+-minQuantityInStock: int
 --
 +set()
 +get()</panel_attributes>
@@ -179,16 +180,17 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2132</x>
-      <y>1586</y>
-      <w>247</w>
-      <h>130</h>
+      <x>984</x>
+      <y>732</y>
+      <w>114</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Drink
 bg=red
 --
 -quantityInStock: int
--alcoholConcentration: double
+-alcoholConcentration: float
+-minQuantityInStock: int
 --
 +set()
 +get()</panel_attributes>
@@ -197,10 +199,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1755</x>
-      <y>1495</y>
-      <w>260</w>
-      <h>104</h>
+      <x>810</x>
+      <y>690</y>
+      <w>120</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>180.0;10.0;10.0;60.0</additional_attributes>
@@ -208,10 +210,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1989</x>
-      <y>1495</y>
-      <w>39</w>
-      <h>104</h>
+      <x>918</x>
+      <y>690</y>
+      <w>18</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
@@ -219,10 +221,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2002</x>
-      <y>1495</y>
-      <w>221</w>
-      <h>117</h>
+      <x>924</x>
+      <y>690</y>
+      <w>102</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;150.0;70.0</additional_attributes>
@@ -230,10 +232,10 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2717</x>
-      <y>13</y>
-      <w>429</w>
-      <h>117</h>
+      <x>1254</x>
+      <y>6</y>
+      <w>198</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>ReservationUI
 bg=green
@@ -244,164 +246,142 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2717</x>
-      <y>546</y>
-      <w>429</w>
-      <h>143</h>
+      <x>1254</x>
+      <y>252</y>
+      <w>342</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>ReservationController
 bg=yellow
 --
--createReservation(customersName, phoneNo, preorde, amountOfPeople): Reservation
--enterTableNumber(tableNo)
+-createReservation(customersName, phoneNo, amountOfPeople, tables): Reservation
 -insertTable(tableNo): int
--confirmReservation(): bool</panel_attributes>
+-confirmReservation(): boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2717</x>
-      <y>793</y>
-      <w>429</w>
-      <h>117</h>
+      <x>1428</x>
+      <y>432</y>
+      <w>198</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>TableController
 bg=yellow
 --
 -findTableByNo(tableNo): Table
--checkIfExists(): bool
--checkIfAvailable(): bool
+-checkIfExists(table): boolean
+-checkIfAvailable(table): boolean
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3237</x>
-      <y>1313</y>
-      <w>273</w>
-      <h>104</h>
+      <x>1722</x>
+      <y>654</y>
+      <w>126</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>DBTable
 bg=red
 --
 -findTableByNo(tableNo): Table
--checkIfExits(tableNo): bool
--searchTable(tableNo): bool</panel_attributes>
+-checkIfExits(tableNo): boolean
+-searchTable(tableNo): boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2834</x>
-      <y>1313</y>
-      <w>273</w>
-      <h>260</h>
+      <x>1560</x>
+      <y>618</y>
+      <w>126</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Table
 bg=red
 --
--customersName: string
--phoneNo : string
--reservationDate: string
--preorderID: string
--checkIn: string
--numberOfGuests: int
--registrationDate: string
+-noOfSeats: int
+-tableNo : int
+-isAvailable: boolean
+-exists: boolean
+-tableOnTheNorth
+-tableOnTheEast
+-tableOnTheSouth
+-tableOnTheWest
 --
 -get()
 -set()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2899</x>
-      <y>650</y>
-      <w>64</w>
-      <h>168</h>
+      <x>1338</x>
+      <y>300</y>
+      <w>204</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;143;39;39</additional_attributes>
+    <additional_attributes>192;132;18;18</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2886</x>
-      <y>871</y>
-      <w>103</w>
-      <h>467</h>
+      <x>1512</x>
+      <y>468</y>
+      <w>282</w>
+      <h>198</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>78;442;39;39</additional_attributes>
+    <additional_attributes>270;186;18;18</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2899</x>
-      <y>871</y>
-      <w>493</w>
-      <h>467</h>
+      <x>1332</x>
+      <y>42</y>
+      <w>30</w>
+      <h>222</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>468;442;39;39</additional_attributes>
-  </element>
-  <element>
-    <type>com.baselet.element.old.element.Relation</type>
-    <coordinates>
-      <x>2886</x>
-      <y>91</y>
-      <w>64</w>
-      <h>480</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;455;39;39</additional_attributes>
-  </element>
-  <element>
-    <type>com.baselet.element.old.element.Relation</type>
-    <coordinates>
-      <x>3068</x>
-      <y>1313</y>
-      <w>194</w>
-      <h>142</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;117;169;39</additional_attributes>
+    <additional_attributes>18;210;18;18</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3562</x>
-      <y>1313</y>
-      <w>312</w>
-      <h>91</h>
+      <x>1212</x>
+      <y>648</y>
+      <w>144</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>DBReservation
 bg=red
 --
--insertReservation(reservation): bool
+-insertReservation(reservation): boolean
 //searchReservation()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2938</x>
-      <y>650</y>
-      <w>792</w>
-      <h>688</h>
+      <x>1260</x>
+      <y>300</y>
+      <w>96</w>
+      <h>360</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>767;663;247;78;52;78;39;39</additional_attributes>
+    <additional_attributes>18;348;84;18</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1209</x>
-      <y>13</y>
-      <w>429</w>
-      <h>117</h>
+      <x>558</x>
+      <y>6</y>
+      <w>198</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>OrderUI
 bg=green
@@ -413,10 +393,10 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1209</x>
-      <y>533</y>
-      <w>429</w>
-      <h>143</h>
+      <x>558</x>
+      <y>246</y>
+      <w>198</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>OrderController
 bg=yellow
@@ -429,41 +409,41 @@ bg=yellow
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1391</x>
-      <y>91</y>
-      <w>64</w>
-      <h>467</h>
+      <x>642</x>
+      <y>42</y>
+      <w>30</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;442;39;39</additional_attributes>
+    <additional_attributes>18;204;18;18</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2197</x>
-      <y>1313</y>
-      <w>155</w>
-      <h>129</h>
+      <x>1014</x>
+      <y>606</y>
+      <w>72</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;104;130;39</additional_attributes>
+    <additional_attributes>18;48;60;18</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>988</x>
-      <y>1300</y>
-      <w>364</w>
-      <h>169</h>
+      <x>456</x>
+      <y>600</y>
+      <w>168</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>Order
 bg=red
 --
 - totalPrice: double
-- isPaid : bool
-- isActive : bool
+- isPaid : boolean
+- isActive : boolean
 --
 + set()
 + get()</panel_attributes>
@@ -472,69 +452,69 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1495</x>
-      <y>1313</y>
-      <w>273</w>
-      <h>91</h>
+      <x>690</x>
+      <y>606</y>
+      <w>126</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>DBOrder
 bg=red
 --
-insertOrder(order):bool
+insertOrder(order):boolean
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1313</x>
-      <y>1313</y>
-      <w>207</w>
-      <h>129</h>
+      <x>606</x>
+      <y>606</y>
+      <w>96</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;104;182;39</additional_attributes>
+    <additional_attributes>18;48;84;18</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1131</x>
-      <y>637</y>
-      <w>272</w>
-      <h>688</h>
+      <x>522</x>
+      <y>294</y>
+      <w>126</w>
+      <h>318</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;663;247;39</additional_attributes>
+    <additional_attributes>18;306;114;18</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1417</x>
-      <y>637</y>
-      <w>233</w>
-      <h>701</h>
+      <x>654</x>
+      <y>294</y>
+      <w>108</w>
+      <h>324</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>208;676;39;39</additional_attributes>
+    <additional_attributes>96;312;18;18</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1469</x>
-      <y>637</y>
-      <w>1897</w>
-      <h>1169</h>
+      <x>678</x>
+      <y>294</y>
+      <w>1098</w>
+      <h>540</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>1859;780;1872;1131;104;1144;104;858;351;858;351;715;351;390;39;39</additional_attributes>
+    <additional_attributes>1086;408;864;522;48;528;48;396;162;396;162;330;162;180;18;18</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>429</x>
-      <y>572</y>
-      <w>429</w>
-      <h>143</h>
+      <x>198</x>
+      <y>264</y>
+      <w>198</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>StaffController
 bg=yellow
@@ -543,23 +523,23 @@ bg=yellow
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>819</x>
-      <y>559</y>
-      <w>415</w>
-      <h>116</h>
+      <x>378</x>
+      <y>258</y>
+      <w>192</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;91;390;39</additional_attributes>
+    <additional_attributes>18;42;180;18</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>494</x>
-      <y>1326</y>
-      <w>273</w>
-      <h>91</h>
+      <x>228</x>
+      <y>612</y>
+      <w>126</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>DBStaff
 bg=red
@@ -569,34 +549,34 @@ findWaiterByCpr(cprNo): Waiter
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>585</x>
-      <y>676</y>
-      <w>90</w>
-      <h>675</h>
+      <x>270</x>
+      <y>312</y>
+      <w>42</w>
+      <h>312</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;650;65;39</additional_attributes>
+    <additional_attributes>18;300;30;18</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>1300</y>
-      <w>364</w>
-      <h>234</h>
+      <y>600</y>
+      <w>168</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Staff
 bg=red
 --
--name : string
--bankAccount : string
--address : string
--profession : string
--phoneNo : string
--cprNo : string
--exists : bool
+-name : String
+-bankAccount : String
+-address : String
+-profession : String
+-phoneNo : String
+-cprNo : String
+-exists : boolean
 --
 + set()
 + get()</panel_attributes>
@@ -605,32 +585,32 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>169</x>
-      <y>1521</y>
-      <w>169</w>
-      <h>143</h>
+      <x>78</x>
+      <y>702</y>
+      <w>78</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;90.0</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>364</x>
-      <y>1378</y>
-      <w>273</w>
-      <h>351</h>
+      <x>168</x>
+      <y>636</y>
+      <w>126</w>
+      <h>162</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;325;247;325;247;39</additional_attributes>
+    <additional_attributes>18;150;114;150;114;18</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>208</x>
-      <y>1638</y>
-      <w>195</w>
-      <h>130</h>
+      <x>96</x>
+      <y>756</y>
+      <w>90</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Waiter
 bg=red
@@ -640,5 +620,61 @@ bg=red
 +set()
 +get()</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1392</x>
+      <y>612</y>
+      <w>126</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Reservation
+bg=red
+--
+-customersName: String
+-phoneNo : String
+-reservationDate: String
+-preorderID: String
+-numberOfGuests: int
+-registrationTime: String
+-tables: ArrayList&lt;Integer&gt;
+--
+-get()
+-set()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1338</x>
+      <y>648</y>
+      <w>66</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>54;30;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1668</x>
+      <y>660</y>
+      <w>66</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;18;54;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1332</x>
+      <y>300</y>
+      <w>96</w>
+      <h>324</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>84;312;18;18</additional_attributes>
   </element>
 </diagram>
