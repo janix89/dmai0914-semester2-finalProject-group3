@@ -11,6 +11,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.JInternalFrame;
 import javax.swing.JLayeredPane;
 
@@ -36,6 +37,9 @@ public class ChefMenu extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel pane1;
 	private JTable table;
+	private JScrollPane tablePane;
+	private String[] columNames = {"Table","Minutes Elapsed","Time(minutes)","Status",""};
+	private Object[][] data = {{"1","4","30","in process","show"},{"2","11","45","Started","show"}};
 
 	/**
 	 * Launch the application.
@@ -66,6 +70,13 @@ public class ChefMenu extends JFrame {
 		setContentPane(pane1);
 		pane1.setLayout(null);
 		
+		/*pane2 = new JPanel();
+		setBounds(400, 100, 450, 400);
+		pane2.setBorder(new EmptyBorder(5,5,5,5));
+		setContentPane(pane1);
+		pane2.setLayout(null);
+		pane1.add(pane2); */
+		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(10, 527, 89, 23);
 		pane1.add(btnBack);
@@ -92,14 +103,26 @@ public class ChefMenu extends JFrame {
 		    }
 		};
 		
-		table = new JTable(model);
-			pane1.add(new JScrollPane(table)); 
-	     //   pack(); 
-			setDefaultCloseOperation(EXIT_ON_CLOSE); 
-		table.setBounds(10, 24, 389, 467);
-		
-		//pane1.add(table);
-		pane1.setVisible(true);
+		table = new JTable(data,columNames);
+		table.setFillsViewportHeight(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE); 
+	table.setBounds(10, 44, 389, 467);
+	TableColumn column = null;
+	for (int i = 0; i < 5; i++) {
+	    column = table.getColumnModel().getColumn(i);
+	    if (i == 1) {
+	        column.setPreferredWidth(100); //third column is bigger
+	    } 
+	    else if (i == 2) {
+	        column.setPreferredWidth(75); //third column is bigger
+	    }
+	    else {
+	        column.setPreferredWidth(50);
+	    }
+	}
+		tablePane = new JScrollPane(table);
+		tablePane.setBounds(9, 45, 400, 468);
+		pane1.add(tablePane);
 		
 		}
 		catch (Exception e) {
