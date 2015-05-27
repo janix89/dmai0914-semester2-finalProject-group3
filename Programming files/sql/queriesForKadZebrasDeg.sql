@@ -6,104 +6,101 @@ use KadZebrasDeg;
 /* think of adding staffId to this table */
 create Table lLogin(
 id int identity(1,1) primary key(id),
-username varchar(20),
-pass varchar(20),
-accessType int
+username varchar(20) not null,
+pass varchar(20) not null,
+accessType int not null
 );
 /* Table to keep track of openning and closing times */
 create Table tTime(
 id int identity(1,1) primary key(id),
-hours varchar(20),
-minutes varchar(20)
+time varchar(30) not null
 );
 /* Table to same all the employees */
 /* sExists insead of exists because it's a keyword */ 
 create Table Staff(
 id int identity(1,1) primary key(id),
-name varchar(20),
+name varchar(20) not null,
 bankAccount varchar(20),
 address varchar(20),
 profession varchar(20),
 phoneNo varchar(20),
-cprNo varchar(11),
-sExists bit
-);
-/* Table to keep track of the waiters */
-create Table Waiter(
-id int identity(1,1) primary key(id),
-workTable int,
-ssId int foreign key(ssId) references Staff(id) on delete cascade on update cascade
+cprNo varchar(11) not null,
+sExists bit not null
 );
 
 create Table SaleOrder(
 id int identity(1,1) primary key(id),
-totalPrice float,
-isPaid bit,
-isActive bit,
-wId int foreign key (wId) references Waiter(id) on delete cascade on update cascade
+totalPrice float  not null,
+isPaid bit  not null,
+isActive bit  not null,
+wId int foreign key (wId) references Staff(id) on delete cascade on update cascade  not null
 );
 
 create Table tTable(
 id int identity(1,1) primary key(id),
-noOfSeats int,
-tableNo int,
-isAvailable bit,
-tExists bit,
+noOfSeats int  not null,
+tableNo int  not null,
+isAvailable bit  not null,
+tExists bit  not null,
 tableOnTheNorth int,
 tableOnTheEast int,
 tableOnTheSouth int,
-tableOnTheWest int,
-wId int foreign key (wId) references Waiter(id) on delete cascade on update cascade
+tableOnTheWest int
 );
 
 create Table Reservation(
 id int identity(1,1) primary key(id),
 customerName varchar(30),
 phoneNo varchar(20),
-reservationDate varchar(20),
-numberOfGuests int,
-registrationDate varchar(20),
-reservationTime varchar(20),
+reservationDate varchar(20)  not null,
+numberOfGuests int  not null,
+registrationDate varchar(20)  not null,
+reservationTime varchar(20)  not null,
 oId int foreign key (oId) references SaleOrder(id) on delete cascade on update cascade
 );
 
 create Table ReservedTable(
-rId int foreign key (rId)  references Reservation(id) on delete no action on update no action,
-tId int foreign key (tId)  references tTable(id) on delete cascade on update cascade
+rId int foreign key (rId)  references Reservation(id) on delete no action on update no action  not null,
+tId int foreign key (tId)  references tTable(id) on delete cascade on update cascade  not null
 );
-
+/*
 create Table Merchandise(
-id int identity(1,1) primary key(id),
-name varchar(20),
-price float,
-mExists bit
+cmdId int primary key(cmdId)  not null,
+mType int  not null
 );
-
+*/
 create Table OrderLine(
 id int identity(1,1) primary key(id),
-quantity int,
-oId int foreign key (oId) references SaleOrder(id) on delete cascade on update cascade,
-meId int foreign key (meID) references Merchandise(id) on delete cascade on update cascade
+quantity int  not null,
+oId int foreign key (oId) references SaleOrder(id) on delete cascade on update cascade  not null,
+meId int not null,
+mType int not null,
+isDone bit not null
 );
 
 create Table Course(
 id int identity(1,1) primary key (id),
-ingredients varchar(100),
-isVegetarian bit,
-meId int foreign key (meID) references Merchandise(id) on delete cascade on update cascade
+name varchar(20)  not null,
+price float  not null,
+ingredients varchar(100)  not null,
+isVegetarian bit  not null,
+mExists bit not null
 );
 
 create Table Miscellaneous(
 id int identity(1,1) primary key (id),
-quantityInStock int,
-minQuantityInStock int,
-meId int foreign key (meID) references Merchandise(id) on delete cascade on update cascade
+name varchar(20)  not null,
+price float  not null,
+quantityInStock int  not null,
+minQuantityInStock int  not null
 );
 
 create Table Drink(
 id int identity(1,1) primary key (id),
-quantityInStock int,
-alcoholConcentration float,
-minQuantityInStock int,
-meId int foreign key (meID) references Merchandise(id) on delete cascade on update cascade
+name varchar(20)  not null,
+price float  not null,
+quantityInStock int  not null,
+alcoholConcentration float  not null,
+minQuantityInStock int  not null
 );
+
