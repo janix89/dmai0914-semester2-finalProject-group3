@@ -1,241 +1,263 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.2">
-  <zoom_level>13</zoom_level>
+<diagram program="umlet" version="13.0">
+  <zoom_level>8</zoom_level>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>988</x>
-      <y>0</y>
-      <w>247</w>
-      <h>52</h>
+      <x>528</x>
+      <y>216</y>
+      <w>152</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>makeOrder: MakeOrderUI
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>13</x>
-      <y>286</y>
-      <w>1923</w>
-      <h>64</h>
+      <x>72</x>
+      <y>296</y>
+      <w>1040</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>39;39;1898;39</additional_attributes>
+    <additional_attributes>24;24;1024;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>0</x>
-      <y>507</y>
-      <w>1923</w>
-      <h>64</h>
+      <x>72</x>
+      <y>432</y>
+      <w>1032</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>39;39;1898;39</additional_attributes>
+    <additional_attributes>24;24;1016;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>936</x>
-      <y>377</y>
-      <w>377</w>
-      <h>39</h>
+      <x>496</x>
+      <y>352</y>
+      <w>232</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>orderController: OrderController</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>975</x>
-      <y>377</y>
-      <w>222</w>
-      <h>285</h>
+      <x>520</x>
+      <y>352</y>
+      <w>136</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>
 1.4. insertOrder(o)</panel_attributes>
-    <additional_attributes>169;39;117;208;143;260</additional_attributes>
+    <additional_attributes>104;24;72;128;88;160</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1053</x>
-      <y>637</y>
-      <w>195</w>
-      <h>39</h>
+      <x>568</x>
+      <y>512</y>
+      <w>120</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>dbOrder : DBOrder</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>845</x>
-      <y>637</y>
-      <w>195</w>
-      <h>39</h>
+      <x>440</x>
+      <y>512</y>
+      <w>120</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>order: Order</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>910</x>
-      <y>13</y>
-      <w>394</w>
-      <h>389</h>
+      <x>480</x>
+      <y>224</y>
+      <w>242</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>1. makeOrder(waiter)
 2.0. findMerchandise(name)
 2.3 addMerchandiseToOrderLine(m, o);
 2.4 insertMerchandise(m, quantity)
 3 makePayment(o)</panel_attributes>
-    <additional_attributes>208;39;208;364</additional_attributes>
+    <additional_attributes>128;24;128;128</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>832</x>
-      <y>377</y>
-      <w>288</w>
-      <h>285</h>
+      <x>440</x>
+      <y>352</y>
+      <w>168</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>1.3 o = makeOrder(waiter)</panel_attributes>
-    <additional_attributes>156;39;156;260</additional_attributes>
+    <additional_attributes>88;24;88;160</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>195</x>
-      <y>377</y>
-      <w>403</w>
-      <h>39</h>
+      <x>80</x>
+      <y>352</y>
+      <w>248</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>merchandiseController: MerchandiseController</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>234</x>
-      <y>637</y>
-      <w>286</w>
-      <h>39</h>
+      <x>104</x>
+      <y>504</y>
+      <w>176</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>dbMerchandise: DBMerchandise</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>221</x>
-      <y>377</y>
-      <w>299</w>
-      <h>285</h>
+      <x>96</x>
+      <y>352</y>
+      <w>184</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>2.1.1 findMerchandise(name)</panel_attributes>
-    <additional_attributes>156;39;156;260</additional_attributes>
+    <additional_attributes>96;24;96;152</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1755</x>
-      <y>637</y>
-      <w>195</w>
-      <h>39</h>
+      <x>1000</x>
+      <y>464</y>
+      <w>120</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>waiter: DBStaff</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1729</x>
-      <y>377</y>
-      <w>258</w>
-      <h>285</h>
+      <x>984</x>
+      <y>352</y>
+      <w>158</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>1.2 waiter=findWaiter()</panel_attributes>
-    <additional_attributes>130;39;130;260</additional_attributes>
+    <additional_attributes>80;24;80;112</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1547</x>
-      <y>377</y>
-      <w>377</w>
-      <h>39</h>
+      <x>872</x>
+      <y>352</y>
+      <w>232</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>staffController: StaffController</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1274</x>
-      <y>325</y>
-      <w>298</w>
-      <h>91</h>
+      <x>704</x>
+      <y>320</y>
+      <w>184</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>1.1 findWaiterByCpr(waiter)</panel_attributes>
-    <additional_attributes>39;65;273;65</additional_attributes>
+    <additional_attributes>24;40;168;40</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1287</x>
-      <y>637</y>
-      <w>195</w>
-      <h>39</h>
+      <x>712</x>
+      <y>512</y>
+      <w>120</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>dbTable : DBTable</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1183</x>
-      <y>377</y>
-      <w>296</w>
-      <h>285</h>
+      <x>648</x>
+      <y>352</y>
+      <w>182</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>1.2 tables = searchTables()</panel_attributes>
-    <additional_attributes>117;39;156;143;117;260</additional_attributes>
+    <additional_attributes>72;24;96;88;72;160</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>572</x>
-      <y>637</y>
-      <w>182</w>
-      <h>39</h>
+      <x>304</x>
+      <y>512</y>
+      <w>112</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>orderLine: OrderLine</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>637</x>
-      <y>377</y>
-      <w>337</w>
-      <h>285</h>
+      <x>344</x>
+      <y>352</y>
+      <w>176</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>2.2 ol = createOrderLine()</panel_attributes>
-    <additional_attributes>312;39;312;91;39;91;39;260</additional_attributes>
+    <additional_attributes>160;24;160;56;24;56;24;160</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>559</x>
-      <y>338</y>
-      <w>402</w>
-      <h>91</h>
+      <x>304</x>
+      <y>328</y>
+      <w>208</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>2.1 m = findMerchandise(name)</panel_attributes>
-    <additional_attributes>377;65;39;65</additional_attributes>
+    <additional_attributes>192;40;24;40</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1016</x>
+      <y>480</y>
+      <w>88</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>s = New Staff()</panel_attributes>
+    <additional_attributes>50.0;10.0;50.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1016</x>
+      <y>520</y>
+      <w>88</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>waiter:Staff</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
