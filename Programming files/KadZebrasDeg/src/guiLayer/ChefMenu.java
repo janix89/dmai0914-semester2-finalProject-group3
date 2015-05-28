@@ -11,20 +11,27 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.JInternalFrame;
 import javax.swing.JLayeredPane;
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 
 
 
@@ -36,10 +43,11 @@ public class ChefMenu extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel pane1;
-	private JTable table;
+	
 	private JScrollPane tablePane;
 	private String[] columNames = {"Table","Minutes Elapsed","Time(minutes)","Status",""};
 	private Object[][] data = {{"1","4","30","in process","show"},{"2","11","45","Started","show"}};
+	private Table tableSample;
 
 	/**
 	 * Launch the application.
@@ -70,40 +78,37 @@ public class ChefMenu extends JFrame {
 		setContentPane(pane1);
 		pane1.setLayout(null);
 		
-		/*pane2 = new JPanel();
-		setBounds(400, 100, 450, 400);
-		pane2.setBorder(new EmptyBorder(5,5,5,5));
-		setContentPane(pane1);
-		pane2.setLayout(null);
-		pane1.add(pane2); */
-		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(10, 527, 89, 23);
 		pane1.add(btnBack);
 		
-		DefaultTableModel model = new DefaultTableModel() {
+		tableSample = new Table();
+		
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	private class Table {
+		DefaultTableModel model = new DefaultTableModel(data, columNames) {
 
 		    private static final long serialVersionUID = 1L;
-		    String[] table = {"1", "2"};
-
-		    @Override
-		    public int getColumnCount() {
-		         return table.length;
+		    public boolean isCellEditable(int row, int column)
+		    {
+		      return column == 4;
 		    }
-
-		    @Override
-		    public boolean isCellEditable(int row, int col) {
-		         return false;
-		    }
-
-
-		    @Override
-		    public String getColumnName(int index) {
-		        return table[index];
-		    }
-		};
+		}; 
 		
-		table = new JTable(data,columNames);
+		private JTable table = new JTable(model);
+		
+		public Table(){
+		
+			table.getColumnModel().getColumn(4).setCellRenderer(new ClientsTableButtonRenderer());
+		    table.getColumnModel().getColumn(4).setCellEditor(new ClientsTableRenderer(new JCheckBox()));
+		
+		
 		table.setFillsViewportHeight(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE); 
 	table.setBounds(10, 44, 389, 467);
@@ -121,13 +126,88 @@ public class ChefMenu extends JFrame {
 	    }
 	}
 		tablePane = new JScrollPane(table);
-		tablePane.setBounds(9, 45, 400, 468);
+		tablePane.setBounds(9, 45, 410, 468);
 		pane1.add(tablePane);
-		
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-
 	}
+}
+	 class ClientsTableButtonRenderer extends JButton implements TableCellRenderer
+	  {
+	    /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public ClientsTableButtonRenderer()
+	    {
+	      setOpaque(true);
+	    }
+
+	    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+	    {
+	      setForeground(Color.black);
+	      setBackground(UIManager.getColor("Button.background"));
+	      setText((value == null) ? "" : value.toString());
+	      return this;
+	    }
+	  }
+	 
+	 public class ClientsTableRenderer extends DefaultCellEditor
+	  {
+	    /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private JButton button;
+	    private String label;
+	    private boolean clicked;
+	    private int row, col;
+	    private JTable table;
+
+	    public ClientsTableRenderer(JCheckBox checkBox)
+	    {
+	      super(checkBox);
+	      button = new JButton();
+	      button.setOpaque(true);
+	      button.addActionListener(new ActionListener()
+	      {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	          fireEditingStopped();
+	        }
+	      });
+	    }
+	    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
+	    {
+	      this.table = table;
+	      this.row = row;
+	      this.col = column;
+
+	      button.setForeground(Color.black);
+	      button.setBackground(UIManager.getColor("Button.background"));
+	      label = (value == null) ? "" : value.toString();
+	      button.setText(label);
+	      clicked = true;
+	      return button;
+	    }
+	    public Object getCellEditorValue()
+	    {
+	      if (clicked)
+	      {
+	        JOptionPane.showMessageDialog(button, "Column with Value: "+table.getValueAt(row, 1) + " -  Clicked!");
+	      }
+	      clicked = false;
+	      return new String(label);
+	    }
+
+	    public boolean stopCellEditing()
+	    {
+	      clicked = false;
+	      return super.stopCellEditing();
+	    }
+
+	    protected void fireEditingStopped()
+	    {
+	      super.fireEditingStopped();
+	    }
+	  }
 }
