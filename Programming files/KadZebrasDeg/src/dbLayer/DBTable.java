@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import modelLayer.Staff;
 import modelLayer.Table;
 import exceptionsLayer.DatabaseException;
 
@@ -59,6 +58,12 @@ public class DBTable implements IFDBTable {
 	@Override
 	public Table findTable(int id) throws DatabaseException {
 		String wClause = "  id = '" + id + "'";
+		return singleWhere(wClause);
+	}
+	
+	@Override
+	public Table findTableByTableNo(int tableNo) throws DatabaseException {
+		String wClause = " tableNo = '" + tableNo + "'";
 		return singleWhere(wClause);
 	}
 
