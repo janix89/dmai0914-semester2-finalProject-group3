@@ -58,7 +58,7 @@ public class OrderPopup extends JFrame {
 	public OrderPopup() {
 		try {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(400, 100, 550, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -72,16 +72,12 @@ public class OrderPopup extends JFrame {
 		lblOrder.setBounds(10, 28, 46, 14);
 		contentPane.add(lblOrder);
 		
-		/*table = new JTable();
-		table.setBounds(10, 53, 404, 162);
-		contentPane.add(table);  */
-		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(20, 227, 89, 23);
+		btnBack.setBounds(20, 525, 89, 23);
 		contentPane.add(btnBack);
 		
 		JButton btnDone = new JButton("Done");
-		btnDone.setBounds(325, 226, 89, 23);
+		btnDone.setBounds(415, 525, 89, 23);
 		contentPane.add(btnDone);
 		
 		tableSample = new Table();
@@ -96,6 +92,10 @@ public class OrderPopup extends JFrame {
 		    public boolean isCellEditable(int row, int column)
 		    {
 		      return column == 4;
+		    }
+		    public boolean isCellEditable2(int row, int column)
+		    {
+		    	return column == 5;
 		    }
 		}; 
 		
@@ -113,7 +113,7 @@ public class OrderPopup extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE); 
 	table.setBounds(10, 44, 389, 467);
 	TableColumn column = null;
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 6; i++) {
 	    column = table.getColumnModel().getColumn(i);
 	    if (i == 1) {
 	        column.setPreferredWidth(100); //third column is bigger
@@ -126,7 +126,7 @@ public class OrderPopup extends JFrame {
 	    }
 	}
 		tablePane = new JScrollPane(table);
-		tablePane.setBounds(9, 45, 410, 468);
+		tablePane.setBounds(9, 45, 500, 468);
 		contentPane.add(tablePane);
 	}
 }
