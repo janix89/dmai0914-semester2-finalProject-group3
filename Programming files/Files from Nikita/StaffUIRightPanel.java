@@ -29,6 +29,7 @@ public class StaffUIRightPanel extends JPanel {
 	private JTextField quantity1;
 	private JButton delete;
 	private JButton update;
+	private ListenerForEverything listenerForEverything;
 	
 	
 	 public StaffUIRightPanel(){
@@ -284,12 +285,15 @@ public class StaffUIRightPanel extends JPanel {
 			
 			gc.fill = GridBagConstraints.CENTER;
 			gc.anchor = GridBagConstraints.WEST;
-			gc.insets = new Insets(0, 0, 0, 0);
+			gc.insets = new Insets(0, 80, 0, 0);
 			add(delete, gc);
 
 		 
 		 
 	 }
+	 public void setListenerForEverything(ListenerForEverything listener){
+			this.listenerForEverything = listener;
+		}
 	
 	
 
