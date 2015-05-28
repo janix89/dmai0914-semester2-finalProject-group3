@@ -9,7 +9,7 @@ public class Reservation {
 	private String reservationDate;
 	private int numberOfGuests;
 	private String reservationRegistrationDate;
-	private String reservationTime;
+	private String reservedTime;
 	private Order order;
 	private int orderId;
 
@@ -77,11 +77,11 @@ public class Reservation {
 	}
 
 	public String getReservedTime() {
-		return reservationTime;
+		return reservedTime;
 	}
 
 	public void setReservedTime(String reservedTime) {
-		this.reservationTime = reservedTime;
+		this.reservedTime = reservedTime;
 	}
 
 	public void addTable(int table) {
