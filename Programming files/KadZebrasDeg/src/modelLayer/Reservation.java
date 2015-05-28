@@ -25,7 +25,7 @@ public String getPhoneNo() {return phoneNo;}
 public void setPhoneNo(String phoneNo) {this.phoneNo = phoneNo;}
 public String getReservationDate() {return reservationDate;}
 public void setReservationDate(String reservationDate) {this.reservationDate = reservationDate;}
-public Order getPreorder() {return order;}
+public Order getOrder() {return order;}
 public void setOrder(Order order) {this.order = order;}
 public String getCustomerName() {return customerName;}
 public void setCustomerName(String customerName) {this.customerName = customerName;}

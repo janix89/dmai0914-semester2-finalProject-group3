@@ -40,7 +40,7 @@ public class DBReservation implements IFDBReservation {
 				+ "','"
 				+ reservation.getReservedTime()
 				+ "','"
-				+ reservation.getPreorder().getOrderId() + "')";
+				+ reservation.getOrder().getOrderId() + "')";
 
 		System.out.println("insert : " + query);
 		try {
@@ -122,7 +122,7 @@ public class DBReservation implements IFDBReservation {
 			s.setInt(4, reservation.getNumberOfGuests());
 			s.setString(5, reservation.getReservationRegistrationDate());
 			s.setString(6, reservation.getReservedTime());
-			s.setInt(7, reservation.getPreorder().getOrderId());
+			s.setInt(7, reservation.getOrder().getOrderId());
 			res = s.executeUpdate();
 			Statement stmt = con.createStatement();
 			stmt.setQueryTimeout(5);
