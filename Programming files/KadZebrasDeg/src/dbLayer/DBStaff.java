@@ -11,39 +11,44 @@ import modelLayer.Staff;
 import exceptionsLayer.DatabaseException;
 
 public class DBStaff implements IFDBStaff {
-	private  Connection con;
-	
+	private Connection con;
+
 	public DBStaff() {
 		con = DBConnect.getInstance().getDBcon();
 	}
-	
+
 	@Override
-	public int insertStaff(Staff staff) throws DatabaseException{
+	public int insertStaff(Staff staff) throws DatabaseException {
 		int rc = -1;
-		String query="";
-		query = "INSERT INTO Staff(name, bankAccount, address, profession, phoneNo, cprNo, sExists) VALUES ('"+
-		staff.getName() + "','" +
-		staff.getBankAccount() + "','" +
-		staff.getAddress() + "','" +
-		staff.getProfession() + "','"+
-		staff.getPhoneNo() + "','"+
-		staff.getCprNo() + "','" +
-		staff.isExists()+ "')";
-		
-	       System.out.println("insert : " + query);
-	      try{
-	          Statement stmt = con.createStatement();
-	          stmt.setQueryTimeout(5);
-	          rc = stmt.executeUpdate(query, stmt.RETURN_GENERATED_KEYS);
-	     	  int id = new GeneratedKey().getGeneratedKey(stmt);
-	     	  staff.setStaffId(id);
-	          stmt.close();
-	      }
-	       catch(SQLException ex){
-	          System.out.println("Staff not inserted");
-	          throw new DatabaseException ("Something else is wrong in DBStaff");
-	       }
-	       return(rc);
+		String query = "";
+		query = "INSERT INTO Staff(name, bankAccount, address, profession, phoneNo, cprNo, sExists) VALUES ('"
+				+ staff.getName()
+				+ "','"
+				+ staff.getBankAccount()
+				+ "','"
+				+ staff.getAddress()
+				+ "','"
+				+ staff.getProfession()
+				+ "','"
+				+ staff.getPhoneNo()
+				+ "','"
+				+ staff.getCprNo()
+				+ "','"
+				+ staff.isExists() + "')";
+
+		System.out.println("insert : " + query);
+		try {
+			Statement stmt = con.createStatement();
+			stmt.setQueryTimeout(5);
+			rc = stmt.executeUpdate(query, stmt.RETURN_GENERATED_KEYS);
+			int id = new GeneratedKey().getGeneratedKey(stmt);
+			staff.setStaffId(id);
+			stmt.close();
+		} catch (SQLException ex) {
+			System.out.println("Staff not inserted");
+			throw new DatabaseException("Something else is wrong in DBStaff");
+		}
+		return (rc);
 	}
 
 	@Override
@@ -54,136 +59,134 @@ public class DBStaff implements IFDBStaff {
 	@Override
 	public Staff findStaff(String cprNo) throws DatabaseException {
 		String wClause = "  cprNo = '" + cprNo + "'";
-        return singleWhere(wClause);
+		return singleWhere(wClause);
 	}
+
 	@Override
 	public Staff findStaffById(int id) throws DatabaseException {
 		String wClause = "  id = '" + id + "'";
-        return singleWhere(wClause);
+		return singleWhere(wClause);
 	}
 
 	@Override
 	public int updateStaff(String cprNo, Staff staff) {
-		// New: using a prepared statement (note, this prepared statement is not reused, but it could be.)
-		String q = "update staff set name=?, bankAccount=? address=? profession=? phoneNo=? cprNo=? sExists=? where cprNo="+cprNo;
+		// New: using a prepared statement (note, this prepared statement is not
+		// reused, but it could be.)
+		String q = "update staff set name=?, bankAccount=? address=? profession=? phoneNo=? cprNo=? sExists=? where cprNo="
+				+ cprNo;
 		int res = 0;
-		try(PreparedStatement s = DBConnect.getInstance().getDBcon().prepareStatement(q)) {
-			s.setString(1,staff.getName());
+		try (PreparedStatement s = DBConnect.getInstance().getDBcon()
+				.prepareStatement(q)) {
+			s.setString(1, staff.getName());
 			s.setString(2, staff.getBankAccount());
 			s.setString(3, staff.getAddress());
 			s.setString(4, staff.getProfession());
 			s.setString(5, staff.getPhoneNo());
 			s.setString(6, staff.getCprNo());
-			s.setBoolean(7, staff.isExists());;
+			s.setBoolean(7, staff.isExists());
+			;
 			res = s.executeUpdate();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		catch(NullPointerException  npe) {
-			
+		} catch (NullPointerException npe) {
+
 		}
 		return res;
 	}
-	//private method
-		private Staff getStaff(String wClause){
-			ResultSet results;
-			Staff staffObj = new Staff();
-	                
-		        String query =  buildQuery(wClause);
-			try{
-		 		Statement stmt = con.createStatement();
-		 		stmt.setQueryTimeout(5);
-		 		results = stmt.executeQuery(query);	 		
-		 		if( results.next() ){
-		 						staffObj = buildStaff(results);
-	                            stmt.close();
-				}
-	                        else{
-	                        	staffObj = null;
-	                        }
-			}
-		 	catch(Exception e){
-		 		System.out.println("Query exception: "+e);
-		 	}
-			return staffObj;
-		}
-		//course misc where
-		private ArrayList<Staff> miscWhere(String wClause)
-		{
-	        ResultSet results;
-		    ArrayList<Staff> list = new ArrayList<Staff>();				
-		    String query =  buildQuery(wClause);	  
-	            try{
+
+	// private method
+	private Staff getStaff(String wClause) {
+		ResultSet results;
+		Staff staffObj = new Staff();
+
+		String query = buildQuery(wClause);
+		try {
 			Statement stmt = con.createStatement();
-		 	stmt.setQueryTimeout(5);
-		 	results = stmt.executeQuery(query);
-		 	
-		
-			while( results.next() ){
+			stmt.setQueryTimeout(5);
+			results = stmt.executeQuery(query);
+			if (results.next()) {
+				staffObj = buildStaff(results);
+				stmt.close();
+			} else {
+				staffObj = null;
+			}
+		} catch (Exception e) {
+			System.out.println("Query exception: " + e);
+		}
+		return staffObj;
+	}
+
+	// course misc where
+	private ArrayList<Staff> miscWhere(String wClause) {
+		ResultSet results;
+		ArrayList<Staff> list = new ArrayList<Staff>();
+		String query = buildQuery(wClause);
+		try {
+			Statement stmt = con.createStatement();
+			stmt.setQueryTimeout(5);
+			results = stmt.executeQuery(query);
+
+			while (results.next()) {
 				Staff staffObj = new Staff();
-				staffObj = buildStaff(results);	
-	            list.add(staffObj);	
-			}//end while
-	             stmt.close();    				
-			}//end try	
-		 	catch(Exception e){
-		 		System.out.println("Query exception - select: "+e);
-				e.printStackTrace();
-		 	}
-			return list;
+				staffObj = buildStaff(results);
+				list.add(staffObj);
+			}// end while
+			stmt.close();
+		}// end try
+		catch (Exception e) {
+			System.out.println("Query exception - select: " + e);
+			e.printStackTrace();
 		}
-		
-		// Single where is used when we only select one thing 	
-		private Staff singleWhere(String wClause)
-		{
-			ResultSet results;
-			Staff staffObj = new Staff();	                
-		    String query =  buildQuery(wClause);
-	        System.out.println(query);
-			try{ 
-		 		Statement stmt = con.createStatement();
-		 		stmt.setQueryTimeout(5);
-		 		results = stmt.executeQuery(query);		 		
-		 		if( results.next() ){
-	             staffObj = buildStaff(results);	                           
-	             stmt.close();
-				}else{
-					staffObj = null;
-	            }
-			}//end try	
-		 	catch(Exception e){
-		 		System.out.println("Query exception: "+e);
-		 	}
-			return staffObj;
+		return list;
+	}
+
+	// Single where is used when we only select one thing
+	private Staff singleWhere(String wClause) {
+		ResultSet results;
+		Staff staffObj = new Staff();
+		String query = buildQuery(wClause);
+		System.out.println(query);
+		try {
+			Statement stmt = con.createStatement();
+			stmt.setQueryTimeout(5);
+			results = stmt.executeQuery(query);
+			if (results.next()) {
+				staffObj = buildStaff(results);
+				stmt.close();
+			} else {
+				staffObj = null;
+			}
+		}// end try
+		catch (Exception e) {
+			System.out.println("Query exception: " + e);
 		}
-		//method to build the query
-		private String buildQuery(String wClause)
-		{
-		    String query="SELECT *  FROM Staff";
-			
-			if (wClause.length()>0)
-				query=query+" WHERE "+ wClause;
-				
-			return query;
+		return staffObj;
+	}
+
+	// method to build the query
+	private String buildQuery(String wClause) {
+		String query = "SELECT *  FROM Staff";
+
+		if (wClause.length() > 0)
+			query = query + " WHERE " + wClause;
+
+		return query;
+	}
+
+	// method to build an employee object
+	private Staff buildStaff(ResultSet results) {
+		Staff staffObj = new Staff();
+		try {
+			staffObj.setName(results.getString("name"));
+			staffObj.setBankAccount(results.getString("bankAccount"));
+			staffObj.setAddress(results.getString("address"));
+			staffObj.setProfession(results.getString("profession"));
+			staffObj.setPhoneNo(results.getString("phoneNo"));
+			staffObj.setCprNo(results.getString("cprNo"));
+			staffObj.setExists(results.getBoolean("sExists"));
+		} catch (Exception e) {
+			System.out.println("Error in building the staff object");
 		}
-		//method to build an employee object
-		private Staff buildStaff(ResultSet results)
-	      {   
-			Staff staffObj = new Staff();
-	          try{     	 
-	        	  staffObj.setName(results.getString("name"));
-	        	  staffObj.setBankAccount(results.getString("bankAccount"));
-	        	  staffObj.setAddress(results.getString("address"));
-	        	  staffObj.setProfession(results.getString("profession"));
-	        	  staffObj.setPhoneNo(results.getString("phoneNo"));
-	        	  staffObj.setCprNo(results.getString("cprNo"));
-	        	  staffObj.setExists(results.getBoolean("sExists"));
-	          }
-	         catch(Exception e)
-	         {
-	             System.out.println("Error in building the staff object");
-	         }
-	         return staffObj;
-	      }
+		return staffObj;
+	}
 }

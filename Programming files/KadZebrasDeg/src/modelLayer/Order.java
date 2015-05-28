@@ -1,6 +1,10 @@
 package modelLayer;
 
+import java.util.ArrayList;
+
 public class Order {
+private ArrayList<OrderLine> orderLines;
+
 private Staff staff;
 private Staff id;
 private double totalPrice;
@@ -19,6 +23,8 @@ public Order(){
 
 
 //sets and gets
+public ArrayList<OrderLine> getOrderLines() {return orderLines;}
+public void setOrderLines(ArrayList<OrderLine> orderLines) {this.orderLines = orderLines;}
 public Staff getId() {return id;}
 public void setId(Staff id) {this.id = id;}
 public int getOrderId() {return orderId;}

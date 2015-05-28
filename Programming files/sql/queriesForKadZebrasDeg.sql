@@ -28,6 +28,14 @@ cprNo varchar(11) not null,
 sExists bit not null
 );
 
+create Table Merchandise(
+mId int identity (1,1) primary key,
+name varchar(20) not null,
+price float not null,
+mExists bit not null,
+mType int not null
+);
+
 create Table SaleOrder(
 id int identity(1,1) primary key(id),
 totalPrice float  not null,
@@ -74,31 +82,39 @@ id int identity(1,1) primary key(id),
 quantity int  not null,
 oId int foreign key (oId) references SaleOrder(id) on delete cascade on update cascade  not null,
 meId int not null,
-mType int not null,
+/*mType int not null,*/
 isDone bit not null
 );
 
 create Table Course(
-id int identity(1,1) primary key (id),
+id int  primary key (id) references Merchandise(mId) on delete cascade on update cascade not null,
+/*
 name varchar(20)  not null,
 price float  not null,
+*/
 ingredients varchar(100)  not null,
 isVegetarian bit  not null,
+/*
 mExists bit not null
+*/
 );
 
 create Table Miscellaneous(
-id int identity(1,1) primary key (id),
+id int  primary key (id) references Merchandise(mId) on delete cascade on update cascade not null,
+/*
 name varchar(20)  not null,
 price float  not null,
+*/
 quantityInStock int  not null,
 minQuantityInStock int  not null
 );
 
 create Table Drink(
-id int identity(1,1) primary key (id),
+id int  primary key (id) references Merchandise(mId) on delete cascade on update cascade not null,
+/*
 name varchar(20)  not null,
 price float  not null,
+*/
 quantityInStock int  not null,
 alcoholConcentration float  not null,
 minQuantityInStock int  not null
