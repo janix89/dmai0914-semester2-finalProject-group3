@@ -29,6 +29,8 @@ public class StaffUILeftPanel extends JPanel {
 	private JTextField phone1;
 	private JTextField quantity1;
 	private JButton create;
+	private ListenerForEverything listenerForEverything;
+	
 	
 	
 	
@@ -72,7 +74,7 @@ public class StaffUILeftPanel extends JPanel {
 		gc.gridy = 0; // Position on y
 		
 		gc.fill = GridBagConstraints.CENTER;
-		gc.anchor = GridBagConstraints.WEST;
+		gc.anchor = GridBagConstraints.EAST;
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(profession, gc);
 		
@@ -100,7 +102,7 @@ public class StaffUILeftPanel extends JPanel {
 		gc.gridy = 1; // Position on y
 		
 		gc.fill = GridBagConstraints.CENTER;
-		gc.anchor = GridBagConstraints.WEST;
+		gc.anchor = GridBagConstraints.EAST;
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(name, gc);
 		
@@ -128,7 +130,7 @@ public class StaffUILeftPanel extends JPanel {
 		gc.gridy = 2; // Position on y
 		
 		gc.fill = GridBagConstraints.CENTER;
-		gc.anchor = GridBagConstraints.WEST;
+		gc.anchor = GridBagConstraints.EAST;
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(bankAccount, gc);
 		
@@ -156,7 +158,7 @@ public class StaffUILeftPanel extends JPanel {
 		gc.gridy = 3; // Position on y
 		
 		gc.fill = GridBagConstraints.CENTER;
-		gc.anchor = GridBagConstraints.WEST;
+		gc.anchor = GridBagConstraints.EAST;
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(adress, gc);
 		
@@ -184,7 +186,7 @@ public class StaffUILeftPanel extends JPanel {
 		gc.gridy = 4; // Position on y
 		
 		gc.fill = GridBagConstraints.CENTER;
-		gc.anchor = GridBagConstraints.WEST;
+		gc.anchor = GridBagConstraints.EAST;
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(phone, gc);
 		
@@ -212,7 +214,7 @@ public class StaffUILeftPanel extends JPanel {
 		gc.gridy = 5; // Position on y
 		
 		gc.fill = GridBagConstraints.CENTER;
-		gc.anchor = GridBagConstraints.WEST;
+		gc.anchor = GridBagConstraints.EAST;
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(quantity, gc);
 		
@@ -240,7 +242,7 @@ public class StaffUILeftPanel extends JPanel {
 		gc.gridy = 6; // Position on y
 		
 		gc.fill = GridBagConstraints.CENTER;
-		gc.anchor = GridBagConstraints.WEST;
+		gc.anchor = GridBagConstraints.EAST;
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(exists, gc);
 		
@@ -273,6 +275,9 @@ public class StaffUILeftPanel extends JPanel {
 		add(create, gc);
 		
 		
+	}
+	public void setListenerForEverything(ListenerForEverything listener){
+		this.listenerForEverything = listener;
 	}
 	
 	
