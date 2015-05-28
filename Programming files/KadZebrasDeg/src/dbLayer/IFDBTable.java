@@ -6,12 +6,15 @@ import modelLayer.Table;
 import exceptionsLayer.DatabaseException;
 
 public interface IFDBTable {
-	//create one
+	// create one
 	public int insertTable(Table table) throws DatabaseException;
-//read all
+
+	// read all
 	public ArrayList<Table> getAllTables();
-//read one
+
+	// read one
 	public Table findTable(int id) throws DatabaseException;
-//update one
+
+	// update one
 	public int updateTable(int tableNo, Table table) throws DatabaseException;
 }

@@ -6,12 +6,15 @@ import modelLayer.Order;
 import exceptionsLayer.DatabaseException;
 
 public interface IFDBOrder {
-	//create one
+	// create one
 	public int insertOrder(Order order) throws DatabaseException;
-//read all
+
+	// read all
 	public ArrayList<Order> getAllOrders();
-//read one
+
+	// read one
 	public Order findOrder(int id) throws DatabaseException;
-//update one
+
+	// update one
 	public int updateOrder(int id, Order o) throws DatabaseException;
 }
