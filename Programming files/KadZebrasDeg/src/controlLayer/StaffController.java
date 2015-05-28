@@ -1,11 +1,12 @@
 package controlLayer;
-import modelLayer.*;
-import dbLayer.*;
+import modelLayer.Staff;
+import dbLayer.DBStaff;
+import exceptionsLayer.DatabaseException;
 
 public class StaffController {
 	DBStaff dbStaff;
 	
-	public Waiter findWaiterByCpr(String cprNo){
-		return dbStaff.findWaiterByCpr(cprNo);
+	public Staff findWaiterByCpr(String cprNo) throws DatabaseException{
+		return dbStaff.findStaff(cprNo);
 	}
 }
