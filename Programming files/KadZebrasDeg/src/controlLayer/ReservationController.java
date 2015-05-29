@@ -9,22 +9,25 @@ import exceptionsLayer.DatabaseException;
 
 public class ReservationController {
 	private DBReservation dBReservation;
-	private TableController tableCTR;
+	private TableController tableController;
 
 	public ReservationController() {
 
 	}
 
-	public Reservation createReservation(String customerName, String phoneNo,
-			int amountOfPeople, ArrayList<Integer> tables) throws DatabaseException {
+	public Reservation makeReservation(String customersName, String phoneNo,
+			String reservationDate, String reservedTime, int numberOfGuests, ArrayList<Table> tables)
+			throws DatabaseException {
 		Reservation res = new Reservation();
-		res.setCustomerName(customerName);
+		res.setCustomerName(customersName);
 		res.setPhoneNo(phoneNo);
-		res.setNumberOfGuests(amountOfPeople);
-		for (int i : tables) {// you add here the tables to the reservation
+		res.setNumberOfGuests(numberOfGuests);
+		res.setReservationDate(reservationDate);
+		res.setReservedTime(reservedTime);
+		for (Table t : tables) {// you add here the tables to the reservation
 			// can be improved to popup some error or smth
 			// TO BE IMPROVED
-			Table tbl = checkTables(i);
+			Table tbl = checkTables(t.getTableNo());
 			if (tbl != null)
 				res.addTable(tbl.getTableNo());
 		}
@@ -34,11 +37,11 @@ public class ReservationController {
 			return null;
 	}
 
-	public Table checkTables(int tableNo) {
+	public Table checkTables(int tableNo) throws DatabaseException {
 		Table tbl;
-		tbl = tableCTR.findTableByNo(tableNo);
-		if (tableCTR.checkIfExists(tbl))
-			if (tableCTR.checkIfAvialable(tbl))
+		tbl = tableController.findTableByNo(tableNo);
+		if (tableController.checkIfExists(tbl))
+			if (tableController.checkIfAvialable(tbl))
 				return tbl;
 		return null;
 	}
@@ -47,17 +50,18 @@ public class ReservationController {
 
 		return dBReservation.insertReservation(res);
 	}
-	
+
 	public Reservation findReservationByName(String name)
 			throws DatabaseException {
 		Reservation res = null;
 		// Reservation res = dbReservation.findReservationByName(name);
 		return res;
 	}
-	
-	//Returns all reservations with specified table no
+
+	// Returns all reservations with specified table no
 	public Reservation findReservationByTableNo(int tableNo) {
-		ArrayList<Reservation> aLR = dBReservation.findReservationByTableNo(tableNo);
+		ArrayList<Reservation> aLR = dBReservation
+				.findReservationByTableNo(tableNo);
 		boolean isFound = false;
 		Reservation res = null;
 		int i = 0;

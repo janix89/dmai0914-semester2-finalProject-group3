@@ -17,4 +17,7 @@ public interface IFDBTable {
 
 	// update one
 	public int updateTable(int tableNo, Table table) throws DatabaseException;
+	
+	// find table by table no
+	public Table findTableByTableNo(int tableNo) throws DatabaseException;
 }

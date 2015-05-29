@@ -1,18 +1,20 @@
-package controlLayer;
-import modelLayer.*;
-import dbLayer.*;
+  package controlLayer;
+import modelLayer.Table;
+import dbLayer.DBTable;
+import exceptionsLayer.DatabaseException;
 
 public class TableController {
-	DBTable dbTable;
-	public Table findTableByNo(int tableNo){
-		return dbTable.findTableByNo(tableNo);
+	DBTable dBTable;
+	
+	public Table findTableByNo(int tableNo) throws DatabaseException{
+		return dBTable.findTableByTableNo(tableNo);
 	}
 	
 	public boolean checkIfExists(Table table){
-		return table.getExists();
+		return table.isExists();
 	}
 	
 	public boolean checkIfAvialable(Table table){
-		return table.getIsAvailable();
+		return table.isAvailable();
 	}
 }
