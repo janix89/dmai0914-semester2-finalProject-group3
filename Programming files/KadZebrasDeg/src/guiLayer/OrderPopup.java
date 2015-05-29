@@ -38,7 +38,21 @@ public class OrderPopup extends JFrame {
 			{"3rd","Vanilla Ice cream","1","3","Start","Done"}	
 	};
 	private Table tableSample;
-	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					OrderPopup frame = new OrderPopup();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
