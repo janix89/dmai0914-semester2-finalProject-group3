@@ -20,6 +20,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class OrderPopup extends JFrame {
 
@@ -36,21 +38,7 @@ public class OrderPopup extends JFrame {
 			{"3rd","Vanilla Ice cream","1","3","Start","Done"}	
 	};
 	private Table tableSample;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					OrderPopup frame = new OrderPopup();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -73,10 +61,21 @@ public class OrderPopup extends JFrame {
 		contentPane.add(lblOrder);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+			}
+		});
 		btnBack.setBounds(20, 525, 89, 23);
 		contentPane.add(btnBack);
 		
 		JButton btnDone = new JButton("Done");
+		btnDone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
 		btnDone.setBounds(415, 525, 89, 23);
 		contentPane.add(btnDone);
 		
@@ -91,12 +90,14 @@ public class OrderPopup extends JFrame {
 		    private static final long serialVersionUID = 1L;
 		    public boolean isCellEditable(int row, int column)
 		    {
-		      return column == 4;
+		      if (column == 4 || column == 5){
+		    	  return true;
+		      }
+		      else {
+		    	  return false;
+		      }
 		    }
-		    public boolean isCellEditable2(int row, int column)
-		    {
-		    	return column == 5;
-		    }
+		    
 		}; 
 		
 		private JTable table = new JTable(model);
@@ -110,7 +111,7 @@ public class OrderPopup extends JFrame {
 		
 		
 		table.setFillsViewportHeight(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE); 
+		//setDefaultCloseOperation(EXIT_ON_CLOSE); 
 	table.setBounds(10, 44, 389, 467);
 	TableColumn column = null;
 	for (int i = 0; i < 6; i++) {
@@ -193,7 +194,20 @@ public class OrderPopup extends JFrame {
 	    {
 	      if (clicked)
 	      {
-	        JOptionPane.showMessageDialog(button, "Column with Value: "+table.getValueAt(row, 1) + " -  Clicked!");
+	    	  int i;
+	    	  for(i=0; i<table.getColumnCount(); i++) {
+	    	  if(table.getColumnName(i).equals(table.getColumnName(4)))
+	    	{
+	    		  System.out.println(table.getColumnName(i));
+	    		  System.out.println(table.getColumnName(4));
+	        JOptionPane.showMessageDialog(button, "Winter is coming "+table.getValueAt(row, i) + table.getValueAt(row, 4) +" -  Khal Drogo!");
+	      }
+	    	  else if (table.getColumnName(i).equals(table.getColumnName(5))) {
+	    		  System.out.println(table.getColumnName(i));
+	    		  System.out.println(table.getColumnName(5));
+	    	JOptionPane.showMessageDialog(button, "Mother of dragons "+table.getValueAt(row, i) + table.getValueAt(row, 5 )+ " -  Khaleesi!");
+	    	  }
+	    	  }
 	      }
 	      clicked = false;
 	      return new String(label);

@@ -24,8 +24,10 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
@@ -36,18 +38,15 @@ import javax.swing.UIManager;
 
 
 public class ChefMenu extends JFrame {
-
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel pane1;
 	
+	
+	private JPanel pane1;
 	private JScrollPane tablePane;
 	private String[] columNames = {"Table","Minutes Elapsed","Time(minutes)","Status",""};
 	private Object[][] data = {{"1","4","30","in process","show"},{"2","11","45","Started","show"}};
 	private Table tableSample;
+	private static OrderPopup orderPopup;
 
 	/**
 	 * Launch the application.
@@ -193,7 +192,8 @@ public class ChefMenu extends JFrame {
 	    {
 	      if (clicked)
 	      {
-	        JOptionPane.showMessageDialog(button, "Column with Value: "+table.getValueAt(row, 1) + " -  Clicked!");
+	        orderPopup = new OrderPopup();
+	        orderPopup.setVisible(true);
 	      }
 	      clicked = false;
 	      return new String(label);
