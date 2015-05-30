@@ -1,11 +1,12 @@
 package guiLayer;
 
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import exceptionsLayer.DatabaseException;
 
 public class ChoosenTableDialog extends JDialog {
 
@@ -28,6 +31,8 @@ public class ChoosenTableDialog extends JDialog {
 	private JTable table;
 	private JScrollPane scroll;
 	private int[] numbersOfTables;
+	private ListenerForEverything listenerForEverything;
+	private int tableNoFromLabel;
 
 	public ChoosenTableDialog(JFrame parent, String title) {
 		super(parent, title);
@@ -56,6 +61,58 @@ public class ChoosenTableDialog extends JDialog {
 		setModal(true);
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
+		
+		back.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AnyEvent anyEvent = new AnyEvent(this, "backBtn");
+				if(listenerForEverything != null){
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
+			}
+		});
+		
+		cancelOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AnyEvent anyEvent = new AnyEvent(this, "cancelOrder");
+				anyEvent.setTableNo(tableNoFromLabel);
+				if(listenerForEverything != null){
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
+			}
+		});
+		
+		addMerchandise.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AnyEvent anyEvent = new AnyEvent(this, "addMerchandise");
+				anyEvent.setTableNo(tableNoFromLabel);
+				if(listenerForEverything != null){
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
+			}
+		});
 
 		// first row first column
 		gc.weightx = 1; // Size of of the cell width
@@ -203,10 +260,14 @@ public class ChoosenTableDialog extends JDialog {
 	}
 
 	public void setTableNoLabel(String text) {
-		tableNo.setText("Table No: " + text);
+		tableNoFromLabel = Integer.parseInt(text);
+		tableNo.setText("Table No: " + tableNoFromLabel);
 		// numbersTable.setText(text);
 		this.revalidate();
 		this.repaint();
+	}
+	public void setListenerForEverything(ListenerForEverything listener){
+		this.listenerForEverything = listener;
 	}
 
 }
