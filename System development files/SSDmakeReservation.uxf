@@ -48,14 +48,14 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>240</x>
+      <x>210</x>
       <y>190</y>
-      <w>590</w>
+      <w>656</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-makeReservation (customersName, phoneNo, date, preorder, amountOfPeople)</panel_attributes>
-    <additional_attributes>570;50;30;50</additional_attributes>
+makeReservation (customersName, phoneNo, reservationDate,reservedTime, numberOfGuests)</panel_attributes>
+    <additional_attributes>600;50;60;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -66,79 +66,19 @@ makeReservation (customersName, phoneNo, date, preorder, amountOfPeople)</panel_
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-insertTableNo(tableNo)</panel_attributes>
+addTableNo(tableNo)</panel_attributes>
     <additional_attributes>570;50;30;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>240</x>
-      <y>340</y>
-      <w>590</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-returns noOfSeats</panel_attributes>
-    <additional_attributes>30;50;570;50</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Note</type>
-    <coordinates>
-      <x>220</x>
-      <y>250</y>
-      <w>650</w>
-      <h>160</h>
-    </coordinates>
-    <panel_attributes>Loop
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>240</x>
-      <y>270</y>
-      <w>590</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-checkIfExists()</panel_attributes>
-    <additional_attributes>570;50;30;50</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>240</x>
-      <y>310</y>
-      <w>590</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-checkIfAvailable()</panel_attributes>
-    <additional_attributes>570;50;30;50</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>240</x>
-      <y>390</y>
+      <y>300</y>
       <w>590</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 confirmReservation()</panel_attributes>
     <additional_attributes>570;50;30;50</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>240</x>
-      <y>420</y>
-      <w>590</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-returns printConfirmation</panel_attributes>
-    <additional_attributes>30;50;570;50</additional_attributes>
   </element>
 </diagram>
