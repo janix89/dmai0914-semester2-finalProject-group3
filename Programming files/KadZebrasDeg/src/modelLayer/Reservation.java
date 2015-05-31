@@ -15,7 +15,7 @@ public class Reservation {
 
 	// constructor
 	public Reservation() {
-
+			tables=new ArrayList<>();
 	}
 
 	// sets and gets

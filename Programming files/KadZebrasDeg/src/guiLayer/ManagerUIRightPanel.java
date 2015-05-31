@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import exceptionsLayer.DatabaseException;
+
 
 public class ManagerUIRightPanel extends JPanel {
 	
@@ -54,7 +56,12 @@ public class ManagerUIRightPanel extends JPanel {
 			public void actionPerformed(ActionEvent e){
 				AnyEvent anyEvent = new AnyEvent(this, "exitBtn");
 				if(listenerForEverything != null){
-					listenerForEverything.AnyEventOcurred(anyEvent);
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
@@ -65,7 +72,12 @@ public class ManagerUIRightPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				AnyEvent anyEvent = new AnyEvent(this, "managerMenuBtn");
 				if(listenerForEverything != null){
-					listenerForEverything.AnyEventOcurred(anyEvent);
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				
 			}
@@ -77,7 +89,12 @@ public class ManagerUIRightPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				AnyEvent anyEvent = new AnyEvent(this, "waiterMenuBtn");
 				if(listenerForEverything != null){
-					listenerForEverything.AnyEventOcurred(anyEvent);
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				
 			}
@@ -89,7 +106,12 @@ public class ManagerUIRightPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				AnyEvent anyEvent = new AnyEvent(this, "chefMenuBtn");
 				if(listenerForEverything != null){
-					listenerForEverything.AnyEventOcurred(anyEvent);
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				
 			}
@@ -101,7 +123,12 @@ public class ManagerUIRightPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				AnyEvent anyEvent = new AnyEvent(this, "tableMenuBtn");
 				if(listenerForEverything != null){
-					listenerForEverything.AnyEventOcurred(anyEvent);
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				
 			}
@@ -113,7 +140,12 @@ public class ManagerUIRightPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				AnyEvent anyEvent = new AnyEvent(this, "merchandiseMenuBtn");
 				if(listenerForEverything != null){
-					listenerForEverything.AnyEventOcurred(anyEvent);
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				
 			}

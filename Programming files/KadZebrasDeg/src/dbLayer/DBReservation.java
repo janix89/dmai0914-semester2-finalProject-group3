@@ -27,9 +27,9 @@ public class DBReservation implements IFDBReservation {
 		int id = 0;
 		String query = "";
 
-		query = "INSERT INTO Reservation(customersName, phoneNo, reservationDate, numberOfGuests, registrationDate, reservationTime, oId) VALUES('"
+		query = "INSERT INTO Reservation(customerName, phoneNo, reservationDate, numberOfGuests, registrationDate, reservationTime, oId) VALUES('"
 				+ reservation.getCustomerName()
-				+ "',"
+				+ "','"
 				+ reservation.getPhoneNo()
 				+ "','"
 				+ reservation.getReservationDate()
@@ -62,9 +62,10 @@ public class DBReservation implements IFDBReservation {
 			throws DatabaseException {
 		String query = "";
 		int rc = -1;
-		for (int t : reservation.getTables()) {
-			query = "Insert INTO ReservedTables(rId, tId) VALUES ('" + id
-					+ "','" + t;
+		if(reservation.getTables()!=null)
+		for (Integer t : reservation.getTables()) {
+			query = "Insert INTO ReservedTable(rId, tId) VALUES ('" + id
+					+ "','" + t+"') Update Ttable set isAvailable=0 where tableNo="+t;
 		}
 		System.out.println("insert : " + query);
 		try {

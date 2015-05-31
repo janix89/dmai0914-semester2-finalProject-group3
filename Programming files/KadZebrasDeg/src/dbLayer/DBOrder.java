@@ -23,14 +23,14 @@ public class DBOrder implements IFDBOrder {
 	public int insertOrder(Order order) throws DatabaseException {
 		int rc = -1;
 		String query = "";
-		query = "INSERT INTO SaleOrder(totalPrice, isPaid, isActive, sId) VALUES ('"
+		query = "INSERT INTO SaleOrder(totalPrice, isPaid, isActive, wId) VALUES ('"
 				+ order.getTotalPrice()
 				+ "','"
 				+ order.isPaid()
 				+ "','"
 				+ order.isActive()
-				+ "','"
-				+ order.getStaff().getStaffId()
+				+"','"
+				+ 1
 				+ "')";
 
 		System.out.println("insert : " + query);
@@ -168,7 +168,7 @@ public class DBOrder implements IFDBOrder {
 			orderObj.setTotalPrice(results.getFloat("totalPrice"));
 			orderObj.setPaid(results.getBoolean("isPaid"));
 			orderObj.setActive(results.getBoolean("isActive"));
-			staff = new DBStaff().findStaffById(results.getInt("sId"));
+			staff = new DBStaff().findStaffById(results.getInt("wId"));
 			orderObj.setStaff(staff);
 		} catch (Exception e) {
 			System.out.println("Error in building the order object");

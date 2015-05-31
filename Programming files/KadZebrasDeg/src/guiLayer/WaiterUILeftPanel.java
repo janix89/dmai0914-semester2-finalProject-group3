@@ -1,15 +1,13 @@
 package guiLayer;
+
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.text.DateFormatSymbols;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -23,6 +21,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import modelLayer.Order;
+import modelLayer.Table;
+import controlLayer.OrderController;
+import controlLayer.ReservationController;
+import controlLayer.TableController;
 import exceptionsLayer.DatabaseException;
 
 public class WaiterUILeftPanel extends JPanel {
@@ -46,9 +49,16 @@ public class WaiterUILeftPanel extends JPanel {
 	private ListenerForEverything listenerForEverything;
 	Date currentTime;
 	DefaultComboBoxModel timeComboBox;
+	private ReservationController rc;
+	private OrderController orderController;
+	private TableController tableController;
+	private ArrayList<Table> tables;
 
 	public WaiterUILeftPanel() {
-
+		tables = new ArrayList<>();
+		tableController = new TableController();
+		orderController = new OrderController();
+		rc = new ReservationController();
 		monthsYear = new JComboBox<String>();
 		days = new JComboBox<String>();
 		time = new JComboBox<String>();
@@ -83,14 +93,14 @@ public class WaiterUILeftPanel extends JPanel {
 		adoptCurrentTimeToSystem();
 
 		// sets the time in combo box
-		//setTheCorrectTimesInComboBox();
-		
+		// setTheCorrectTimesInComboBox();
+
 		days.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				adoptCurrentTimeToSystem();
-				
+
 			}
 		});
 
@@ -98,7 +108,8 @@ public class WaiterUILeftPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AnyEvent anyEvent = new AnyEvent(this, "WaiterUILeftPanelSearchBtn");
+				AnyEvent anyEvent = new AnyEvent(this,
+						"WaiterUILeftPanelSearchBtn");
 				if (listenerForEverything != null) {
 					try {
 						listenerForEverything.AnyEventOcurred(anyEvent);
@@ -110,48 +121,54 @@ public class WaiterUILeftPanel extends JPanel {
 
 			}
 		});
-		
+
 		makeReservationBtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AnyEvent anyEvent = new AnyEvent(this, "WaiterUILeftPanelmakeReservationBtn");
-				
-				//Something that I added to pass the info
-				
+				AnyEvent anyEvent = new AnyEvent(this,
+						"WaiterUILeftPanelmakeReservationBtn");
+
+				// Something that I added to pass the info
+
 				anyEvent.setName(nameTextField.getText());
 				anyEvent.setPhoneNo(phoneNoTextField.getText());
-				anyEvent.setNumberOfSeats(Integer.parseInt(noOfSeatsTextField.getText()));
+				anyEvent.setNumberOfSeats(Integer.parseInt(noOfSeatsTextField
+						.getText()));
 				anyEvent.setTime(time.getSelectedItem().toString());
 				anyEvent.setMonthsYear(monthsYear.getSelectedItem().toString());
 				anyEvent.setDays(days.getSelectedItem().toString());
-				
+
 				if (listenerForEverything != null) {
 					try {
 						listenerForEverything.AnyEventOcurred(anyEvent);
+						createOrderAndAddTables();
+
 					} catch (DatabaseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
-				
+
 			}
 		});
-		
+
 		systemSudgestionBtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AnyEvent anyEvent = new AnyEvent(this, "WaiterUILeftPanelSystemSudgestionBtn");
+				AnyEvent anyEvent = new AnyEvent(this,
+						"WaiterUILeftPanelSystemSudgestionBtn");
 				if (listenerForEverything != null) {
 					try {
 						listenerForEverything.AnyEventOcurred(anyEvent);
+
 					} catch (DatabaseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
-				
+
 			}
 		});
 
@@ -167,7 +184,7 @@ public class WaiterUILeftPanel extends JPanel {
 		// Sets the right amount of days in days combo box after choosing one of
 		// the months.
 		monthsYear.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				adoptCurrentTimeToSystem();
@@ -559,14 +576,12 @@ public class WaiterUILeftPanel extends JPanel {
 		days.setModel(daysOfMonthComboBox);
 	}
 
-	
-
 	public void revalidatePanel() {
 		this.revalidate();
 		this.repaint();
 	}
-	
-	public void addTimeToComboBox(int hours, int minutes){
+
+	public void addTimeToComboBox(int hours, int minutes) {
 		DefaultComboBoxModel timeBox = new DefaultComboBoxModel();
 		int timeHours = hours;
 		int timeMinutes = minutes;
@@ -590,54 +605,189 @@ public class WaiterUILeftPanel extends JPanel {
 		}
 		time.setModel(timeBox);
 	}
-	
+
 	public void adoptCurrentTimeToSystem() {
 		Date time = new Date();
-		int curMinutes  = time.getMinutes();
+		int curMinutes = time.getMinutes();
 		int curHours = time.getHours();
 		int monthInt = time.getMonth();
 		int year = time.getYear();
 		int day = time.getDay();
 		String monthString = convertNumberMontInToName(monthInt);
-		String getSelectedMonthArray[] = monthsYear.getSelectedItem().toString().split(" ");
+		String getSelectedMonthArray[] = monthsYear.getSelectedItem()
+				.toString().split(" ");
 		String selectedMonth = getSelectedMonthArray[0];
 		String selectedYear = getSelectedMonthArray[1];
 		String selectedDay = days.getSelectedItem().toString();
 
 		int adoptedMinutes = 0;
-			if (curMinutes > 0 && curMinutes <= 15) {
-				curMinutes = 15;
-			}
-			if (curMinutes > 15 && curMinutes <= 30) {
-				curMinutes = 30;
-			}
-			if (curMinutes > 30 && curMinutes <= 45) {
-				curMinutes = 45;
-			}
-			if(curMinutes > 45){
-				if(curHours < 23){
-				curHours = curHours +1;
+		if (curMinutes > 0 && curMinutes <= 15) {
+			curMinutes = 15;
+		}
+		if (curMinutes > 15 && curMinutes <= 30) {
+			curMinutes = 30;
+		}
+		if (curMinutes > 30 && curMinutes <= 45) {
+			curMinutes = 45;
+		}
+		if (curMinutes > 45) {
+			if (curHours < 23) {
+				curHours = curHours + 1;
 				curMinutes = 0;
-				}
-				else{
-					curHours = 0;
-					curMinutes = 0;
-				}
+			} else {
+				curHours = 0;
+				curMinutes = 0;
 			}
-			if(!monthString.equals(selectedMonth) && time.getYear() != Integer.parseInt(selectedYear)){
-					if(Calendar.getInstance().get(Calendar.DATE) != Integer.parseInt(selectedDay)){
-			addTimeToComboBox(0, 0);
-			System.out.println("selectedDay: " + selectedDay);
-			System.out.println("time.getDay(): " + time.getDay());
-					}
+		}
+		if (!monthString.equals(selectedMonth)
+				&& time.getYear() != Integer.parseInt(selectedYear)) {
+			if (Calendar.getInstance().get(Calendar.DATE) != Integer
+					.parseInt(selectedDay)) {
+				addTimeToComboBox(0, 0);
+				System.out.println("selectedDay: " + selectedDay);
+				System.out.println("time.getDay(): " + time.getDay());
 			}
-			else{
-				addTimeToComboBox(curHours, curMinutes);
-			}
+		} else {
+			addTimeToComboBox(curHours, curMinutes);
+		}
 	}
-	public String convertNumberMontInToName(int month){
+
+	public String convertNumberMontInToName(int month) {
 		String[] monthss = new DateFormatSymbols().getMonths();
 		String nameOfMonth = monthss[month];
 		return nameOfMonth;
 	}
+
+	private void checkTables(int tableNo, int numberOfChairsNeeded) {
+			System.out.println("Im in here");
+			for(int i=0;i<tableController.getAllTables().size();i++){
+				System.out.println("i= "+(i+1) + "tableOnEast: "+tableController.getAllTables().get(tableNo).getTableOnTheEast());
+				
+				if((i+1)==tableController.getAllTables().get(tableNo).getTableOnTheEast()){
+					if(tableController.getAllTables().get(i).isAvailable()){
+					numberOfChairsNeeded -= tableController.getAllTables()
+							.get(i).getNoOfSeats();
+					Table table = tableController.getAllTables().get(i);
+					table.setTableNo(i+1);
+					table.setExists(true);
+					System.out.println("East: Number of table: "+(i+1));
+					table.setAvailable(false);
+					tables.add(table);
+					if (numberOfChairsNeeded>0) {
+						System.out.println("More tables needed");
+					} 
+					}
+				}
+			}
+			for(int i=0;i<tableController.getAllTables().size();i++){
+				System.out.println("i= "+(i+1) + "tableOnEast: "+tableController.getAllTables().get(tableNo).getTableOnTheNorth());
+				
+				if((i+1)==tableController.getAllTables().get(tableNo).getTableOnTheNorth()){
+					if(tableController.getAllTables().get(i).isAvailable()){
+					numberOfChairsNeeded -= tableController.getAllTables()
+							.get(i).getNoOfSeats();
+					Table table = tableController.getAllTables().get(i);
+					table.setTableNo(i+1);
+					table.setExists(true);
+					System.out.println("North: Number of table: "+(i+1));
+					table.setAvailable(false);
+					tables.add(table);
+					if (numberOfChairsNeeded>0) {
+						System.out.println("More tables needed");
+					} 
+					}
+				}
+			}
+			for(int i=0;i<tableController.getAllTables().size();i++){
+				System.out.println("i= "+(i+1) + "tableOnEast: "+tableController.getAllTables().get(tableNo).getTableOnTheSouth());
+				
+				if((i+1)==tableController.getAllTables().get(tableNo).getTableOnTheSouth()){
+					if(tableController.getAllTables().get(i).isAvailable()){
+					numberOfChairsNeeded -= tableController.getAllTables()
+							.get(i).getNoOfSeats();
+					Table table = tableController.getAllTables().get(i);
+					table.setTableNo(i+1);
+					table.setExists(true);
+					System.out.println("South: Number of table: "+(i+1));
+					table.setAvailable(false);
+					tables.add(table);
+					if (numberOfChairsNeeded>0) {
+						System.out.println("More tables needed");
+					} 
+					}
+				}
+			}
+			for(int i=0;i<tableController.getAllTables().size();i++){
+				System.out.println("i= "+(i+1) + "tableOnEast: "+tableController.getAllTables().get(tableNo).getTableOnTheWest());
+				
+				if((i+1)==tableController.getAllTables().get(tableNo).getTableOnTheWest()){
+					if(tableController.getAllTables().get(i).isAvailable()){
+					numberOfChairsNeeded -= tableController.getAllTables()
+							.get(i).getNoOfSeats();
+					Table table = tableController.getAllTables().get(i);
+					table.setTableNo(i+1);
+					table.setExists(true);
+					System.out.println("West: Number of table: "+(i+1));
+					table.setAvailable(false);
+					tables.add(table);
+					if (numberOfChairsNeeded>0) {
+						System.out.println("More tables needed");
+					} 
+					}
+				}
+			}
+	}
+
+	private void createOrderAndAddTables() {
+		//
+		int numberOfGuests = 0;
+		numberOfGuests = Integer.parseInt(noOfSeatsTextField.getText());
+		int numberOfChairsNeeded = numberOfGuests;
+		int i=0;
+			while (!tableController.getAllTables().get(i).isAvailable()) {
+			i++;
+			}
+			if(i<tableController.getAllTables().size()){
+				Table table = tableController.getAllTables().get(i+1);
+				table.setTableNo(i+1);
+				table.setExists(true);
+				table.setAvailable(false);
+				tables.add(table);
+
+				System.out.println("NumberOfChairs: "+numberOfChairsNeeded);
+				numberOfChairsNeeded -= tableController.getAllTables()
+						.get(i).getNoOfSeats();
+				System.out.println("NumberOfChairs after: "+numberOfChairsNeeded + "NoOfSeats: "+tableController.getAllTables().get(i).getNoOfSeats());
+				if (numberOfChairsNeeded>0) {					
+					System.out.println("We do not have enought seats in table: "+(i+1));
+					checkTables(i,numberOfChairsNeeded);
+					
+			}
+			}
+		
+
+		Order order = new Order();
+		order.setOrderId(orderController.getAllOrders().size());
+		try {
+			orderController.insertOrder(order);
+			for(Table t: tables){
+				System.out.println("table number: "+t.getTableNo()+ "av: "+t.isAvailable());
+				rc.addTableToReservation(t);
+			}
+			rc.makeReservation(nameTextField.getText(), phoneNoTextField
+					.getText(), days.getSelectedItem().toString() + "_"
+					+ monthsYear.getSelectedItem().toString(), time
+					.getSelectedItem().toString(), Integer
+					.parseInt(noOfSeatsTextField.getText()), order);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	
+				
+}
 }

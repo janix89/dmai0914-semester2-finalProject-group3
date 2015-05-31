@@ -2,22 +2,27 @@ package controlLayer;
 
 import java.util.ArrayList;
 
+import modelLayer.Order;
 import modelLayer.Reservation;
 import modelLayer.Table;
 import dbLayer.DBReservation;
+import dbLayer.DBTable;
 import exceptionsLayer.DatabaseException;
 
 public class ReservationController {
 	private DBReservation dBReservation;
 	private TableController tableController;
 	private ArrayList<Table> chosenTables;
-
+	private DBTable dbTable;
 	public ReservationController() {
+		dbTable = new DBTable();
+		dBReservation = new DBReservation();
+		tableController = new TableController();
 		chosenTables = new ArrayList<>();
 	}
 
 	public Reservation makeReservation(String customersName, String phoneNo,
-			String reservationDate, String reservedTime, int numberOfGuests)
+			String reservationDate, String reservedTime, int numberOfGuests, Order order)
 			throws DatabaseException {
 		Reservation res = new Reservation();
 		res.setCustomerName(customersName);
@@ -25,6 +30,7 @@ public class ReservationController {
 		res.setNumberOfGuests(numberOfGuests);
 		res.setReservationDate(reservationDate);
 		res.setReservedTime(reservedTime);
+		res.setOrder(order);
 		for (Table t : chosenTables) {// you add here the tables to the reservation
 			// can be improved to popup some error or smth
 			// TO BE IMPROVED
@@ -54,7 +60,6 @@ public class ReservationController {
 	}
 
 	public int confirmReservation(Reservation res) throws DatabaseException {
-
 		return dBReservation.insertReservation(res);
 	}
 
@@ -86,6 +91,7 @@ public class ReservationController {
 	}
 	public void addTableToReservation(Table table){
 		chosenTables.add(table);
+		dbTable.updateTable(chosenTables.get(chosenTables.size()-1).getTableNo(), chosenTables.get(chosenTables.size()-1));
 	}
 	
 	/** Code I added

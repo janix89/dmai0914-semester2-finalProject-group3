@@ -20,9 +20,10 @@ public class OrderController {
 	private DBOrderLine dBOrderLine;
 	private Merchandise mer;
 	private Order order;
-
+	private DBOrder dbOrder;
+	
 	public OrderController() {
-
+			dbOrder = new DBOrder();
 	}
 
 	public void makeOrder(String cprNo, boolean isActive) throws DatabaseException {
@@ -30,7 +31,17 @@ public class OrderController {
 		order = new Order();
 		order.setActive(isActive);
 	}
-
+	public ArrayList<Order> getAllOrders(){
+		return dbOrder.getAllOrders();
+	}
+	public void insertOrder(Order order){
+		try {
+			dbOrder.insertOrder(order);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public void findMerchandise(String name) {
 		mer = merchandiseController.findMerchandise(name);
 

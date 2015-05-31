@@ -16,7 +16,6 @@ private int orderId;
 
 //constructor
 public Order(){
-	
 }
 
 

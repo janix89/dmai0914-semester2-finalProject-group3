@@ -147,7 +147,15 @@ public class MainUI extends JFrame {
 						if (anyEvent.getButtonTrigered().equals(
 								"merchandiseMenuBtn")) {
 							System.out.println("merchandiseMenuBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MerchandiseMenuLeftPanel();
+							rightPanel = new MerchandiseMenuRightPanel();
+							setPanelsForMerchandiseMenu();
 							setTitle("Merchandise menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
 						}
 						if (anyEvent.getButtonTrigered().equals("staffBtn")) {
 							System.out.println("staffBtn");
@@ -283,6 +291,53 @@ public class MainUI extends JFrame {
 				});
 	}
 
+	
+	public void setPanelsForMerchandiseMenu() {
+		((MerchandiseMenuLeftPanel) leftPanel)
+				.setListenerForEverything(new ListenerForEverything() {
+
+					@Override
+					public void AnyEventOcurred(AnyEvent anyEvent)
+							throws DatabaseException {
+						if (anyEvent.getButtonTrigered().equals("backBtn")) {
+							System.out.println("backBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MainUILeftPanel();
+							rightPanel = new MainUIRightPanel();
+							setPanelsForMainUI();
+							setTitle("MainUI");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+						if (anyEvent.getButtonTrigered().equals("create")) {
+							System.out.println("create");
+
+						}
+
+					}
+				});
+
+		((MerchandiseMenuRightPanel) rightPanel)
+				.setListenerForEverything(new ListenerForEverything() {
+
+					@Override
+					public void AnyEventOcurred(AnyEvent anyEvent)
+							throws DatabaseException {
+						if (anyEvent.getButtonTrigered().equals("delete")) {
+							System.out.println("delete");
+
+						}
+						if (anyEvent.getButtonTrigered().equals("update")) {
+							System.out.println("update");
+
+						}
+
+					}
+				});
+	}
+	
 	public void setPanelsForStaffMenu() {
 		((StaffUILeftPanel) leftPanel)
 				.setListenerForEverything(new ListenerForEverything() {

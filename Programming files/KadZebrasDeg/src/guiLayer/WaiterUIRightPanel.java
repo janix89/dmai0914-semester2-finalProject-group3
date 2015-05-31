@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import modelLayer.Table;
+import controlLayer.TableController;
 import exceptionsLayer.DatabaseException;
 
 
@@ -27,11 +27,22 @@ public class WaiterUIRightPanel extends JPanel {
 	private int i;
 	private ArrayList<Table> existingTables;
 	private ArrayList<Table> allTables;
-	
+	private TableController tableController;
+	private TableThreads tt;
+	private GridBagConstraints gc;
+	private double columnNo;
 	public WaiterUIRightPanel(){
+		tableController = new TableController();
 		existingTables = new ArrayList<>();
 		allTables = new ArrayList<>();
-		
+		tt=new TableThreads(tableController.getAllTables().size());
+		tt.start();
+		try {
+			tt.join();
+		} catch (InterruptedException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		//Added by Janis
 		//creates the hardcoded tables
 		createSomeTables();
@@ -46,11 +57,11 @@ public class WaiterUIRightPanel extends JPanel {
 		}
 		}
 		setLayout(new GridBagLayout());
-		GridBagConstraints gc = new GridBagConstraints();
+		gc = new GridBagConstraints();
 		
 		//Added by Janis
 		//This makes the table buttons in panel to split equally between x and y axis
-		double columnNo =  Math.sqrt(number);
+		columnNo =  Math.sqrt(number);
 		
 		
 		Border innerBorder = BorderFactory.createTitledBorder("Tables");
@@ -142,6 +153,8 @@ public class WaiterUIRightPanel extends JPanel {
 	
 	/**/
 	public void createSomeTables(){
+		allTables=tt.returnTables();
+		/*
 		Table t1 = new Table();
 		t1.setExists(true);
 		t1.setTableNo(1);
@@ -167,7 +180,7 @@ public class WaiterUIRightPanel extends JPanel {
 		allTables.add(t2);
 		allTables.add(t3);
 		allTables.add(t4);
-		allTables.add(t5);
+		allTables.add(t5);*/
 	}
 	
 	public void setTheArrayListOfAllTables(ArrayList<Table> allTables){

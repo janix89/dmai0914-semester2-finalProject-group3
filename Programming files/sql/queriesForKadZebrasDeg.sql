@@ -64,7 +64,7 @@ reservationDate varchar(20)  not null,
 numberOfGuests int  not null,
 registrationDate varchar(20)  not null,
 reservationTime varchar(20)  not null,
-oId int foreign key (oId) references SaleOrder(id) on delete cascade on update cascade
+oId int not null
 );
 
 create Table ReservedTable(
