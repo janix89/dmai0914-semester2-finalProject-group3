@@ -67,24 +67,30 @@ public class DBStaff implements IFDBStaff {
 		String wClause = "  id = '" + id + "'";
 		return singleWhere(wClause);
 	}
+	@Override
+	public Staff findStaffByName(String name) throws DatabaseException {
+		String wClause = "  name = '" + name + "'";
+		return singleWhere(wClause);
+	}
 
 	@Override
 	public int updateStaff(String cprNo, Staff staff) {
 		// New: using a prepared statement (note, this prepared statement is not
 		// reused, but it could be.)
-		String q = "update staff set name=?, bankAccount=? address=? profession=? phoneNo=? cprNo=? sExists=? where cprNo="
-				+ cprNo;
+		String q = "update Staff set bankAccount=?, address=?, profession=?, phoneNo=?, cprNo=?, sExists=? where name='"+staff.getName()+"'";
 		int res = 0;
 		try (PreparedStatement s = DBConnect.getInstance().getDBcon()
 				.prepareStatement(q)) {
-			s.setString(1, staff.getName());
-			s.setString(2, staff.getBankAccount());
-			s.setString(3, staff.getAddress());
-			s.setString(4, staff.getProfession());
-			s.setString(5, staff.getPhoneNo());
-			s.setString(6, staff.getCprNo());
-			s.setBoolean(7, staff.isExists());
-			;
+			s.setString(1, staff.getBankAccount());
+			s.setString(2, staff.getAddress());
+			s.setString(3, staff.getProfession());
+			s.setString(4, staff.getPhoneNo());
+			s.setString(5, staff.getCprNo());
+			s.setBoolean(6, staff.isExists());
+			System.out.println("staff: "+ staff.getName() + staff.getBankAccount()+
+					staff.getAddress()+ staff.getProfession() +staff.getPhoneNo() + staff.getCprNo() + staff.isExists()
+					
+					);
 			res = s.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

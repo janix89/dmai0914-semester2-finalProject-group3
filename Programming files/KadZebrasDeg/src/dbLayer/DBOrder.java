@@ -63,7 +63,7 @@ public class DBOrder implements IFDBOrder {
 	public int updateOrder(int id, Order o) {
 		// New: using a prepared statement (note, this prepared statement is not
 		// reused, but it could be.)
-		String q = "update saleorder set totalPrice=?, isPaid=? isActive=? sId=? where id="
+		String q = "update saleorder set totalPrice=?, isPaid=?, isActive=?, sId=? where id="
 				+ id;
 		int res = 0;
 		try (PreparedStatement s = DBConnect.getInstance().getDBcon()

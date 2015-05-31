@@ -71,21 +71,19 @@ public class DBTable implements IFDBTable {
 	public int updateTable(int tableNo, Table table) {
 		// New: using a prepared statement (note, this prepared statement is not
 		// reused, but it could be.)
-		String q = "update ttable set noOfSeats=?, tableNo=? isAvailable=? tExists=? tableOnTheNorth=? tableOnTheEast=? tableOnTheSouth=? tableOnTheWest=? where tableNo="
-				+ tableNo;
+		String q = "update ttable set noOfSeats=?, isAvailable=?, tExists=?, tableOnTheNorth=?, tableOnTheEast=?, tableOnTheSouth=?, tableOnTheWest=? where tableNo='"
+				+ tableNo+"'";
 		int res = 0;
 		try (PreparedStatement s = DBConnect.getInstance().getDBcon()
 				.prepareStatement(q)) {
 			s.setInt(1, table.getNoOfSeats());
-			s.setInt(2, table.getTableNo());
-			s.setBoolean(3, table.isAvailable());
-			s.setBoolean(4, table.isExists());
-			s.setInt(5, table.getTableOnTheNorth());
-			s.setInt(6, table.getTableOnTheEast());
-			s.setInt(7, table.getTableOnTheSouth());
-			;
-			s.setInt(8, table.getTableOnTheWest());
-			;
+			s.setBoolean(2, table.isAvailable());
+			s.setBoolean(3, table.isExists());
+			s.setInt(4, table.getTableOnTheNorth());
+			s.setInt(5, table.getTableOnTheEast());
+			s.setInt(6, table.getTableOnTheSouth());			
+			s.setInt(7, table.getTableOnTheWest());
+			
 			res = s.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -178,7 +176,7 @@ public class DBTable implements IFDBTable {
 	private Table buildTable(ResultSet results) {
 		Table tableObj = new Table();
 		try {
-			tableObj.setNoOfSeats(results.getInt("noOfSteats"));
+			tableObj.setNoOfSeats(results.getInt("noOfSeats"));
 			tableObj.setTableNo(results.getInt("tableNo"));
 			tableObj.setAvailable(results.getBoolean("isAvailable"));
 			tableObj.setExists(results.getBoolean("tExists"));

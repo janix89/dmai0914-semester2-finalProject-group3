@@ -1,7 +1,5 @@
 package guiLayer;
 
-import exceptionsLayer.DatabaseException;
-
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -16,6 +14,10 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+
+import modelLayer.Staff;
+import controlLayer.StaffController;
+import exceptionsLayer.DatabaseException;
 
 
 public class StaffUIRightPanel extends JPanel {
@@ -34,10 +36,10 @@ public class StaffUIRightPanel extends JPanel {
 	private JButton delete;
 	private JButton update;
 	private ListenerForEverything listenerForEverything;
-	
+	private StaffController sc;
 	
 	 public StaffUIRightPanel(){
-		 
+		 sc = new StaffController();
 	        //setPreferredSize(new Dimension(400,0));
 	        
 			
@@ -56,7 +58,11 @@ public class StaffUIRightPanel extends JPanel {
 			adress = new Label("Adress : ");
 			phone = new Label("Phone : ");
 			exists = new Label("Exists : ");
-			name2 = new JComboBox();
+			String[] names = new String[sc.getAllStaff().size()];
+			for(int i=0;i<sc.getAllStaff().size();i++){
+				names[i]=sc.getAllStaff().get(i).getName();
+			}
+			name2 = new JComboBox(names);
 			String[] staffType = {"Waiter", "Cook", "Manager"};
 			typeOfStaff = new JComboBox(staffType);
 			String[] existsOrNot = {"Yes", "No"};
@@ -78,6 +84,7 @@ public class StaffUIRightPanel extends JPanel {
     				if (listenerForEverything != null) {
     					try {
 							listenerForEverything.AnyEventOcurred(anyEvent);
+							
 						} catch (DatabaseException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -95,6 +102,25 @@ public class StaffUIRightPanel extends JPanel {
     				if (listenerForEverything != null) {
     					try {
 							listenerForEverything.AnyEventOcurred(anyEvent);
+							if(!bankAccount1.getText().equals("") && !adress1.getText().equals("") && !phone1.getText().equals("")){
+								Staff staff = sc.findStaffByName(name2.getSelectedItem().toString());
+								staff.setName(name2.getSelectedItem().toString());
+								staff.setAddress(adress1.getText());
+								staff.setPhoneNo(phone1.getText());
+								staff.setProfession(typeOfStaff.getSelectedItem().toString());
+								staff.setBankAccount(bankAccount1.getText());
+								staff.setCprNo("123");
+								if(exists2.getSelectedItem().toString().equals("Yes")){
+									staff.setExists(true);
+								}else
+								{
+									staff.setExists(false);
+								}
+								sc.updateStaff(staff.getCprNo(), staff);
+								bankAccount1.setText("");
+								adress1.setText("");
+								phone1.setText("");
+							}
 						} catch (DatabaseException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();

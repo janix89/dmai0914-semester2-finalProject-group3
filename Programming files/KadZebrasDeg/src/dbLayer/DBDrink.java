@@ -88,7 +88,7 @@ public class DBDrink implements IFDBDrink {
 		int res = 0;
 		// New: using a prepared statement (note, this prepared statement is not
 		// reused, but it could be.)
-		q = "update merchandise set name=?, price=? mExists=? mType=? where name="
+		q = "update merchandise set name=?, price=?, mExists=?, mType=? where name="
 				+ name;
 		try (PreparedStatement s = DBConnect.getInstance().getDBcon()
 				.prepareStatement(q)) {

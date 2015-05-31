@@ -56,7 +56,7 @@ public class DBOrderLine implements IFDBOrderLine {
 	public int updateOrderLine(int id, OrderLine ol) {
 		// New: using a prepared statement (note, this prepared statement is not
 		// reused, but it could be.)
-		String q = "update orderline set quantity=?, oId=? meId=? isDone=? where id="
+		String q = "update orderline set quantity=?, oId=?, meId=?, isDone=? where id="
 				+ id;
 		int res = 0;
 		try (PreparedStatement s = DBConnect.getInstance().getDBcon()

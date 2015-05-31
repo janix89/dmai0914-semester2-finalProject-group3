@@ -1,45 +1,50 @@
 package guiLayer;
 
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-import java.awt.Color;
-
 import javax.swing.JPasswordField;
-import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
 
-import modelLayer.*;
-
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-
-import controlLayer.*;
-
-import javax.swing.JCheckBox;
+import controlLayer.StaffController;
+import dbLayer.DBLogin;
+import exceptionsLayer.DatabaseException;
 public class LogIn extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tfUsername;
 	private JPasswordField passwordField;
-	private StaffController sc;
-	private Staff logInStuff=null;
+	private DBLogin dbLogin;
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				try{
+				LogIn lg =new LogIn();
+				lg.setLocationRelativeTo(null);
+				lg.setVisible(true);
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	public LogIn() {
-		JCheckBox cRemember = new JCheckBox("Remember username");
+		
+		dbLogin=new DBLogin();
+		
+		//JCheckBox cRemember = new JCheckBox("Remember username");
 		JLabel lblIncorect = new JLabel("");
-		sc=new StaffController();
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -71,73 +76,24 @@ public class LogIn extends JFrame {
 		contentPane.add(panel);
 		
 		//read the username
-		String b;
-		 try {
-			 File file = new File("username.txt");
-			 if(file.exists()){
-			FileReader f=new FileReader("username.txt");
-			BufferedReader br = new BufferedReader(f);
-			b=br.readLine();
-			if(b!=null)
-			if(!b.equals("")){
-					tfUsername.setText(b);
-					cRemember.setSelected(true);
-					}
-			 }
-			
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 		 
 		
 		JButton btnLogIn = new JButton("Log In");
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//remember username
-				PrintWriter writer;
 				try {
-					if(!tfUsername.getText().trim().equals("") && cRemember.isSelected()){
-					writer = new PrintWriter("username.txt", "UTF-8");
-					writer.print(tfUsername.getText());
-					writer.close();
+					if(dbLogin.findDrink(tfUsername.getText(), passwordField.getText())!=null){
+						lblIncorect.setText("");
+						new MainUI();
+						dispose();
+					}else{
+						lblIncorect.setText("Incorrect username or password.");
 					}
-					if(!cRemember.isSelected()){
-					writer = new PrintWriter("username.txt", "UTF-8");
-					cRemember.setSelected(false);
-					writer.print("");
-					writer.close();
-					}
-					writer = new PrintWriter("usernameToRemember.ini", "UTF-8");
-					writer.print(tfUsername.getText());
-					writer.close();
-		
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
+				} catch (DatabaseException e) {
+					lblIncorect.setText("Incorrect username or password.");
 					e.printStackTrace();
 				}
-				
-				
-				
-				
-				
-				for(Staff s : sc.getAllStaff()){
-					lblIncorect.setText(s.getUsername()+"/"+s.getPassword());
-				if(s.getUsername().equals(tfUsername.getText())){
-					if(passwordField.getText().equals(s.getPassword()))
-					{
-						
-						//Replace with menu
-						SideBar or=new SideBar();
-						or.setVisible(true);
-						//or.setLocationRelativeTo(null);
-						setVisible(false);
-						logInStuff=s;
-						lblIncorect.setText("Logged in.");
-					}
-				}				
-				}
-				if(logInStuff==null) lblIncorect.setText("Incorect username and/or password");
 				}
 			
 		});
@@ -165,9 +121,5 @@ public class LogIn extends JFrame {
 		
 		lblIncorect.setBounds(87, 134, 226, 14);
 		contentPane.add(lblIncorect);
-		
-		
-		cRemember.setBounds(87, 155, 182, 23);
-		contentPane.add(cRemember);
 	}
 }

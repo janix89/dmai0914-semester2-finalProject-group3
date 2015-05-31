@@ -19,4 +19,6 @@ public interface IFDBStaff {
 	public int updateStaff(String cprNo, Staff staff) throws DatabaseException;
 
 	Staff findStaffById(int id) throws DatabaseException;
+
+	Staff findStaffByName(String name) throws DatabaseException;
 }

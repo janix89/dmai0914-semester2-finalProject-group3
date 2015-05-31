@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import controlLayer.StaffController;
 import exceptionsLayer.DatabaseException;
 
 
@@ -35,12 +36,12 @@ public class StaffUILeftPanel extends JPanel {
 	private JButton create;
 	private ListenerForEverything listenerForEverything;
 	private JButton backBtn;
-	
+	private StaffController sc;
 	
 	
 
 	public StaffUILeftPanel(){
-		
+		sc = new StaffController();
 		setPreferredSize(new Dimension(420,0));
 		
 		Border innerBorder = BorderFactory.createTitledBorder("Create staff");
@@ -95,6 +96,19 @@ public class StaffUILeftPanel extends JPanel {
 				if(listenerForEverything != null){
 					try {
 						listenerForEverything.AnyEventOcurred(anyEvent);
+						if(!name1.getText().equals("") && !bankAccount1.getText().equals("")
+								&& !adress1.getText().equals("") && !phone1.getText().equals("")){
+							sc.createStaff(name1.getText(), bankAccount1.getText(),adress1.getText(), phone1.getText(), typeOfStaff.getSelectedItem().toString(), exists2.getSelectedItem().toString());
+							name1.setText("");
+							bankAccount1.setText("");
+							adress1.setText("");
+							phone1.setText("");
+						}
+							
+							
+						
+						
+						
 					} catch (DatabaseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

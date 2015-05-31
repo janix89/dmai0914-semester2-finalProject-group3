@@ -17,6 +17,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import modelLayer.Table;
+import controlLayer.TableController;
+
 
 public class TableUIRightPanel extends JPanel {
 
@@ -34,31 +37,35 @@ public class TableUIRightPanel extends JPanel {
 	private JComboBox tableNoWest1;
 	private JButton update;
 	private JButton delete;
+	private TableController tableController;
 	private ListenerForEverything listenerForEverything;
 	
 	public TableUIRightPanel(){
-		
+		tableController = new TableController();
 		setPreferredSize(new Dimension(420,0));
 		
-		Border innerBorder = BorderFactory.createTitledBorder("Update and Delete staff");
+		Border innerBorder = BorderFactory.createTitledBorder("Update and Delete table");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-		
+		String[] tables = new String[tableController.getAllTables().size()];
+		for(int i=0;i<tableController.getAllTables().size();i++){
+			tables[i]=""+tableController.getAllTables().get(i).getTableNo();
+		}	
 		tableNo = new JLabel("Table No.: ");
-		tableNo1 = new JComboBox();
+		tableNo1 = new JComboBox(tables);
 		numberOfSeats = new JLabel("No. of  seats : ");
 		numberOfSeats1 = new JTextField(10);
-		tableNoNorth = new JLabel("Table No. on North : ");
-		tableNoNorth1 = new JComboBox();
+		tableNoNorth = new JLabel("Table No. on North : ");			
+		tableNoNorth1 = new JComboBox(tables);
 		tableNoEast = new JLabel("Table No. on East : ");
-		tableNoEast1 = new JComboBox();
+		tableNoEast1 = new JComboBox(tables);
 		tableNoSouth = new JLabel("Table No. on South : ");
-		tableNoSouth1 = new JComboBox();
+		tableNoSouth1 = new JComboBox(tables);
 		tableNoWest = new JLabel("Table No. on West : ");
-		tableNoWest1 = new JComboBox();
+		tableNoWest1 = new JComboBox(tables);
 		update = new JButton("Update");
 		delete = new JButton("Delete");
 		update.setPreferredSize(new Dimension(150, 25));
@@ -72,6 +79,27 @@ public class TableUIRightPanel extends JPanel {
 				if (listenerForEverything != null) {
 					try {
 						listenerForEverything.AnyEventOcurred(anyEvent);
+						if(!numberOfSeats1.getText().equals("")){
+							Table table = new Table();
+							table.setAvailable(true);
+							table.setNoOfSeats(Integer.parseInt(numberOfSeats1.getText()));
+							table.setExists(true);
+							if(tableNoEast1.getSelectedItem()!=null)
+							if(!tableNoEast1.getSelectedItem().toString().equals(""))
+							table.setTableOnTheEast(Integer.parseInt(tableNoEast1.getSelectedItem().toString()));
+							if(tableNoNorth1.getSelectedItem()!=null)
+							if(!tableNoNorth1.getSelectedItem().toString().equals(""))
+							table.setTableOnTheNorth(Integer.parseInt(tableNoNorth1.getSelectedItem().toString()));
+							if(tableNoWest1.getSelectedItem()!=null)
+							if(!tableNoWest1.getSelectedItem().toString().equals(""))
+							table.setTableOnTheWest(Integer.parseInt(tableNoWest1.getSelectedItem().toString()));
+							if(tableNoSouth1.getSelectedItem()!=null)
+							if(!tableNoSouth1.getSelectedItem().toString().equals(""))
+							table.setTableOnTheSouth(Integer.parseInt(tableNoSouth1.getSelectedItem().toString()));
+							
+							
+							tableController.updateTable(Integer.parseInt(tableNo1.getSelectedItem().toString()), table);
+						}
 					} catch (DatabaseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -88,6 +116,7 @@ public class TableUIRightPanel extends JPanel {
 				if (listenerForEverything != null) {
 					try {
 						listenerForEverything.AnyEventOcurred(anyEvent);
+						
 					} catch (DatabaseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

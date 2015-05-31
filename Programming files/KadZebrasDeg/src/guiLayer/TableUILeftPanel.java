@@ -1,7 +1,5 @@
 package guiLayer;
 
-import exceptionsLayer.DatabaseException;
-
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -16,6 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+
+import modelLayer.Table;
+import controlLayer.TableController;
+import exceptionsLayer.DatabaseException;
 
 public class TableUILeftPanel extends JPanel {
 
@@ -34,30 +36,33 @@ public class TableUILeftPanel extends JPanel {
 	private JButton create;
 	private ListenerForEverything listenerForEverything;
 	private JButton backBtn;
-
+	private TableController tableController;
 	public TableUILeftPanel() {
-
+		tableController = new TableController();
 		setPreferredSize(new Dimension(420, 0));
 
-		Border innerBorder = BorderFactory.createTitledBorder("Create staff");
+		Border innerBorder = BorderFactory.createTitledBorder("Create table");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-
+		String[] tables = new String[tableController.getAllTables().size()];
+		for(int i=0;i<tableController.getAllTables().size();i++){
+			tables[i]=""+tableController.getAllTables().get(i).getTableNo();
+		}	
 		tableNo = new JLabel("Table No.: ");
 		tableNo1 = new JTextField(10);
 		numberOfSeats = new JLabel("No. of  seats : ");
 		numberOfSeats1 = new JTextField(10);
 		tableNoNorth = new JLabel("Table No. on North : ");
-		tableNoNorth1 = new JComboBox();
+		tableNoNorth1 = new JComboBox(tables);
 		tableNoEast = new JLabel("Table No. on East : ");
-		tableNoEast1 = new JComboBox();
+		tableNoEast1 = new JComboBox(tables);
 		tableNoSouth = new JLabel("Table No. on South : ");
-		tableNoSouth1 = new JComboBox();
+		tableNoSouth1 = new JComboBox(tables);
 		tableNoWest = new JLabel("Table No. on West : ");
-		tableNoWest1 = new JComboBox();
+		tableNoWest1 = new JComboBox(tables);
 		create = new JButton("Create");
 		backBtn = new JButton("Back");
 		backBtn.setPreferredSize(new Dimension(150, 25));
@@ -89,6 +94,28 @@ public class TableUILeftPanel extends JPanel {
 				if (listenerForEverything != null) {
 					try {
 						listenerForEverything.AnyEventOcurred(anyEvent);
+						if(!tableNo1.getText().equals("") && !numberOfSeats1.getText().equals("")){
+							Table table = new Table();
+							table.setAvailable(true);
+							table.setTableNo(Integer.parseInt(tableNo1.getText().toString()));
+							table.setNoOfSeats(Integer.parseInt(numberOfSeats1.getText()));
+							table.setExists(true);
+							if(tableNoEast1.getSelectedItem()!=null)
+							if(!tableNoEast1.getSelectedItem().toString().equals(""))
+							table.setTableOnTheEast(Integer.parseInt(tableNoEast1.getSelectedItem().toString()));
+							if(tableNoNorth1.getSelectedItem()!=null)
+							if(!tableNoNorth1.getSelectedItem().toString().equals(""))
+							table.setTableOnTheNorth(Integer.parseInt(tableNoNorth1.getSelectedItem().toString()));
+							if(tableNoWest1.getSelectedItem()!=null)
+							if(!tableNoWest1.getSelectedItem().toString().equals(""))
+							table.setTableOnTheWest(Integer.parseInt(tableNoWest1.getSelectedItem().toString()));
+							if(tableNoSouth1.getSelectedItem()!=null)
+							if(!tableNoSouth1.getSelectedItem().toString().equals(""))
+							table.setTableOnTheSouth(Integer.parseInt(tableNoSouth1.getSelectedItem().toString()));
+							
+							
+							tableController.insertTable(table);
+						}
 					} catch (DatabaseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

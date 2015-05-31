@@ -108,7 +108,7 @@ public class DBReservation implements IFDBReservation {
 			throws DatabaseException {
 		// New: using a prepared statement (note, this prepared statement is not
 		// reused, but it could be.)
-		String q = "update reservation set customerName=?, phoneNo=? reservationDate=? numberOfGuests=? registrationDate=? reservationTime=? oId=? where name="
+		String q = "update reservation set customerName=?, phoneNo=?, reservationDate=?, numberOfGuests=?, registrationDate=?, reservationTime=?, oId=? where name="
 				+ name;
 		int res = 0;
 		int id = 0;

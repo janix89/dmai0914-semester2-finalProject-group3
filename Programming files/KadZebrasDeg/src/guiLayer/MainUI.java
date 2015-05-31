@@ -23,7 +23,7 @@ public class MainUI extends JFrame {
 	public MainUI() {
 
 		super("MainUI");
-
+		
 		setPanelsForMainUI();
 		// addMenuBar();
 		reservationController = new ReservationController();
@@ -36,7 +36,7 @@ public class MainUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		setMinimumSize(new Dimension(900, 600));
-
+		setLocationRelativeTo(null);
 	}
 
 	// Added by Janis
@@ -116,6 +116,7 @@ public class MainUI extends JFrame {
 
 						}
 						if (anyEvent.getButtonTrigered().equals("chefMenuBtn")) {
+							/*
 							System.out.println("chefMenuBtn");
 							setTitle("Chef menu");
 							container = getContentPane();
@@ -128,7 +129,7 @@ public class MainUI extends JFrame {
 
 							container.validate();
 							container.repaint();
-
+							 */
 						}
 						if (anyEvent.getButtonTrigered().equals("tableMenuBtn")) {
 							System.out.println("tableMenuBtn");
