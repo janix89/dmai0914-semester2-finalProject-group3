@@ -53,6 +53,7 @@ public class WaiterUILeftPanel extends JPanel {
 	private OrderController orderController;
 	private TableController tableController;
 	private ArrayList<Table> tables;
+	private JButton makeOrder;
 
 	public WaiterUILeftPanel() {
 		tables = new ArrayList<>();
@@ -80,6 +81,8 @@ public class WaiterUILeftPanel extends JPanel {
 		backBtn = new JButton("Back");
 		backBtn.setPreferredSize(new Dimension(150, 25));
 		currentTime = new Date();
+		makeOrder = new JButton("Make New Order");
+		makeOrder.setPreferredSize(new Dimension(150, 25));
 
 		Border innerBorder = BorderFactory.createTitledBorder("Reservation");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
@@ -94,6 +97,23 @@ public class WaiterUILeftPanel extends JPanel {
 
 		// sets the time in combo box
 		// setTheCorrectTimesInComboBox();
+
+		makeOrder.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AnyEvent anyEvent = new AnyEvent(this, "makeOrder");
+				if (listenerForEverything != null) {
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+
+			}
+		});
 
 		days.addActionListener(new ActionListener() {
 
@@ -514,7 +534,7 @@ public class WaiterUILeftPanel extends JPanel {
 		gc.anchor = GridBagConstraints.FIRST_LINE_START;
 		gc.insets = new Insets(0, 20, 0, 0);
 		add(searchBtn, gc);
-
+		
 		// Tenth row first column
 
 		gc.weightx = 1;
@@ -526,8 +546,23 @@ public class WaiterUILeftPanel extends JPanel {
 		gc.gridy = 9;
 
 		gc.fill = GridBagConstraints.CENTER;
-		gc.anchor = GridBagConstraints.SOUTH;
-		gc.insets = new Insets(0, 0, 37, 0);
+		gc.anchor = GridBagConstraints.LAST_LINE_START;
+		gc.insets = new Insets(0, 20, 0, 0);
+		add(makeOrder, gc);
+
+		// Eleventh row first column
+
+		gc.weightx = 1;
+		gc.weighty = 1;
+
+		gc.gridwidth = 2;
+
+		gc.gridx = 0;
+		gc.gridy = 10;
+
+		gc.fill = GridBagConstraints.CENTER;
+		gc.anchor = GridBagConstraints.LAST_LINE_START;
+		gc.insets = new Insets(0, 20, 10, 0);
 		add(backBtn, gc);
 	}
 
@@ -659,83 +694,103 @@ public class WaiterUILeftPanel extends JPanel {
 	}
 
 	private void checkTables(int tableNo, int numberOfChairsNeeded) {
-			System.out.println("Im in here");
-			for(int i=0;i<tableController.getAllTables().size();i++){
-				System.out.println("i= "+(i+1) + "tableOnEast: "+tableController.getAllTables().get(tableNo).getTableOnTheEast());
-				
-				if((i+1)==tableController.getAllTables().get(tableNo).getTableOnTheEast()){
-					if(tableController.getAllTables().get(i).isAvailable()){
+		System.out.println("Im in here");
+		for (int i = 0; i < tableController.getAllTables().size(); i++) {
+			System.out.println("i= "
+					+ (i + 1)
+					+ "tableOnEast: "
+					+ tableController.getAllTables().get(tableNo)
+							.getTableOnTheEast());
+
+			if ((i + 1) == tableController.getAllTables().get(tableNo)
+					.getTableOnTheEast()) {
+				if (tableController.getAllTables().get(i).isAvailable()) {
 					numberOfChairsNeeded -= tableController.getAllTables()
 							.get(i).getNoOfSeats();
 					Table table = tableController.getAllTables().get(i);
-					table.setTableNo(i+1);
+					table.setTableNo(i + 1);
 					table.setExists(true);
-					System.out.println("East: Number of table: "+(i+1));
+					System.out.println("East: Number of table: " + (i + 1));
 					table.setAvailable(false);
 					tables.add(table);
-					if (numberOfChairsNeeded>0) {
+					if (numberOfChairsNeeded > 0) {
 						System.out.println("More tables needed");
-					} 
 					}
 				}
 			}
-			for(int i=0;i<tableController.getAllTables().size();i++){
-				System.out.println("i= "+(i+1) + "tableOnEast: "+tableController.getAllTables().get(tableNo).getTableOnTheNorth());
-				
-				if((i+1)==tableController.getAllTables().get(tableNo).getTableOnTheNorth()){
-					if(tableController.getAllTables().get(i).isAvailable()){
+		}
+		for (int i = 0; i < tableController.getAllTables().size(); i++) {
+			System.out.println("i= "
+					+ (i + 1)
+					+ "tableOnEast: "
+					+ tableController.getAllTables().get(tableNo)
+							.getTableOnTheNorth());
+
+			if ((i + 1) == tableController.getAllTables().get(tableNo)
+					.getTableOnTheNorth()) {
+				if (tableController.getAllTables().get(i).isAvailable()) {
 					numberOfChairsNeeded -= tableController.getAllTables()
 							.get(i).getNoOfSeats();
 					Table table = tableController.getAllTables().get(i);
-					table.setTableNo(i+1);
+					table.setTableNo(i + 1);
 					table.setExists(true);
-					System.out.println("North: Number of table: "+(i+1));
+					System.out.println("North: Number of table: " + (i + 1));
 					table.setAvailable(false);
 					tables.add(table);
-					if (numberOfChairsNeeded>0) {
+					if (numberOfChairsNeeded > 0) {
 						System.out.println("More tables needed");
-					} 
 					}
 				}
 			}
-			for(int i=0;i<tableController.getAllTables().size();i++){
-				System.out.println("i= "+(i+1) + "tableOnEast: "+tableController.getAllTables().get(tableNo).getTableOnTheSouth());
-				
-				if((i+1)==tableController.getAllTables().get(tableNo).getTableOnTheSouth()){
-					if(tableController.getAllTables().get(i).isAvailable()){
+		}
+		for (int i = 0; i < tableController.getAllTables().size(); i++) {
+			System.out.println("i= "
+					+ (i + 1)
+					+ "tableOnEast: "
+					+ tableController.getAllTables().get(tableNo)
+							.getTableOnTheSouth());
+
+			if ((i + 1) == tableController.getAllTables().get(tableNo)
+					.getTableOnTheSouth()) {
+				if (tableController.getAllTables().get(i).isAvailable()) {
 					numberOfChairsNeeded -= tableController.getAllTables()
 							.get(i).getNoOfSeats();
 					Table table = tableController.getAllTables().get(i);
-					table.setTableNo(i+1);
+					table.setTableNo(i + 1);
 					table.setExists(true);
-					System.out.println("South: Number of table: "+(i+1));
+					System.out.println("South: Number of table: " + (i + 1));
 					table.setAvailable(false);
 					tables.add(table);
-					if (numberOfChairsNeeded>0) {
+					if (numberOfChairsNeeded > 0) {
 						System.out.println("More tables needed");
-					} 
 					}
 				}
 			}
-			for(int i=0;i<tableController.getAllTables().size();i++){
-				System.out.println("i= "+(i+1) + "tableOnEast: "+tableController.getAllTables().get(tableNo).getTableOnTheWest());
-				
-				if((i+1)==tableController.getAllTables().get(tableNo).getTableOnTheWest()){
-					if(tableController.getAllTables().get(i).isAvailable()){
+		}
+		for (int i = 0; i < tableController.getAllTables().size(); i++) {
+			System.out.println("i= "
+					+ (i + 1)
+					+ "tableOnEast: "
+					+ tableController.getAllTables().get(tableNo)
+							.getTableOnTheWest());
+
+			if ((i + 1) == tableController.getAllTables().get(tableNo)
+					.getTableOnTheWest()) {
+				if (tableController.getAllTables().get(i).isAvailable()) {
 					numberOfChairsNeeded -= tableController.getAllTables()
 							.get(i).getNoOfSeats();
 					Table table = tableController.getAllTables().get(i);
-					table.setTableNo(i+1);
+					table.setTableNo(i + 1);
 					table.setExists(true);
-					System.out.println("West: Number of table: "+(i+1));
+					System.out.println("West: Number of table: " + (i + 1));
 					table.setAvailable(false);
 					tables.add(table);
-					if (numberOfChairsNeeded>0) {
+					if (numberOfChairsNeeded > 0) {
 						System.out.println("More tables needed");
-					} 
 					}
 				}
 			}
+		}
 	}
 
 	private void createOrderAndAddTables() {
@@ -743,35 +798,38 @@ public class WaiterUILeftPanel extends JPanel {
 		int numberOfGuests = 0;
 		numberOfGuests = Integer.parseInt(noOfSeatsTextField.getText());
 		int numberOfChairsNeeded = numberOfGuests;
-		int i=0;
-			while (!tableController.getAllTables().get(i).isAvailable()) {
+		int i = 0;
+		while (!tableController.getAllTables().get(i).isAvailable()) {
 			i++;
-			}
-			if(i<tableController.getAllTables().size()){
-				Table table = tableController.getAllTables().get(i+1);
-				table.setTableNo(i+1);
-				table.setExists(true);
-				table.setAvailable(false);
-				tables.add(table);
+		}
+		if (i < tableController.getAllTables().size()) {
+			Table table = tableController.getAllTables().get(i + 1);
+			table.setTableNo(i + 1);
+			table.setExists(true);
+			table.setAvailable(false);
+			tables.add(table);
 
-				System.out.println("NumberOfChairs: "+numberOfChairsNeeded);
-				numberOfChairsNeeded -= tableController.getAllTables()
-						.get(i).getNoOfSeats();
-				System.out.println("NumberOfChairs after: "+numberOfChairsNeeded + "NoOfSeats: "+tableController.getAllTables().get(i).getNoOfSeats());
-				if (numberOfChairsNeeded>0) {					
-					System.out.println("We do not have enought seats in table: "+(i+1));
-					checkTables(i,numberOfChairsNeeded);
-					
+			System.out.println("NumberOfChairs: " + numberOfChairsNeeded);
+			numberOfChairsNeeded -= tableController.getAllTables().get(i)
+					.getNoOfSeats();
+			System.out.println("NumberOfChairs after: " + numberOfChairsNeeded
+					+ "NoOfSeats: "
+					+ tableController.getAllTables().get(i).getNoOfSeats());
+			if (numberOfChairsNeeded > 0) {
+				System.out.println("We do not have enought seats in table: "
+						+ (i + 1));
+				checkTables(i, numberOfChairsNeeded);
+
 			}
-			}
-		
+		}
 
 		Order order = new Order();
 		order.setOrderId(orderController.getAllOrders().size());
 		try {
 			orderController.insertOrder(order);
-			for(Table t: tables){
-				System.out.println("table number: "+t.getTableNo()+ "av: "+t.isAvailable());
+			for (Table t : tables) {
+				System.out.println("table number: " + t.getTableNo() + "av: "
+						+ t.isAvailable());
 				rc.addTableToReservation(t);
 			}
 			rc.makeReservation(nameTextField.getText(), phoneNoTextField
@@ -787,7 +845,5 @@ public class WaiterUILeftPanel extends JPanel {
 			e.printStackTrace();
 		}
 
-	
-				
-}
+	}
 }

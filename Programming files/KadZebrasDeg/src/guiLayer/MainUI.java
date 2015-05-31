@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controlLayer.ReservationController;
@@ -23,7 +24,7 @@ public class MainUI extends JFrame {
 	public MainUI() {
 
 		super("MainUI");
-		
+
 		setPanelsForMainUI();
 		// addMenuBar();
 		reservationController = new ReservationController();
@@ -117,18 +118,16 @@ public class MainUI extends JFrame {
 						}
 						if (anyEvent.getButtonTrigered().equals("chefMenuBtn")) {
 							/*
-							System.out.println("chefMenuBtn");
-							setTitle("Chef menu");
-							container = getContentPane();
-							container.removeAll();
-							leftPanel = new ChefUIRightPanel();
-							rightPanel = new ChefUILeftPanel();
-							// setPanelsForWaiterUILeftPanel();
-							// setTitle("Waiter menu");
-							setPanels(leftPanel, rightPanel);
-
-							container.validate();
-							container.repaint();
+							 * System.out.println("chefMenuBtn");
+							 * setTitle("Chef menu"); container =
+							 * getContentPane(); container.removeAll();
+							 * leftPanel = new ChefUIRightPanel(); rightPanel =
+							 * new ChefUILeftPanel(); //
+							 * setPanelsForWaiterUILeftPanel(); //
+							 * setTitle("Waiter menu"); setPanels(leftPanel,
+							 * rightPanel);
+							 * 
+							 * container.validate(); container.repaint();
 							 */
 						}
 						if (anyEvent.getButtonTrigered().equals("tableMenuBtn")) {
@@ -237,6 +236,18 @@ public class MainUI extends JFrame {
 							container.repaint();
 
 						}
+						if (anyEvent.getButtonTrigered().equals("makeOrder")) {
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new MakeOrderUIRightPanel();
+							setPanelsForMakeOrderBeginning();
+							setPanelsForMakeOrderUILeftPanel();
+							setTitle("Order Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
 
 					}
 				});
@@ -291,7 +302,6 @@ public class MainUI extends JFrame {
 				});
 	}
 
-	
 	public void setPanelsForMerchandiseMenu() {
 		((MerchandiseMenuLeftPanel) leftPanel)
 				.setListenerForEverything(new ListenerForEverything() {
@@ -337,7 +347,7 @@ public class MainUI extends JFrame {
 					}
 				});
 	}
-	
+
 	public void setPanelsForStaffMenu() {
 		((StaffUILeftPanel) leftPanel)
 				.setListenerForEverything(new ListenerForEverything() {
@@ -456,4 +466,285 @@ public class MainUI extends JFrame {
 			}
 		});
 	}
+
+	public void setPanelsForMakeOrderBeginning() {
+		((MakeOrderUIRightPanel) rightPanel)
+				.setListenerForEverything(new ListenerForEverything() {
+
+					@Override
+					public void AnyEventOcurred(AnyEvent anyEvent)
+							throws DatabaseException {
+						if (anyEvent.getButtonTrigered().equals("courseBtn")) {
+							System.out.println("courseBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new CourseUIRightPanel();
+							setPanelsForMakeOrderUILeftPanel();
+							setPanelsForCourseUIRightPanel();
+							setTitle("Course Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+
+						}
+						if (anyEvent.getButtonTrigered().equals("drinkBtn")) {
+							System.out.println("drinkBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new DrinkUIRightPanel();
+							setPanelsForMakeOrderUILeftPanel();
+							setDrinkUIRightPanel();
+							setTitle("Drink Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+
+						}
+						if (anyEvent.getButtonTrigered().equals("otherBtn")) {
+							System.out.println("otherBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new OrderEndUIRightPanel();
+							setPanelsForMakeOrderUILeftPanel();
+							// Here should be listeners for OrderEnd
+							setOrderEndUIRightPanel();
+							setTitle("Merchandise Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+
+						}
+						if (anyEvent.getButtonTrigered().equals(
+								"confirmOrderBtn")) {
+							System.out.println("confirmOrderBtn");
+						}
+
+					}
+				});
+	}
+
+	public void setPanelsForMakeOrderUILeftPanel() {
+		((MakeOrderUILeftPanel) leftPanel)
+				.setListenerForEverything(new ListenerForEverything() {
+
+					@Override
+					public void AnyEventOcurred(AnyEvent anyEvent)
+							throws DatabaseException {
+						if (anyEvent.getButtonTrigered().equals("backBtn")
+								&& rightPanel instanceof MakeOrderUIRightPanel) {
+							System.out.println("backBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new WaiterUILeftPanel();
+							rightPanel = new WaiterUIRightPanel();
+							setPanelsForWaiterUI();
+							setTitle("Waiter Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+						if (anyEvent.getButtonTrigered().equals("backBtn")
+								&& rightPanel instanceof CourseUIRightPanel) {
+							System.out.println("backBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new MakeOrderUIRightPanel();
+							setPanelsForMakeOrderUILeftPanel();
+							setPanelsForMakeOrderBeginning();
+							setTitle("Order Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+						if (anyEvent.getButtonTrigered().equals("backBtn")
+								&& rightPanel instanceof OrderEndUIRightPanel) {
+							System.out.println("backBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new MakeOrderUIRightPanel();
+							setPanelsForMakeOrderUILeftPanel();
+							setPanelsForMakeOrderBeginning();
+							setTitle("Order Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+						if (anyEvent.getButtonTrigered().equals("backBtn")
+								&& rightPanel instanceof DrinkUIRightPanel) {
+							System.out.println("backBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new MakeOrderUIRightPanel();
+							setPanelsForMakeOrderUILeftPanel();
+							setPanelsForMakeOrderBeginning();
+							setTitle("Order Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+
+					}
+				});
+	}
+
+	public void setPanelsForCourseUIRightPanel() {
+		((CourseUIRightPanel) rightPanel)
+				.setListenerForEverything(new ListenerForEverything() {
+
+					@Override
+					public void AnyEventOcurred(AnyEvent anyEvent)
+							throws DatabaseException {
+						if (anyEvent.getButtonTrigered()
+								.equals("regular1stBtn")) {
+							System.out.println("otherBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new OrderEndUIRightPanel();
+							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
+							setPanelsForMakeOrderUILeftPanel();
+							// Here should be listeners for OrderEnd
+							setOrderEndUIRightPanel();
+							setTitle("Merchandise Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+						if (anyEvent.getButtonTrigered().equals(
+								"vegetarian1stBtn")) {
+							System.out.println("otherBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new OrderEndUIRightPanel();
+							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
+							setPanelsForMakeOrderUILeftPanel();
+							// Here should be listeners for OrderEnd
+							setOrderEndUIRightPanel();
+							setTitle("Merchandise Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+						if (anyEvent.getButtonTrigered()
+								.equals("regular2ndBtn")) {
+							System.out.println("otherBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new OrderEndUIRightPanel();
+							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
+							setPanelsForMakeOrderUILeftPanel();
+							// Here should be listeners for OrderEnd
+							setOrderEndUIRightPanel();
+							setTitle("Merchandise Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+						if (anyEvent.getButtonTrigered().equals(
+								"vegetarian2ndBtn")) {
+							System.out.println("otherBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new OrderEndUIRightPanel();
+							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
+							setPanelsForMakeOrderUILeftPanel();
+							// Here should be listeners for OrderEnd
+							setOrderEndUIRightPanel();
+							setTitle("Merchandise Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+						if (anyEvent.getButtonTrigered().equals("desertBtn")) {
+							System.out.println("otherBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new OrderEndUIRightPanel();
+							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
+							setPanelsForMakeOrderUILeftPanel();
+							// Here should be listeners for OrderEnd
+							setOrderEndUIRightPanel();
+							setTitle("Merchandise Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+
+					}
+				});
+	}
+
+	public void setDrinkUIRightPanel() {
+		((DrinkUIRightPanel) rightPanel)
+				.setListenerForEverything(new ListenerForEverything() {
+
+					@Override
+					public void AnyEventOcurred(AnyEvent anyEvent)
+							throws DatabaseException {
+						if (anyEvent.getButtonTrigered().equals("alcoholicBtn")) {
+							System.out.println("alcoholicBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new OrderEndUIRightPanel();
+							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
+							setPanelsForMakeOrderUILeftPanel();
+							// Here should be listeners for OrderEnd
+							setOrderEndUIRightPanel();
+							setTitle("Merchandise Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+						if (anyEvent.getButtonTrigered().equals(
+								"nonAlcoholicBtn")) {
+							System.out.println("nonAlcoholicBtn");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MakeOrderUILeftPanel();
+							rightPanel = new OrderEndUIRightPanel();
+							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
+							setPanelsForMakeOrderUILeftPanel();
+							// Here should be listeners for OrderEnd
+							setOrderEndUIRightPanel();
+							setTitle("Merchandise Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+						}
+
+					}
+				});
+	}
+
+	public void setOrderEndUIRightPanel() {
+		((OrderEndUIRightPanel) rightPanel)
+				.setListenerForEverything(new ListenerForEverything() {
+
+					@Override
+					public void AnyEventOcurred(AnyEvent anyEvent)
+							throws DatabaseException {
+						String nameOfCourse = anyEvent.getButtonTrigered();
+						int dialog = JOptionPane
+								.showConfirmDialog(MainUI.this,
+										"Are you shure you want to add this Merchandise?");
+						if (dialog == 0) {
+							System.out.println("It means yes!");
+						} else {
+							System.out.println("It means no!");
+						}
+					}
+				});
+	}
+
 }
