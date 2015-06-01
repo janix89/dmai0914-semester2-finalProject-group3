@@ -22,16 +22,22 @@ public class DBOrder implements IFDBOrder {
 	@Override
 	public int insertOrder(Order order) throws DatabaseException {
 		int rc = -1;
+		int isPaid=0;
+		int isActive=0;
+		
+		if(order.isPaid()) isPaid=1;
+		if(order.isActive()) isActive=1;
+		
 		String query = "";
-		query = "INSERT INTO SaleOrder(totalPrice, isPaid, isActive, wId) VALUES ('"
+		query = "INSERT INTO SaleOrder(totalPrice, isPaid, isActive, wId) VALUES ("
 				+ order.getTotalPrice()
-				+ "','"
-				+ order.isPaid()
-				+ "','"
-				+ order.isActive()
-				+"','"
+				+ ","
+				+ isPaid
+				+ ","
+				+ isActive
+				+","
 				+ 1
-				+ "')";
+				+ ")";
 
 		System.out.println("insert : " + query);
 		try {

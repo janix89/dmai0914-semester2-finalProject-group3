@@ -41,7 +41,7 @@ id int identity(1,1) primary key(id),
 totalPrice float  not null,
 isPaid bit  not null,
 isActive bit  not null,
-wId int foreign key (wId) references Staff(id) on delete cascade on update cascade  not null
+wId int 
 );
 
 create Table tTable(

@@ -227,6 +227,7 @@ public class MainUI extends JFrame {
 									.getMonthsYear();
 							String timeForReservation = anyEvent.getTime();
 							int numberOfGuests = anyEvent.getNumberOfSeats();
+							((WaiterUILeftPanel)leftPanel).createOrderAndAddTables();
 
 							// Added by Janis
 							// This is required to refresh the frame and panels
