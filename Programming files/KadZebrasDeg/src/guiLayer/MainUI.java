@@ -27,6 +27,7 @@ public class MainUI extends JFrame {
 	// private JDialog dialog;
 	private ReservationController reservationController;
 	private MerchandiseController merchandiseController;
+	private String name;
 	public MainUI() {
 
 		super("MainUI");
@@ -220,7 +221,7 @@ public class MainUI extends JFrame {
 							// Added by Janis
 							// Here you get the info from WaiterUILeftPanel
 
-							String name = anyEvent.getName();
+							name = anyEvent.getName();
 							String phoneNo = anyEvent.getPhoneNo();
 							String dayOfReservation = anyEvent.getDays();
 							String monthAndYearOfReservation = anyEvent
@@ -228,7 +229,23 @@ public class MainUI extends JFrame {
 							String timeForReservation = anyEvent.getTime();
 							int numberOfGuests = anyEvent.getNumberOfSeats();
 							((WaiterUILeftPanel)leftPanel).createOrderAndAddTables();
-
+							int option = JOptionPane.showConfirmDialog(MainUI.this, "Would you like to add order?");
+							
+							if(option ==  0){
+								
+								container = getContentPane();
+								container.removeAll();
+								leftPanel = new MakeOrderUILeftPanel();
+								rightPanel = new MakeOrderUIRightPanel();
+								setPanelsForMakeOrderBeginning();
+								setPanelsForMakeOrderUILeftPanel();
+								setTitle("Order Menu");
+								setPanels(leftPanel, rightPanel);
+								container.validate();
+								container.repaint();
+								System.out.println(name);
+							}
+							else{
 							// Added by Janis
 							// This is required to refresh the frame and panels
 							// selected tables will become red or yellow after
@@ -245,6 +262,7 @@ public class MainUI extends JFrame {
 							setPanels(leftPanel, rightPanel);
 							container.validate();
 							container.repaint();
+							}
 
 						}
 						if (anyEvent.getButtonTrigered().equals("makeOrder")) {
