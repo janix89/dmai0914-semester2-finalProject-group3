@@ -1,16 +1,15 @@
 package guiLayer;
 
-import exceptionsLayer.DatabaseException;
-
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -20,6 +19,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+
+import modelLayer.Merchandise;
+import exceptionsLayer.DatabaseException;
 
 
 public class MerchandiseMenuRightPanel extends JPanel {
@@ -41,10 +43,10 @@ public class MerchandiseMenuRightPanel extends JPanel {
 	private JButton updateBtn;
 	private JButton deleteBtn;
 	private ListenerForEverything listenerForEverything;
-	
+	private ArrayList<Merchandise> merchandise;
 	
 	public MerchandiseMenuRightPanel() {
-		
+		merchandise = new ArrayList<>();
 		Border innerBorder = BorderFactory.createTitledBorder("Update and Delete Merchandise");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
@@ -62,15 +64,18 @@ public class MerchandiseMenuRightPanel extends JPanel {
 		typeOfCourse2 = new JLabel("Type of course : ");
 		isVegeterian = new JCheckBox(new String("Vegetarian"));
 		name = new JLabel("Name : ");
-		String[] names= {"name1","name2","name3"};
+		String[] names= {};
+		
 		name1 = new JComboBox(names);
 		ingridients = new JLabel("Ingridients : ");
 		ingridients2 = new JTextArea(10,10);
 		ingridients1 = new JScrollPane(ingridients2);
 		alcoholConcentration = new JLabel("Alcohol Concentration : ");
 		alcoholConcentration1 = new JTextField(10);
+		alcoholConcentration1.setText("0.0");
 		quantity = new JLabel("Quantity : ");
 		quantity1 = new JTextField(10);
+		quantity1.setText("1");
 		updateBtn = new JButton("Update");
 		deleteBtn = new JButton("Delete");
 		
@@ -99,6 +104,13 @@ public class MerchandiseMenuRightPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				AnyEvent anyEvent = new AnyEvent(this, "updateBtn");
+				anyEvent.setTypeOfMerchandise(type.getSelectedItem().toString());
+				anyEvent.setTypeOfCourse(typeOfCourse.getSelectedItem().toString());
+				anyEvent.setVegetarian(isVegeterian.isSelected());
+				anyEvent.setName(name1.getSelectedItem().toString());
+				anyEvent.setIngredients(ingridients2.getText());
+				anyEvent.setAlcoholConcentration(Float.parseFloat(alcoholConcentration1.getText()));
+				anyEvent.setQuantity(Integer.parseInt(quantity1.getText()));
 				if (listenerForEverything != null) {
 					try {
 						listenerForEverything.AnyEventOcurred(anyEvent);
@@ -331,7 +343,14 @@ public class MerchandiseMenuRightPanel extends JPanel {
 	public void setListenerForEverything(ListenerForEverything listener){
 		this.listenerForEverything = listener;
 	}
-	
+	public void populateMerchandise(ArrayList<Merchandise> m){
+		merchandise = m;
+		DefaultComboBoxModel name = new DefaultComboBoxModel<>();
+		for(Merchandise me : m){
+			name.addElement(me.getName());
+		}
+		name1.setModel(name);
+	}
 	
 	
 }

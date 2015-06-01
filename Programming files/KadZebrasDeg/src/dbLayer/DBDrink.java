@@ -24,7 +24,7 @@ public class DBDrink implements IFDBDrink {
 		int rc = -1;
 		String query = "";
 		query = "INSERT INTO Merchandise (name, price, mExists, mType) VALUES ('"
-				+ drink.getName() + +drink.getPrice() + +1 + "','" + 3 + "')";
+				+ drink.getName() + "'," +drink.getPrice()  + ","+1 + "," + 1 + ")";
 
 		System.out.println("insert : " + query);
 		try {
@@ -105,7 +105,7 @@ public class DBDrink implements IFDBDrink {
 		}
 		// New: using a prepared statement (note, this prepared statement is not
 		// reused, but it could be.)
-		q = "update drink set id= ?  quantityInStock=? alcoholConcentration=? minQuantityInStock=? where name="
+		q = "update drink set id= ?  quantityInStock=?, alcoholConcentration=?, minQuantityInStock=? where name="
 				+ name;
 		res = 0;
 		try (PreparedStatement s = DBConnect.getInstance().getDBcon()

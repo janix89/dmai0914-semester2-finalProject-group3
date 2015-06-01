@@ -1,18 +1,28 @@
 package controlLayer;
-import modelLayer.*;
-import dbLayer.*;
+import java.util.ArrayList;
+
+import modelLayer.Course;
+import modelLayer.Drink;
+import modelLayer.Merchandise;
+import modelLayer.Miscellaneous;
+import dbLayer.DBCourse;
+import dbLayer.DBDrink;
+import dbLayer.DBMiscellaneous;
 import exceptionsLayer.DatabaseException;
 
 public class MerchandiseController {
 	private DBCourse dBCourse;
 	private DBMiscellaneous dBMiscellaneous;
 	private DBDrink dBDrink;
-	private String ingredients;
-	private boolean isVegetarian;
-	private int quantity;
-	private float percent;
 	
-	public Merchandise createMerchandise(String name, float price, int type) throws DatabaseException{
+	public MerchandiseController(){
+		dBCourse = new DBCourse();
+		dBDrink = new DBDrink();
+		dBMiscellaneous = new DBMiscellaneous();
+	}
+	
+	
+	public Merchandise createMerchandise(String name, float price, int type, String ingredients, boolean isVegetarian, int quantity, float ac, String typeOfCourse) throws DatabaseException{
 		switch(type){
 		case 1:
 			Course m = new Course();
@@ -20,6 +30,7 @@ public class MerchandiseController {
 			m.setPrice(price);
 			m.setIngredients(ingredients);
 			m.setIsVegetarian(isVegetarian);
+			m.setTypeOfCourse(typeOfCourse);
 			if (dBCourse.insertCourse(m) != -1)
 				return m;
 			else return null;
@@ -33,7 +44,7 @@ public class MerchandiseController {
 			else return null;
 		case 3:
 			Drink d = new Drink();
-			d.setAlcoholConcetration(percent);
+			d.setAlcoholConcetration(ac);
 			d.setName(name);
 			d.setPrice(price);
 			if(dBDrink.insertDrink(d) != -1)
@@ -46,38 +57,48 @@ public class MerchandiseController {
 	
 	public Merchandise findMerchandise(String name){
 		for(int x = 0; x < dBCourse.getAllCourses().size(); x++){
-			if(name.equals(dBCourse.getAllCourses().get(x))){
+			if(name.equals(dBCourse.getAllCourses().get(x).getName())){
 				return dBCourse.getAllCourses().get(x);
 			}
 		}
 		for(int x = 0; x < dBMiscellaneous.getAllMiscellaneous().size(); x++){
-			if(name.equals(dBMiscellaneous.getAllMiscellaneous().get(x))){
+			if(name.equals(dBMiscellaneous.getAllMiscellaneous().get(x).getName())){
 				return dBMiscellaneous.getAllMiscellaneous().get(x);
 			}
 		}
 		for(int x = 0; x < dBDrink.getAllDrinks().size(); x++){
-			if(name.equals(dBDrink.getAllDrinks().get(x))){
+			if(name.equals(dBDrink.getAllDrinks().get(x).getName())){
 				return dBDrink.getAllDrinks().get(x);
 			}
 		}
 		
 		return null;
 	}
-	
-	public void setIngredients(String ingredients){
-		this.ingredients = ingredients;
+	public ArrayList<Merchandise> getAllMerchandise (){
+		ArrayList<Merchandise> temp = new ArrayList<>();
+		for(Course c: dBCourse.getAllCourses()){
+			temp.add(c);
+		}
+		for(Drink d: dBDrink.getAllDrinks()){
+			temp.add(d);
+		}
+		for(Miscellaneous m: dBMiscellaneous.getAllMiscellaneous()){
+			temp.add(m);
+		}
+		return temp;
 	}
-	
-	public void setIsVegetarian(boolean veg){
-		this.isVegetarian = veg;
-	}
-	
-	public void setQuantityStock(int quantity){
-		this.quantity = quantity;
-	}
-	
-	public void setAlchoholPercent(float percent){
-		this.percent = percent;
+
+
+	public void updateMerchandise(Merchandise m, int mType) {
+			if(mType==1){
+				dBCourse.updateCourse(m.getName(), (Course)m);
+			}				
+			else if(mType==2){
+				dBMiscellaneous.updateMiscellaneous(m.getName(), (Miscellaneous)m);
+			}
+			else{
+				dBDrink.updateDrink(m.getName(), (Drink)m);
+			}
 	}
 	
 	

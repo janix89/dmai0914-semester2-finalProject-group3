@@ -4,11 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import modelLayer.Course;
+import modelLayer.Drink;
+import modelLayer.Merchandise;
+import modelLayer.Miscellaneous;
+import controlLayer.MerchandiseController;
 import controlLayer.ReservationController;
 import exceptionsLayer.DatabaseException;
 
@@ -20,7 +26,7 @@ public class MainUI extends JFrame {
 	// private JMenuBar menuBar;
 	// private JDialog dialog;
 	private ReservationController reservationController;
-
+	private MerchandiseController merchandiseController;
 	public MainUI() {
 
 		super("MainUI");
@@ -28,7 +34,7 @@ public class MainUI extends JFrame {
 		setPanelsForMainUI();
 		// addMenuBar();
 		reservationController = new ReservationController();
-
+		merchandiseController = new MerchandiseController();
 		setLayout(new BorderLayout());
 		add(leftPanel, BorderLayout.WEST);
 		add(rightPanel, BorderLayout.CENTER);
@@ -150,6 +156,10 @@ public class MainUI extends JFrame {
 							container.removeAll();
 							leftPanel = new MerchandiseMenuLeftPanel();
 							rightPanel = new MerchandiseMenuRightPanel();
+							MerchandiseController mc = new MerchandiseController();
+							ArrayList<Merchandise> m = mc.getAllMerchandise();
+							
+							((MerchandiseMenuRightPanel)rightPanel).populateMerchandise(m);
 							setPanelsForMerchandiseMenu();
 							setTitle("Merchandise menu");
 							setPanels(leftPanel, rightPanel);
@@ -302,6 +312,9 @@ public class MainUI extends JFrame {
 				});
 	}
 
+	/**
+	 * 
+	 */
 	public void setPanelsForMerchandiseMenu() {
 		((MerchandiseMenuLeftPanel) leftPanel)
 				.setListenerForEverything(new ListenerForEverything() {
@@ -321,9 +334,24 @@ public class MainUI extends JFrame {
 							container.validate();
 							container.repaint();
 						}
-						if (anyEvent.getButtonTrigered().equals("create")) {
+						if (anyEvent.getButtonTrigered().equals("createBtn")) {
 							System.out.println("create");
-
+							
+							if(!anyEvent.getName().equals("") && !anyEvent.getIngredients().equals(""))
+							{
+								int temp=0;
+							if(anyEvent.getTypeOfMerchandise().equals("Course")){
+								temp=1;
+							}else
+								if(anyEvent.getTypeOfMerchandise().equals("Miscellaneous")){
+									temp=2;
+								}else
+								{
+									temp=3;
+								}
+							merchandiseController.createMerchandise(anyEvent.getName(), 10, temp, anyEvent.getIngredients(), anyEvent.isVegetarian(), anyEvent.getQuantity(), anyEvent.getAlcoholConcentration(), anyEvent.getTypeOfCourse());
+							
+							}
 						}
 
 					}
@@ -339,9 +367,28 @@ public class MainUI extends JFrame {
 							System.out.println("delete");
 
 						}
-						if (anyEvent.getButtonTrigered().equals("update")) {
+						if (anyEvent.getButtonTrigered().equals("updateBtn")) {
 							System.out.println("update");
-
+							Merchandise m= merchandiseController.findMerchandise(anyEvent.getName());
+							int mType=1;
+							if(m instanceof Course){
+								((Course) m).setTypeOfCourse(anyEvent.getTypeOfCourse());
+								((Course) m).setIsVegetarian(anyEvent.isVegetarian());
+								((Course) m).setIngredients(anyEvent.getIngredients());					
+								mType=1;
+							}
+							if(m instanceof Miscellaneous){
+								((Miscellaneous) m).setMinQuantityInStock(5);
+								((Miscellaneous) m).setQuantityInStock(10);	
+								mType=2;
+							}
+							if(m instanceof Drink){
+								((Drink) m).setAlcoholConcetration(anyEvent.getAlcoholConcentration());
+								((Drink) m).setMinQuantityInStock(5);
+								((Drink) m).setQuantityInStock(10);		
+								mType=3;
+							}
+							merchandiseController.updateMerchandise(m, mType);
 						}
 
 					}

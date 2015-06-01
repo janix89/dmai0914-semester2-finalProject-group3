@@ -3,10 +3,24 @@ package modelLayer;
 public class Course extends Merchandise {
 	private String ingredients;
 	private boolean isVegetarian;
+	private String typeOfCourse;
+
 
 	// constructor
 	public Course() {
 
+	}
+	
+	public String getTypeOfCourse() {
+		return typeOfCourse;
+	}
+
+	public void setTypeOfCourse(String typeOfCourse) {
+		this.typeOfCourse = typeOfCourse;
+	}
+
+	public void setVegetarian(boolean isVegetarian) {
+		this.isVegetarian = isVegetarian;
 	}
 
 	// sets

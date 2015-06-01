@@ -67,8 +67,10 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		ingridients1 = new JScrollPane(ingridients2);
 		alcoholConcentration = new JLabel("Alcohol Concentration : ");
 		alcoholConcentration1 = new JTextField(10);
+		alcoholConcentration1.setText("0.0");
 		quantity = new JLabel("Quantity : ");
 		quantity1 = new JTextField(10);
+		quantity1.setText("1");
 		createBtn = new JButton("Create");
 		backBtn = new JButton("Back");
 		
@@ -80,9 +82,17 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				AnyEvent anyEvent = new AnyEvent(this, "createBtn");
+				anyEvent.setTypeOfMerchandise(type.getSelectedItem().toString());
+				anyEvent.setTypeOfCourse(typeOfCourse.getSelectedItem().toString());
+				anyEvent.setVegetarian(isVegeterian.isSelected());
+				anyEvent.setName(name1.getText());
+				anyEvent.setIngredients(ingridients2.getText());
+				anyEvent.setAlcoholConcentration(Float.parseFloat(alcoholConcentration1.getText()));
+				anyEvent.setQuantity(Integer.parseInt(quantity1.getText()));
 				if (listenerForEverything != null) {
 					try {
 						listenerForEverything.AnyEventOcurred(anyEvent);
+												
 					} catch (DatabaseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

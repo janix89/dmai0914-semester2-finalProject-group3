@@ -25,10 +25,7 @@ public class DBMiscellaneous implements IFDBMiscellaneous {
 		int rc = -1;
 		String query = "";
 		query = "INSERT INTO Merchandise (name, price, mExists, mType) VALUES ('"
-				+ miscellaneous.getName()
-				+ +miscellaneous.getPrice()
-				+ +1
-				+ "','" + 2 + "')";
+				+ miscellaneous.getName() + "'," +miscellaneous.getPrice()  + ","+1 + "," + 1 + ")";
 
 		System.out.println("insert : " + query);
 		try {
@@ -110,7 +107,7 @@ public class DBMiscellaneous implements IFDBMiscellaneous {
 		}
 		// New: using a prepared statement (note, this prepared statement is not
 		// reused, but it could be.)
-		q = "update miscellaneous set mId= ? name=?, price=? quantityInStock=? minQuantityInStock=? where name="
+		q = "update Miscellaneous set mId= ?, name=?, price=?, quantityInStock=?, minQuantityInStock=? where name="
 				+ name;
 		res = 0;
 		try (PreparedStatement s = DBConnect.getInstance().getDBcon()
@@ -200,7 +197,7 @@ public class DBMiscellaneous implements IFDBMiscellaneous {
 
 	// method to build the query
 	private String buildQuery(String wClause) {
-		String query = "SELECT *  FROM Merchandise, Miscellanous";
+		String query = "SELECT *  FROM Merchandise, Miscellaneous";
 
 		if (wClause.length() > 0)
 			query = query + " WHERE " + wClause;

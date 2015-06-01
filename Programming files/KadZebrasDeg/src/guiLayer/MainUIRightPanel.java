@@ -20,7 +20,7 @@ public class MainUIRightPanel extends JPanel {
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
 		logoLabel = new JLabel();
-		imageIcon = new ImageIcon("C://Eclipse workspace/KadZebrasDeg/Logo1.jpg");
+		imageIcon = new ImageIcon("Logo1.jpg");
 		titleLabel = new JLabel("Welcome Back!");
 		titleLabel.setFont(new Font("Serif", Font.BOLD, 40));
 		

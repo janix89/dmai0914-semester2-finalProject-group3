@@ -24,7 +24,7 @@ public class DBCourse implements IFDBCourse {
 		String query = "";
 
 		query = "INSERT INTO Merchandise (name, price, mExists, mType) VALUES ('"
-				+ course.getName() + +course.getPrice() + +1 + "','" + 1 + "')";
+				+ course.getName() + "'," +course.getPrice()  + ","+1 + "," + 1 +")";
 
 		System.out.println("insert : " + query);
 		try {
@@ -47,10 +47,16 @@ public class DBCourse implements IFDBCourse {
 	private int insertIntoMerchandise(Course course) throws DatabaseException {
 		int rc = -1;
 		String query = "";
-		query = "INSERT INTO COURSE (id, ingredients, isVegetarian) VALUES ('"
-				+ course.getId() + "','" + course.getIngredients() + "','"
-				+ course.getIsVegetarian() + "')";
-
+		if(course.getIsVegetarian()){
+		
+		query = "INSERT INTO COURSE (id, ingredients, isVegetarian, typeOfCourse) VALUES ("
+				+ course.getId() + ",'" + course.getIngredients() + "',"
+				+ 1 + ",'" + course.getTypeOfCourse() + "')";
+		}else{
+			query = "INSERT INTO COURSE (id, ingredients, isVegetarian, typeOfCourse) VALUES ("
+					+ course.getId() + ",'" + course.getIngredients() + "',"
+					+ 0 + ",'" + course.getTypeOfCourse() + "')";
+		}
 		System.out.println("insert : " + query);
 		try {
 			Statement stmt = con.createStatement();
@@ -85,22 +91,21 @@ public class DBCourse implements IFDBCourse {
 		int res = 0;
 		// New: using a prepared statement (note, this prepared statement is not
 		// reused, but it could be.)
-		q = "update merchandise set name=?, price=?, mExists=?, mType=? where name="
-				+ name;
+		q = "update merchandise set price=?, mExists=?, mType=? where name='"
+				+ name +"'";
 		try (PreparedStatement s = DBConnect.getInstance().getDBcon()
 				.prepareStatement(q)) {
 
-			s.setString(1, c.getName());
-			s.setFloat(2, c.getPrice());
-			s.setBoolean(3, c.getExists());
-			s.setInt(4, 1);
+			s.setFloat(1, c.getPrice());
+			s.setBoolean(2, c.getExists());
+			s.setInt(3, 1);
 			res = s.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (NullPointerException npe) {
 
 		}
-		q = "update course set id=? ingredients=? isVegetarian=? where id="
+		q = "update course set id=?, ingredients=?, isVegetarian=?, typeOfCourse=? where id="
 				+ c.getId();
 		res = 0;
 		try (PreparedStatement s = DBConnect.getInstance().getDBcon()
@@ -108,6 +113,7 @@ public class DBCourse implements IFDBCourse {
 			s.setInt(1, c.getId());
 			s.setString(2, c.getIngredients());
 			s.setBoolean(3, c.getIsVegetarian());
+			s.setString(4, c.getTypeOfCourse());
 			res = s.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -207,6 +213,7 @@ public class DBCourse implements IFDBCourse {
 			cusObj.setIngredients(results.getString("ingredients"));
 			cusObj.setIsVegetarian(results.getBoolean("isVegetarian"));
 			cusObj.setExists(results.getBoolean("mExists"));
+			cusObj.setTypeOfCourse(results.getString("typeOfCourse"));
 
 		} catch (Exception e) {
 			System.out.println("Error in building the course object");

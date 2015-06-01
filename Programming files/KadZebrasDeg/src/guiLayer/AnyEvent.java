@@ -14,7 +14,61 @@ public class AnyEvent extends EventObject {
 	private String days;
 	private String time;
 	private int tableNo;
+	private String typeOfMerchandise;
+	private String typeOfCourse;
+	private boolean isVegetarian;
+	private String ingredients;
+	private float AlcoholConcentration;
+	private int quantity;
 	
+	public String getTypeOfMerchandise() {
+		return typeOfMerchandise;
+	}
+
+	public void setTypeOfMerchandise(String typeOfMerchandise) {
+		this.typeOfMerchandise = typeOfMerchandise;
+	}
+
+	public String getTypeOfCourse() {
+		return typeOfCourse;
+	}
+
+	public void setTypeOfCourse(String typeOfCourse) {
+		this.typeOfCourse = typeOfCourse;
+	}
+
+	public boolean isVegetarian() {
+		return isVegetarian;
+	}
+
+	public void setVegetarian(boolean isVegetarian) {
+		this.isVegetarian = isVegetarian;
+	}
+
+	public String getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
+	}
+
+	public float getAlcoholConcentration() {
+		return AlcoholConcentration;
+	}
+
+	public void setAlcoholConcentration(float alcoholConcentration) {
+		AlcoholConcentration = alcoholConcentration;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	public AnyEvent(Object source){
 		super(source);
 	}

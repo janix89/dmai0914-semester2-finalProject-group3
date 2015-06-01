@@ -92,6 +92,7 @@ id int  primary key (id) references Merchandise(mId) on delete cascade on update
 name varchar(20)  not null,
 price float  not null,
 */
+typeOfCourse varchar(10),
 ingredients varchar(100)  not null,
 isVegetarian bit  not null,
 /*
