@@ -1,10 +1,14 @@
 package guiLayer;
 
+import exceptionsLayer.DatabaseException;
+
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -34,8 +38,8 @@ public class MerchandiseMenuRightPanel extends JPanel {
 	private JTextField alcoholConcentration1;
 	private JLabel quantity;
 	private JTextField quantity1;
-	private JButton update;
-	private JButton delete;
+	private JButton updateBtn;
+	private JButton deleteBtn;
 	private ListenerForEverything listenerForEverything;
 	
 	
@@ -67,8 +71,45 @@ public class MerchandiseMenuRightPanel extends JPanel {
 		alcoholConcentration1 = new JTextField(10);
 		quantity = new JLabel("Quantity : ");
 		quantity1 = new JTextField(10);
-		update = new JButton("Update");
-		delete = new JButton("Delete");
+		updateBtn = new JButton("Update");
+		deleteBtn = new JButton("Delete");
+		
+		updateBtn.setPreferredSize(new Dimension(150, 25));
+		deleteBtn.setPreferredSize(new Dimension(150, 25));
+		
+		deleteBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AnyEvent anyEvent = new AnyEvent(this, "deleteBtn");
+				if (listenerForEverything != null) {
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
+			}
+		});
+		
+		updateBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AnyEvent anyEvent = new AnyEvent(this, "updateBtn");
+				if (listenerForEverything != null) {
+					try {
+						listenerForEverything.AnyEventOcurred(anyEvent);
+					} catch (DatabaseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
+			}
+		});
 		
 		
 		// First row first column
@@ -258,32 +299,32 @@ public class MerchandiseMenuRightPanel extends JPanel {
 				add(quantity1, gc);
 				
 				// eight row first column 
-				gc.weightx = 0.1; 
+				gc.weightx = 1; 
 				gc.weighty = 1;  
 				
-				gc.gridwidth = 1;  
+				gc.gridwidth = 2;  
 				
 				gc.gridx = 0; // Positiion on x
 				gc.gridy = 7; // Position on y
 				
 				gc.fill = GridBagConstraints.CENTER;
-				gc.anchor = GridBagConstraints.WEST;
-				gc.insets = new Insets(0, 100, 0, 0);
-				add(update, gc);
+				gc.anchor = GridBagConstraints.SOUTH;
+				gc.insets = new Insets(0, 0, 0, 0);
+				add(updateBtn, gc);
 				
 				// eight row second column 
 				gc.weightx = 1; 
 				gc.weighty = 1;  
 				
-				gc.gridwidth = 1;  
+				gc.gridwidth = 2;  
 				
-				gc.gridx = 1; // Positiion on x
-				gc.gridy = 7; // Position on y
+				gc.gridx = 0; // Positiion on x
+				gc.gridy = 8; // Position on y
 				
 				gc.fill = GridBagConstraints.CENTER;
-				gc.anchor = GridBagConstraints.WEST;
-				gc.insets = new Insets(0, 160, 0, 0);
-				add(delete, gc);
+				gc.anchor = GridBagConstraints.NORTH;
+				gc.insets = new Insets(5, 0, 0, 0);
+				add(deleteBtn, gc);
 	}
 
 
