@@ -1,0 +1,1151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.0">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1645</x>
+      <y>0</y>
+      <w>70</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>UILayer
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1665</x>
+      <y>265</y>
+      <w>70</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>cntrolLayer
+--
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1670</x>
+      <y>550</y>
+      <w>70</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>modelLayer
+--
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>925</x>
+      <y>5</y>
+      <w>165</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>MerchandiseUI
+bg=green
+--
+-TODO Methods in the UI class
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>885</x>
+      <y>210</y>
+      <w>165</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>MerchandiseController
+bg=yellow
+--
+-createMerchandise(name, price, type):Merchandise
+-setIngredients(ingredients):void
+-setIsVegetarian(veg):void
+-setQuantityStock(quantity): void
+-setAlchoholPercent(percent): void
+-findMerchandise(name): Merchandise</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>515</y>
+      <w>140</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>/Merchandise/
+bg=red
+--
+- name: String
+- price : double
+- exists : boolean
+--
++ set()
++ get()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1025</x>
+      <y>460</y>
+      <w>105</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>DBMerchandise
+bg=red
+--
++insertMerchandise(m):int
++getAllMerchandise : ArrayList&lt;Merchandise&gt;
++findMerchandise(name) : Merchandise
++updateMerhandise(name) : int
+-getMerchandise(wClause) : Merchandise
+-miscWhere(wClause): ArrayList&lt;Merchandise&gt;
+-singleWhere(wClause) : Merchandise
+-buildquery (wClause) : String
+-buildMerchandise(results) : Merchandise
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>940</x>
+      <y>35</y>
+      <w>44</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;175;35;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>865</x>
+      <y>265</y>
+      <w>84</w>
+      <h>259</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;250;75;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>950</x>
+      <y>265</y>
+      <w>139</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>130;195;15;15</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>775</x>
+      <y>605</y>
+      <w>75</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>Course
+bg=red
+--
+-ingredients: String
+-isVegetarian: boolean
+--
++setIngridients(ingridients):void
++setIsVegetarian(isVegetarian)
++getIngridients(): String
++getIsVegetarian() : boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>860</x>
+      <y>600</y>
+      <w>165</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Miscellaneous
+bg=red
+--
+-quantityInStock: int
+-minQuantityInStock: int
+--
++setQuantityInStock(quantityInStock) :void
++setMinQuantityInStock(minQuantityInStock) : void
++getQuantityInStock() : int
++getMinQuantityInStock() : int </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1040</x>
+      <y>605</y>
+      <w>95</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Drink
+bg=red
+--
+-quantityInStock: int
+-alcoholConcentration: float
+-minQuantityInStock: int
+--
++setQuantityInStock(quantityStock) : void
++setAlcoholConcentration(alcoholConcentration) : void
++setMinQuantityInStock(minQuantityInSTock): void
++getQuantityInStock() : int
++getAlcoholConcentration() : double
++getMinQuantityInStock(): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>795</x>
+      <y>575</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>885</x>
+      <y>575</y>
+      <w>15</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>890</x>
+      <y>575</y>
+      <w>185</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;350.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1165</x>
+      <y>5</y>
+      <w>165</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>ReservationUI
+bg=green
+--
+- TODO Methods in the UI class</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1165</x>
+      <y>210</y>
+      <w>285</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>ReservationController
+bg=yellow
+--
++makeReservation(customersName, phoneNo,reservationDate,reservedTime,numberOfGuests): Reservation
++checkTable(tableNo): Table
++confirmReservation(res) : int
++findReservation(name) : Reservation
++findReservationByTableNo(tableNo) : Reservation
++addTAbleToReservation(table): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1310</x>
+      <y>360</y>
+      <w>165</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>TableController
+bg=yellow
+--
++findTableByNo(tableNo): Table
++checkIfExists(table): boolean
++checkIfAvailable(table): boolean
++getAllTables() : ArrayList&lt;Table&gt;
++updateTable(tableNo,table) :void
++insertTable(table):void
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1555</x>
+      <y>545</y>
+      <w>105</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>DBTable
+bg=red
+--
++insertTable(table) : int
++getAllTables() : ArrayList&lt;Table&gt;
++findTable(id) : Table
++findTableByTableNo(tableNo) : Table
++updateTable(tableNo,table) : int
+-getTable(wClause) : Table
+-miscWhere(wClause) : ArrayList&lt;Table&gt;
+-singleWhere(wClause) : Table
+-buildQuery(wClause) : String
+-buildTable(results) : Table
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1425</x>
+      <y>480</y>
+      <w>100</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>Table
+bg=red
+--
+-noOfSeats: int
+-tableNo : int
+-isAvailable: boolean
+-exists: boolean
+-tableOnTheNorth
+-tableOnTheEast
+-tableOnTheSouth
+-tableOnTheWest
+--
++setNoOfSeats(noOfSeats): void
++setTableNo(tableNo) : void
++setAvailable(isAvailable) : void
++setExists(exists) : void
++setTableOnTheNorth(tableOnTheNorth) : void
++setTableOnTheEast(tableOnTheEast) : void
++setTableOnTheSouth(tableOnTheSouth) : void
++setTableOnTheWest(tableOnTheWest) : void
++getNoOfSeats() : int
++getTableNo() : int 
++isAvailable() : boolean
++isExists() : boolean
++getTableOnTheNorth() : int
++getTableOnTheEast() : int
++getTableOnTheSouth() : int
++getTableOnTheWest() : int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1265</x>
+      <y>260</y>
+      <w>139</w>
+      <h>109</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>130;100;15;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1390</x>
+      <y>410</y>
+      <w>224</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>215;135;15;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1230</x>
+      <y>35</y>
+      <w>24</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;175;15;15</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1145</x>
+      <y>530</y>
+      <w>120</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>DBReservation
+bg=red
+--
++insertreservation(r):int
+insertIntoReservedTable(reservation,id): int
++getAllReservation : ArrayList&lt;Reservation&gt;
++findReservation(id) : Reservation
++findReservationByName(name) : Reservation
++findReservationByTableNo(tableNo) : ArrayList&lt;Reservation&gt;
++updateReservation(name,reservation) : int
+-getReservation(wClause) : Reservation
+-miscWhere(wClause): ArrayList&lt;Merchandise&gt;
+-singleWhere(wClause) : Reservation
+-buildquery (wClause) : String
+-buildReservation(results) : Reservation</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1185</x>
+      <y>260</y>
+      <w>59</w>
+      <h>279</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;270;50;15</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>585</x>
+      <y>5</y>
+      <w>165</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>OrderUI
+bg=green
+--
+-TODO Methods in the UI class
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>585</x>
+      <y>205</y>
+      <w>165</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>OrderController
+bg=yellow
+--
++makeOrder(cprNo,isActive) : void
++getAllOrders() : ArrayList&lt;Order&gt;
++insertOrder(order) : void
++findMerchandise(name) : void
++addMerchandise(mer,quantity) : void
++saveOrder(o) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>655</x>
+      <y>35</y>
+      <w>24</w>
+      <h>179</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;170;15;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>965</x>
+      <y>460</y>
+      <w>69</w>
+      <h>94</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;85;60;15</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>375</y>
+      <w>140</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Order
+bg=red
+--
+-orderLines : ArrayList&lt;OrderLine&gt;
+-staff : Staff
+-id : Staff
+-totalprice : double
+-isPaid : boolean
+-isActive : boolean
+-reservation : Reservation
+-orderId :int
+--
++ setOrderLines(orderLines): void
++ setId(id) : void
++setOrderId(orderId): void
++setTotalPrice(totalPrice) :void
++setStaff(staff) :void
++setPaid(isPaid) : void
++setActive(isActive) : void
++setReservation(reservation) : void
++ getOrderLines() : ArrayList&lt;OrderLine&gt;
++getId(): Staff
++getOrderId() : int
++getTotalPrice() : double
++getStaff() : Staff
++isPaid() : boolean
++isActive() : boolean
++getReservation() : Reservation
++addOrderLine(ol) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>675</x>
+      <y>405</y>
+      <w>105</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>DBOrder
+bg=red
+--
++insertOrder(order) : int
++getAllOrders(): ArrayList&lt;Order&gt;
++findOrder(id) : Order
++updateOrder(id,o) : int
+-order(wClause): Order
+-miscWhere(wClause) : ArrayList&lt;Order&gt;
+-singleWhere(wClause) : Order
+-buildQuery(wClause):String
+-buildOrder(results) : Order</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>635</x>
+      <y>405</y>
+      <w>49</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;15;40;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>565</x>
+      <y>255</y>
+      <w>74</w>
+      <h>129</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;120;65;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>645</x>
+      <y>255</y>
+      <w>89</w>
+      <h>159</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>80;150;15;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>695</x>
+      <y>255</y>
+      <w>909</w>
+      <h>489</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>900;385;870;470;720;480;30;430;30;320;125;320;125;265;125;140;90;85;15;15</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>285</x>
+      <y>220</y>
+      <w>165</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>StaffController
+bg=yellow
+--
++findWaiterByCpr(cprNo): Staff
++getAllStaff() : ArrayList&lt;Staff&gt;
++findStaffByName(name) : Staff
++updateStaff(cprNo,staff) : int
++createStaff(name,bankAccount,address,phone,profession,exists)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>435</x>
+      <y>215</y>
+      <w>159</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;35;150;15</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>510</y>
+      <w>105</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>DBStaff
+bg=red
+--
++getAllStaffs(): ArrayList&lt;Staff&gt;
++ findStaff(cprNo) : Staff
++findStaffById(id) : Staff
++findStaffByName(name) :Staff
++updateStaff(cprNo,staff) : int
+-getStaff(wClause) : Staff
+-miscWhere(wClause) : ArrayList&lt;Staff&gt;
+-singleWhere(wClause) : Staff
+-buildQuery(wClause) : String
+-buildStaff(results) : Staff
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>345</x>
+      <y>260</y>
+      <w>34</w>
+      <h>259</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;250;25;15</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>375</y>
+      <w>140</w>
+      <h>215</h>
+    </coordinates>
+    <panel_attributes>Staff
+bg=red
+--
+-id : int
+-name : String
+-bankAccount : String
+-address : String
+-profession : String
+-phoneNo : String
+-cprNo : String
+-exists : boolean
+--
++setName(name) : void
++setBankAccount(bankAccount) : void
++setAddress(address) : void
++setProfession(profession):void
++setPhoneNo(phoneNo) : void
++setCprNo(cprNo) : void
++setExists(bexists) : void
++setStaffId(id) : void
++getName() : String
++getBankAccount() : String
++getAddress() : String
++getProfession() : String
++getPhoneNo() : String
++getCprNo() : String
++isExists() : boolean
++getStaffId() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>185</x>
+      <y>585</y>
+      <w>65</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>260</x>
+      <y>590</y>
+      <w>109</w>
+      <h>74</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;65;95;65;100;15</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>200</x>
+      <y>630</y>
+      <w>75</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Waiter
+bg=red
+--
+-workTables: ArrayList&lt;Integer&gt;
+--
++set()
++get()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1280</x>
+      <y>470</y>
+      <w>105</w>
+      <h>225</h>
+    </coordinates>
+    <panel_attributes>Reservation
+bg=red
+--
+-tables: ArrayList&lt;Integer&gt;
+-customersName: String
+-phoneNo : String
+-numberOfGuests : int
+-reservationDate: String
+-reservationRegistrationDate : String
+-reservedTime : String
+-order : Order
+-orderId : int
+--
++setTables(tables) : void
++setPhoneNo(phoneNo) : void
++setReservation(reservationDate): void
++setOrder(order) : void
++setCustomerName(customerName) : void
++setNumberOfGuests(numberOfGuests) : void
++setReservationRegistrationDate(reservationRegistrationDate):void
++setReservedTime(reservedTime): void
++getTables() : ArrayList&lt;Integer&gt;
++getPhoneNo() : String
++getReservationDate() : String
++getOrder() : Order
++getCustomerName() : String
++getNumberOfGuests() : int
++ getReservationRegistrationDate() : String
++getReservedTime() : String
++addTable(table) : void
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1250</x>
+      <y>510</y>
+      <w>39</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>30;15;15;35</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1510</x>
+      <y>550</y>
+      <w>54</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>15;15;45;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1235</x>
+      <y>260</y>
+      <w>74</w>
+      <h>219</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>65;210;15;15</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1380</x>
+      <y>515</y>
+      <w>55</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>730</y>
+      <w>115</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Login
+bg=red
+--
+-username : String
+-password : String
+-accessType : String
+--
++setUsername(username) : void
++setAccessType(accesType) : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>425</x>
+      <y>605</y>
+      <w>125</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>OrderLine
+bg=red
+--
+merchandise : Merchandise
+quantity : double
+isDone :boolean
+orderId : int
+--
++setOrderId(orderId) : void
++setMerchandise(merchandise) : void
++setQuantity(quantity) : void
++setDone(isDone) : void
++getMerchandise() : Merchandise
++getQuantity() : double
++isDone() : boolean
++getOrderId() : int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>785</x>
+      <y>710</y>
+      <w>165</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>DBMiscellaneous
+bg=red
+--
++insertMescellaneous(miscellaneous) : int
+-insertIntoMerchandise(miscellaneous):int
++getAllMiscellaneous : ArrayList&lt;Merchandise&gt;
++findMiscellaneous(name) : Miscellaneous
++updateMiscellaneous(name,m) : int
+-getMiscellaneous(wClause) : Miscellaneous
+-miscWhere(wClause) : ArrayList&lt;Miscellaneous&gt;
+-singleWhere(wClause) : Miscellaneous
+-buildQuery(wCLause) : String
+-buildMiscellaneous(results) : Miscellaneous
++ findMiscellaneousById(id) : Miscellaneous</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>435</x>
+      <y>740</y>
+      <w>105</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>DBOrderLine
+bg=red
+--
++insertOrderLine(orderLine) : int
++getAllOrdersLines(): ArrayList&lt;OrderLine&gt;
++findOrderLine(id) : OrderLine
++updateOrderLine(id,ol) : int
+-getOrderLine(wClause): OrderLine
+-miscWhere(wClause) : ArrayList&lt;OrderLine&gt;
+-singleWhere(wClause) : OrderLine
+-buildQuery(wClause):String
+-buildOrderLine(results) : OrderLine
+-findMerchandiseType(id) : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>230</y>
+      <w>125</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IFDBCourse
+bg=red
+--
++insertCourse(course) : int
++getAllCourses() : ArrayList&lt;Course&gt;
++findCourse(name) : Course
++updateCourse(name,c): int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>300</y>
+      <w>115</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IFDBDrink
+bg=red
+--
++insertDrink(drink) : int
++getAllDrinks() : ArrayList&lt;Drink&gt;
++findDrink(name) : Drink
++updateDrink(name,drink) : int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>365</y>
+      <w>105</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IFDBMerchandise
+bg=red
+--
++insertMerchandise(merchandise) : int
++getAllMerchandises() : ArrayList&lt;Merchandise&gt;
++findMerchandise(name) : Merchandise
++updateMerchandise(name) : int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>435</y>
+      <w>105</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IFDBMiscellaneous
+bg=red
+--
++insertMiscellaneous(miscellaneous) : int
++getAllMiscellaneous() : ArrayList&lt;Miscellaneous&gt;
++findMiscellaneous(name) : Miscellaneous
++updateMiscellaneous(name,m) : int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>495</y>
+      <w>105</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IFDBOrder
+bg=red
+--
++insertOrder(order) : int
++getAllOrders() : ArrayList&lt;Order&gt;
++findOrder(id) : Order
++updateOrder(id,o) : int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>560</y>
+      <w>105</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IFDBOrderLine
+bg=red
+--
++insertOrderLine(orderLine) : int
++getAllOrderLines() : ArrayList&lt;OrderLine&gt;
++findOrderLine(id) : OrderLine
++updateOrderLine(id,ol) : int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>625</y>
+      <w>105</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IFDBReservation
+bg=red
+--
++insertReservation(reservation) : int
++getAllReservations() : ArrayList&lt;Reservation&gt;
++findReservation(id) :
++updateReservation(name, reservation) : int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>160</y>
+      <w>105</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IFDBStaff
+bg=red
+--
++insertStaff(staff) : int
++getAllStaffs() : ArrayList&lt;Staff&gt;
++findStaff(cprNo) : Staff
++updateStaff(cprNo,staff) : int
++findStaffById(id) : Staff
++findStaffByName(name) : Staff
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>690</y>
+      <w>105</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IFDBTable
+bg=red
+--
++insertTable(table) : int
++getAllTable() : ArrayList&lt;Table&gt;
++findTable(id) :Table
++updateTable(tableNo) : int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>580</x>
+      <y>870</y>
+      <w>150</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>DBCourse
+bg=red
+--
++insertCourse(course) : int
+-insertIntoMerchandise(course) : int
++getAllCourses() : ArrayList&lt;Course&gt;
++findCourse(name) : Course
++updateCourse(name,c): int
+-getCourse(wClause) : Course
+-miscWhere(wClause) : ArrayList&lt;Course&gt; 
+-singleWhere(wClause) : Course
+-buildQuery(wClause) : String
+-buildCourse(results) : Course
++findCourseById(id) : Merchandise</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>735</x>
+      <y>870</y>
+      <w>150</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>DBDrink
+bg=red
+--
++insertDrink(drink): int
+-insertIntoMerchandise(drink) : int
++getAllDrinks() : ArrayList&lt;Drink&gt;
++findDrink(name) : Drink
++updateDrink(name,d) : int
+-getDrink(wClause) : Drink
+-miscWhere(wClause): ArrayList&lt;Drink&gt;
+-singleWhere(wClause) : Drink
+-buildQuery(wClause): String
+-buildDrink(results): Drink
++findDrinkById(id) : Merchandise</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
