@@ -167,6 +167,7 @@ public class MainUI extends JFrame {
 							rightPanel = new MerchandiseMenuRightPanel();
 							MerchandiseController mc = new MerchandiseController();
 							ArrayList<Merchandise> m = mc.getAllMerchandise();
+							System.out.println(m.size());
 							
 							((MerchandiseMenuRightPanel)rightPanel).populateMerchandise(m);
 							setPanelsForMerchandiseMenu();
@@ -379,6 +380,21 @@ public class MainUI extends JFrame {
 							merchandiseController.createMerchandise(anyEvent.getName(), 10, temp, anyEvent.getIngredients(), anyEvent.isVegetarian(), anyEvent.getQuantity(), anyEvent.getAlcoholConcentration(), anyEvent.getTypeOfCourse());
 							
 							}
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new MerchandiseMenuLeftPanel();
+							rightPanel = new MerchandiseMenuRightPanel();
+							MerchandiseController mc = new MerchandiseController();
+							ArrayList<Merchandise> m = mc.getAllMerchandise();
+							System.out.println(m.size());
+							
+							((MerchandiseMenuRightPanel)rightPanel).populateMerchandise(m);
+							setPanelsForMerchandiseMenu();
+							setTitle("Merchandise menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+							
 						}
 
 					}

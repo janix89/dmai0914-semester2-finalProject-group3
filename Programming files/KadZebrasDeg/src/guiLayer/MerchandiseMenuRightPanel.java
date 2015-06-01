@@ -69,7 +69,7 @@ public class MerchandiseMenuRightPanel extends JPanel {
 		name = new JLabel("Name : ");
 		String[] names= {};
 		
-		name1 = new JComboBox(names);
+		name1 = new JComboBox();
 		ingridients = new JLabel("Ingridients : ");
 		ingridients2 = new JTextArea(10,10);
 		ingridients2.setLineWrap(true);
@@ -87,6 +87,48 @@ public class MerchandiseMenuRightPanel extends JPanel {
 		
 		updateBtn.setPreferredSize(new Dimension(150, 25));
 		deleteBtn.setPreferredSize(new Dimension(150, 25));
+		
+		alcoholConcentration1.setEnabled(false);
+		quantity1.setText("1");
+		quantity1.setEnabled(false);
+		
+		name1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		type.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(type.getSelectedItem().equals("Drink")){
+					ingridients2.setEnabled(false);
+					typeOfCourse.setEnabled(false);
+					isVegeterian.setEnabled(false);
+					quantity1.setEnabled(true);
+				}
+				if(type.getSelectedItem().equals("Miscellaneous")){
+					ingridients2.setEnabled(false);
+					typeOfCourse.setEnabled(false);
+					isVegeterian.setEnabled(false);
+					alcoholConcentration1.setEnabled(false);
+					quantity1.setEnabled(true);
+				}
+				if(type.getSelectedItem().equals("Course")){
+					ingridients2.setEnabled(true);
+					typeOfCourse.setEnabled(true);
+					isVegeterian.setEnabled(true);
+					alcoholConcentration1.setEnabled(false);
+					quantity1.setText("1");
+					quantity1.setEnabled(false);
+				}
+				
+				
+			}
+		});
 		
 		deleteBtn.addActionListener(new ActionListener() {
 			
@@ -386,6 +428,7 @@ public class MerchandiseMenuRightPanel extends JPanel {
 		}
 		name1.setModel(name);
 	}
+	
 	
 	
 }

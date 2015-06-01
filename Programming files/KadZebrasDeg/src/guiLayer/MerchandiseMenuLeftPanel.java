@@ -80,6 +80,40 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 
 		backBtn.setPreferredSize(new Dimension(150, 25));
 		createBtn.setPreferredSize(new Dimension(150, 25));
+		
+		alcoholConcentration1.setEnabled(false);
+		quantity1.setText("1");
+		quantity1.setEnabled(false);
+		
+type.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(type.getSelectedItem().equals("Drink")){
+					ingridients2.setEnabled(false);
+					typeOfCourse.setEnabled(false);
+					isVegeterian.setEnabled(false);
+					quantity1.setEnabled(true);
+				}
+				if(type.getSelectedItem().equals("Miscellaneous")){
+					ingridients2.setEnabled(false);
+					typeOfCourse.setEnabled(false);
+					isVegeterian.setEnabled(false);
+					alcoholConcentration1.setEnabled(false);
+					quantity1.setEnabled(true);
+				}
+				if(type.getSelectedItem().equals("Course")){
+					ingridients2.setEnabled(true);
+					typeOfCourse.setEnabled(true);
+					isVegeterian.setEnabled(true);
+					alcoholConcentration1.setEnabled(false);
+					quantity1.setText("1");
+					quantity1.setEnabled(false);
+				}
+				
+				
+			}
+		});
 
 		createBtn.addActionListener(new ActionListener() {
 
