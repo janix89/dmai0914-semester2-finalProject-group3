@@ -1,7 +1,5 @@
 package guiLayer;
 
-import exceptionsLayer.DatabaseException;
-
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -20,6 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import exceptionsLayer.DatabaseException;
 
 public class MerchandiseMenuLeftPanel extends JPanel {
 
@@ -40,30 +39,33 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 	private JButton createBtn;
 	private ListenerForEverything listenerForEverything;
 	private JButton backBtn;
-	
-	
+	private JTextField priceTF;
+	private JLabel priceLbl;
+
 	public MerchandiseMenuLeftPanel() {
-		
-		Border innerBorder = BorderFactory.createTitledBorder("Create Merchandise");
+
+		Border innerBorder = BorderFactory
+				.createTitledBorder("Create Merchandise");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
-		
+
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-		
-		setPreferredSize(new Dimension(420,0));
-		
-		String[] typeOfMerchandise = {"Course", "Drink", "Miscellaneous"};
+
+		setPreferredSize(new Dimension(420, 0));
+
+		String[] typeOfMerchandise = { "Course", "Drink", "Miscellaneous" };
 		type = new JComboBox(typeOfMerchandise);
 		type1 = new JLabel("Type : ");
-		String[] typeOfCourse1 = {"1st", "2nd", "Dessert"};
+		String[] typeOfCourse1 = { "1st", "2nd", "Dessert" };
 		typeOfCourse = new JComboBox(typeOfCourse1);
 		typeOfCourse2 = new JLabel("Type of course : ");
 		isVegeterian = new JCheckBox(new String("Vegetarian"));
 		name = new JLabel("Name : ");
 		name1 = new JTextField(10);
 		ingridients = new JLabel("Ingridients : ");
-		ingridients2 = new JTextArea(10,10);
+		ingridients2 = new JTextArea(10, 10);
+		ingridients2.setLineWrap(true);
 		ingridients1 = new JScrollPane(ingridients2);
 		alcoholConcentration = new JLabel("Alcohol Concentration : ");
 		alcoholConcentration1 = new JTextField(10);
@@ -73,37 +75,42 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		quantity1.setText("1");
 		createBtn = new JButton("Create");
 		backBtn = new JButton("Back");
-		
+		priceLbl = new JLabel("Price: ");
+		priceTF = new JTextField(10);
+
 		backBtn.setPreferredSize(new Dimension(150, 25));
 		createBtn.setPreferredSize(new Dimension(150, 25));
-		
+
 		createBtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				AnyEvent anyEvent = new AnyEvent(this, "createBtn");
+				anyEvent.setPrice(Float.parseFloat(priceTF.getText()));
 				anyEvent.setTypeOfMerchandise(type.getSelectedItem().toString());
-				anyEvent.setTypeOfCourse(typeOfCourse.getSelectedItem().toString());
+				anyEvent.setTypeOfCourse(typeOfCourse.getSelectedItem()
+						.toString());
 				anyEvent.setVegetarian(isVegeterian.isSelected());
 				anyEvent.setName(name1.getText());
 				anyEvent.setIngredients(ingridients2.getText());
-				anyEvent.setAlcoholConcentration(Float.parseFloat(alcoholConcentration1.getText()));
+				anyEvent.setAlcoholConcentration(Float
+						.parseFloat(alcoholConcentration1.getText()));
 				anyEvent.setQuantity(Integer.parseInt(quantity1.getText()));
 				if (listenerForEverything != null) {
 					try {
 						listenerForEverything.AnyEventOcurred(anyEvent);
-												
+
 					} catch (DatabaseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
-				
+
 			}
 		});
-		
+
 		backBtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				AnyEvent anyEvent = new AnyEvent(this, "backBtn");
@@ -115,29 +122,29 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 						e1.printStackTrace();
 					}
 				}
-				
+
 			}
 		});
-		
+
 		// First row first column
 		gc.weightx = 0.1; // Size of of the cell width
-		gc.weighty = 1;  // Size of of the cell height
-		
-		gc.gridwidth = 1; // How many cells are merged 
-		
+		gc.weighty = 1; // Size of of the cell height
+
+		gc.gridwidth = 1; // How many cells are merged
+
 		gc.gridx = 0; // Positiion on x
 		gc.gridy = 0; // Position on y
-		
+
 		gc.fill = GridBagConstraints.CENTER;
 		gc.anchor = GridBagConstraints.EAST;
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(type1, gc);
-		
+
 		// First row second column
 		gc.weightx = 1; // Size of of the cell width
-		gc.weighty = 1;  // Size of of the cell height
+		gc.weighty = 1; // Size of of the cell height
 
-		gc.gridwidth = 1; // How many cells are merged 
+		gc.gridwidth = 1; // How many cells are merged
 
 		gc.gridx = 1; // Positiion on x
 		gc.gridy = 0; // Position on y
@@ -146,12 +153,12 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		gc.anchor = GridBagConstraints.WEST;
 		gc.insets = new Insets(0, 10, 0, 0);
 		add(type, gc);
-					
-		// Second row first column
-		gc.weightx = 0.1; 
-		gc.weighty = 1;  
 
-		gc.gridwidth = 1;  
+		// Second row first column
+		gc.weightx = 0.1;
+		gc.weighty = 1;
+
+		gc.gridwidth = 1;
 
 		gc.gridx = 0; // Positiion on x
 		gc.gridy = 1; // Position on y
@@ -161,11 +168,11 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(typeOfCourse2, gc);
 
-		// Second row second column 
-		gc.weightx = 1; 
-		gc.weighty = 1;  
+		// Second row second column
+		gc.weightx = 1;
+		gc.weighty = 1;
 
-		gc.gridwidth = 1;  
+		gc.gridwidth = 1;
 
 		gc.gridx = 1; // Positiion on x
 		gc.gridy = 1; // Position on y
@@ -175,13 +182,11 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		gc.insets = new Insets(0, 10, 0, 0);
 		add(typeOfCourse, gc);
 
-		
+		// third row and second column
+		gc.weightx = 1;
+		gc.weighty = 1;
 
-		//third row and second column
-		gc.weightx = 1; 
-		gc.weighty = 1;  
-
-		gc.gridwidth = 1;  
+		gc.gridwidth = 1;
 
 		gc.gridx = 1; // Positiion on x
 		gc.gridy = 2; // Position on y
@@ -192,10 +197,10 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		add(isVegeterian, gc);
 
 		// fourth row and first column
-		gc.weightx = 0.1; 
-		gc.weighty = 1;  
+		gc.weightx = 0.1;
+		gc.weighty = 1;
 
-		gc.gridwidth = 1;  
+		gc.gridwidth = 1;
 
 		gc.gridx = 0; // Positiion on x
 		gc.gridy = 3; // Position on y
@@ -206,10 +211,10 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		add(name, gc);
 
 		// fourth row and second column
-		gc.weightx = 1; 
-		gc.weighty = 1;  
+		gc.weightx = 1;
+		gc.weighty = 1;
 
-		gc.gridwidth = 1;  
+		gc.gridwidth = 1;
 
 		gc.gridx = 1; // Positiion on x
 		gc.gridy = 3; // Position on y
@@ -219,11 +224,11 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		gc.insets = new Insets(0, 10, 0, 0);
 		add(name1, gc);
 
-		//fifth row and first column 
-		gc.weightx = 0.1; 
-		gc.weighty = 1;  
+		// fifth row and first column
+		gc.weightx = 0.1;
+		gc.weighty = 1;
 
-		gc.gridwidth = 1;  
+		gc.gridwidth = 1;
 
 		gc.gridx = 0; // Positiion on x
 		gc.gridy = 4; // Position on y
@@ -233,11 +238,11 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(ingridients, gc);
 
-		//fifth row and second column 
-		gc.weightx = 1; 
-		gc.weighty = 1;  
+		// fifth row and second column
+		gc.weightx = 1;
+		gc.weighty = 1;
 
-		gc.gridwidth = 1;  
+		gc.gridwidth = 1;
 
 		gc.gridx = 1; // Positiion on x
 		gc.gridy = 4; // Position on y
@@ -247,11 +252,11 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		gc.insets = new Insets(0, 10, 0, 0);
 		add(ingridients1, gc);
 
-		// sixth row and first column 
-		gc.weightx = 0.1; 
-		gc.weighty = 1;  
+		// sixth row and first column
+		gc.weightx = 0.1;
+		gc.weighty = 1;
 
-		gc.gridwidth = 1;  
+		gc.gridwidth = 1;
 
 		gc.gridx = 0; // Positiion on x
 		gc.gridy = 5; // Position on y
@@ -261,11 +266,11 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(alcoholConcentration, gc);
 
-		//sixth row and second column 
-		gc.weightx = 1; 
-		gc.weighty = 1;  
+		// sixth row and second column
+		gc.weightx = 1;
+		gc.weighty = 1;
 
-		gc.gridwidth = 1;  
+		gc.gridwidth = 1;
 
 		gc.gridx = 1; // Positiion on x
 		gc.gridy = 5; // Position on y
@@ -275,11 +280,11 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		gc.insets = new Insets(0, 10, 0, 0);
 		add(alcoholConcentration1, gc);
 
-		// seventh row and first column 
-		gc.weightx = 0.1; 
-		gc.weighty = 1;  
+		// seventh row and first column
+		gc.weightx = 0.1;
+		gc.weighty = 1;
 
-		gc.gridwidth = 1;  
+		gc.gridwidth = 1;
 
 		gc.gridx = 0; // Positiion on x
 		gc.gridy = 6; // Position on y
@@ -289,11 +294,11 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		gc.insets = new Insets(0, 0, 0, 0);
 		add(quantity, gc);
 
-		// seventh row and second column 
-		gc.weightx = 1; 
-		gc.weighty = 1;  
+		// seventh row and second column
+		gc.weightx = 1;
+		gc.weighty = 1;
 
-		gc.gridwidth = 1;  
+		gc.gridwidth = 1;
 
 		gc.gridx = 1; // Positiion on x
 		gc.gridy = 6; // Position on y
@@ -303,44 +308,66 @@ public class MerchandiseMenuLeftPanel extends JPanel {
 		gc.insets = new Insets(0, 10, 0, 0);
 		add(quantity1, gc);
 
-		
+		// Eighth row and first column
+		gc.weightx = 0.1;
+		gc.weighty = 1;
 
-		// eight row second column 
-		gc.weightx = 1; 
-		gc.weighty = 1;  
-
-		gc.gridwidth = 2;  
+		gc.gridwidth = 1;
 
 		gc.gridx = 0; // Positiion on x
 		gc.gridy = 7; // Position on y
 
 		gc.fill = GridBagConstraints.CENTER;
-		gc.anchor = GridBagConstraints.SOUTH;
+		gc.anchor = GridBagConstraints.EAST;
 		gc.insets = new Insets(0, 0, 0, 0);
-		add(createBtn, gc);
-		
+		add(priceLbl, gc);
 
-		// nineth row second column 
-		gc.weightx = 1; 
-		gc.weighty = 1;  
+		// Eighth row and second column
+		gc.weightx = 1;
+		gc.weighty = 1;
 
-		gc.gridwidth = 2;  
+		gc.gridwidth = 1;
+
+		gc.gridx = 1; // Positiion on x
+		gc.gridy = 7; // Position on y
+
+		gc.fill = GridBagConstraints.CENTER;
+		gc.anchor = GridBagConstraints.WEST;
+		gc.insets = new Insets(0, 10, 0, 0);
+		add(priceTF, gc);
+
+		// nineth row second column
+		gc.weightx = 1;
+		gc.weighty = 1;
+
+		gc.gridwidth = 2;
 
 		gc.gridx = 0; // Positiion on x
 		gc.gridy = 8; // Position on y
+
+		gc.fill = GridBagConstraints.CENTER;
+		gc.anchor = GridBagConstraints.SOUTH;
+		gc.insets = new Insets(0, 0, 0, 0);
+		add(createBtn, gc);
+
+		// nineth row second column
+		gc.weightx = 1;
+		gc.weighty = 1;
+
+		gc.gridwidth = 2;
+
+		gc.gridx = 0; // Positiion on x
+		gc.gridy = 9; // Position on y
 
 		gc.fill = GridBagConstraints.CENTER;
 		gc.anchor = GridBagConstraints.NORTH;
 		gc.insets = new Insets(5, 0, 0, 0);
 		add(backBtn, gc);
 
-
 	}
-	
-	public void setListenerForEverything(ListenerForEverything listener){
+
+	public void setListenerForEverything(ListenerForEverything listener) {
 		this.listenerForEverything = listener;
 	}
-	
-	
-	
+
 }

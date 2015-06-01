@@ -20,6 +20,8 @@ public class AnyEvent extends EventObject {
 	private String ingredients;
 	private float AlcoholConcentration;
 	private int quantity;
+	private float price;
+	private String cprNo;
 	
 	public String getTypeOfMerchandise() {
 		return typeOfMerchandise;
@@ -140,5 +142,21 @@ public class AnyEvent extends EventObject {
 
 	public void setTableNo(int tableNo) {
 		this.tableNo = tableNo;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	public String getCprNo() {
+		return cprNo;
+	}
+
+	public void setCprNo(String cprNo) {
+		this.cprNo = cprNo;
 	}
 }

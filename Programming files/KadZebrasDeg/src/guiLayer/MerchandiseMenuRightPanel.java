@@ -44,6 +44,9 @@ public class MerchandiseMenuRightPanel extends JPanel {
 	private JButton deleteBtn;
 	private ListenerForEverything listenerForEverything;
 	private ArrayList<Merchandise> merchandise;
+	private JTextField priceTF;
+	private JLabel priceLbl;
+	
 	
 	public MerchandiseMenuRightPanel() {
 		merchandise = new ArrayList<>();
@@ -69,6 +72,7 @@ public class MerchandiseMenuRightPanel extends JPanel {
 		name1 = new JComboBox(names);
 		ingridients = new JLabel("Ingridients : ");
 		ingridients2 = new JTextArea(10,10);
+		ingridients2.setLineWrap(true);
 		ingridients1 = new JScrollPane(ingridients2);
 		alcoholConcentration = new JLabel("Alcohol Concentration : ");
 		alcoholConcentration1 = new JTextField(10);
@@ -78,6 +82,8 @@ public class MerchandiseMenuRightPanel extends JPanel {
 		quantity1.setText("1");
 		updateBtn = new JButton("Update");
 		deleteBtn = new JButton("Delete");
+		priceLbl = new JLabel("Price: ");
+		priceTF = new JTextField(10);
 		
 		updateBtn.setPreferredSize(new Dimension(150, 25));
 		deleteBtn.setPreferredSize(new Dimension(150, 25));
@@ -104,6 +110,7 @@ public class MerchandiseMenuRightPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				AnyEvent anyEvent = new AnyEvent(this, "updateBtn");
+				anyEvent.setPrice(Float.parseFloat(priceTF.getText()));
 				anyEvent.setTypeOfMerchandise(type.getSelectedItem().toString());
 				anyEvent.setTypeOfCourse(typeOfCourse.getSelectedItem().toString());
 				anyEvent.setVegetarian(isVegeterian.isSelected());
@@ -310,21 +317,35 @@ public class MerchandiseMenuRightPanel extends JPanel {
 				gc.insets = new Insets(0, 10, 0, 0);
 				add(quantity1, gc);
 				
-				// eight row first column 
-				gc.weightx = 1; 
-				gc.weighty = 1;  
-				
-				gc.gridwidth = 2;  
-				
+				// Eighth row and first column
+				gc.weightx = 0.1;
+				gc.weighty = 1;
+
+				gc.gridwidth = 1;
+
 				gc.gridx = 0; // Positiion on x
 				gc.gridy = 7; // Position on y
-				
+
 				gc.fill = GridBagConstraints.CENTER;
-				gc.anchor = GridBagConstraints.SOUTH;
+				gc.anchor = GridBagConstraints.EAST;
 				gc.insets = new Insets(0, 0, 0, 0);
-				add(updateBtn, gc);
+				add(priceLbl, gc);
+
+				// Eighth row and second column
+				gc.weightx = 1;
+				gc.weighty = 1;
+
+				gc.gridwidth = 1;
+
+				gc.gridx = 1; // Positiion on x
+				gc.gridy = 7; // Position on y
+
+				gc.fill = GridBagConstraints.CENTER;
+				gc.anchor = GridBagConstraints.WEST;
+				gc.insets = new Insets(0, 10, 0, 0);
+				add(priceTF, gc);
 				
-				// eight row second column 
+				// ninth row first column 
 				gc.weightx = 1; 
 				gc.weighty = 1;  
 				
@@ -332,6 +353,20 @@ public class MerchandiseMenuRightPanel extends JPanel {
 				
 				gc.gridx = 0; // Positiion on x
 				gc.gridy = 8; // Position on y
+				
+				gc.fill = GridBagConstraints.CENTER;
+				gc.anchor = GridBagConstraints.SOUTH;
+				gc.insets = new Insets(0, 0, 0, 0);
+				add(updateBtn, gc);
+				
+				// ninth row second column 
+				gc.weightx = 1; 
+				gc.weighty = 1;  
+				
+				gc.gridwidth = 2;  
+				
+				gc.gridx = 0; // Positiion on x
+				gc.gridy = 9; // Position on y
 				
 				gc.fill = GridBagConstraints.CENTER;
 				gc.anchor = GridBagConstraints.NORTH;
