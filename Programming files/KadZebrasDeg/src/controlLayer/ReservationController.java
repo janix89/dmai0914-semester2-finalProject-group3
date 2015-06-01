@@ -66,7 +66,7 @@ public class ReservationController {
 	public Reservation findReservationByName(String name)
 			throws DatabaseException {
 		Reservation res = null;
-		// Reservation res = dbReservation.findReservationByName(name);
+		res = dBReservation.findReservationByName(name);
 		return res;
 	}
 

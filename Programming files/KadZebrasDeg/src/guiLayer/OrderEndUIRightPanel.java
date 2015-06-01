@@ -24,8 +24,9 @@ public class OrderEndUIRightPanel extends JPanel {
 	private ArrayList<Merchandise> allMerchandise;
 	private ArrayList<Merchandise> allExistingMerchandise;
 
-	public OrderEndUIRightPanel() {
-
+	public OrderEndUIRightPanel(ArrayList<Merchandise> all) {
+		allMerchandise=all;
+		allExistingMerchandise = new ArrayList<>();
 		Border innerBorder = BorderFactory
 				.createTitledBorder("Choose Merchandise");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
@@ -33,10 +34,11 @@ public class OrderEndUIRightPanel extends JPanel {
 
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-		createTestObjects();
+		//createTestObjects();
 
 		if (allMerchandise.isEmpty() != true) {
 			getAllExisteingMerchandise();
+			System.out.println("I am here");
 		}
 
 		for (int i = 0; i < allExistingMerchandise.size(); ++i) {

@@ -16,6 +16,7 @@ private int orderId;
 
 //constructor
 public Order(){
+	orderLines=new ArrayList<>();
 }
 
 

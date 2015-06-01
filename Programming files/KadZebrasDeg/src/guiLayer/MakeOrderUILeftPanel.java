@@ -9,6 +9,7 @@ import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -17,6 +18,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.table.AbstractTableModel;
+
+import modelLayer.OrderLine;
 
 public class MakeOrderUILeftPanel extends JPanel {
 
@@ -97,6 +100,12 @@ public class MakeOrderUILeftPanel extends JPanel {
 
 	public void setListenerForEverything(ListenerForEverything listener) {
 		this.listenerForEverything = listener;
+	}
+	public void setOrderList(ArrayList<OrderLine>  ol){
+		((MakeOrderMenuTableModel)model).setOrderList(ol);
+	}
+	public void refresh(){
+		model.fireTableDataChanged();
 	}
 
 }

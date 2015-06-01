@@ -61,7 +61,7 @@ public class DBOrder implements IFDBOrder {
 
 	@Override
 	public Order findOrder(int id) throws DatabaseException {
-		String wClause = " id = '" + id + "'";
+		String wClause = " id = " + id;
 		return singleWhere(wClause);
 	}
 
@@ -145,6 +145,7 @@ public class DBOrder implements IFDBOrder {
 			results = stmt.executeQuery(query);
 			if (results.next()) {
 				orderObj = buildOrder(results);
+				System.out.println("findOrder : " + query);
 				stmt.close();
 			} else {
 				orderObj = null;
@@ -171,6 +172,7 @@ public class DBOrder implements IFDBOrder {
 		Order orderObj = new Order();
 		Staff staff = new Staff();
 		try {
+			orderObj.setOrderId(results.getInt("id"));
 			orderObj.setTotalPrice(results.getFloat("totalPrice"));
 			orderObj.setPaid(results.getBoolean("isPaid"));
 			orderObj.setActive(results.getBoolean("isActive"));

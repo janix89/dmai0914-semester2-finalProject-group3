@@ -17,4 +17,6 @@ public interface IFDBOrderLine {
 
 	// update one
 	public int updateOrderLine(int id, OrderLine ol) throws DatabaseException;
+
+	ArrayList<OrderLine> findOrderLineByOrderId(int orderId) throws DatabaseException;
 }

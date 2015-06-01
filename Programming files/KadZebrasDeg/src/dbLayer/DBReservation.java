@@ -95,7 +95,7 @@ public class DBReservation implements IFDBReservation {
 	@Override
 	public Reservation findReservationByName(String name)
 			throws DatabaseException {
-		String wClause = " name = '" + name + "'";
+		String wClause = " customerName = '" + name + "'";
 		return singleWhere(wClause);
 	}
 
@@ -226,6 +226,7 @@ public class DBReservation implements IFDBReservation {
 	private Reservation buildReservation(ResultSet results) {
 		Reservation reservationObj = new Reservation();
 		Order tempOrder = null;
+		DBOrder dbOrder = new DBOrder();
 		try {
 			reservationObj.setCustomerName(results.getString("customerName"));
 			reservationObj.setPhoneNo(results.getString("phoneNo"));
@@ -236,8 +237,9 @@ public class DBReservation implements IFDBReservation {
 					.getString("registrationDate"));
 			reservationObj
 					.setReservedTime(results.getString("reservationTime"));
-			tempOrder = new DBOrder().findOrder(results.getInt("oId"));
-			reservationObj.setOrder(tempOrder);
+			tempOrder = dbOrder.findOrder(results.getInt("oId"));
+			reservationObj.setOrder(tempOrder);			
+			System.out.println("TempOrder: "+ tempOrder.getOrderId());
 		} catch (Exception e) {
 			System.out.println("Error in building the reservation object");
 		}

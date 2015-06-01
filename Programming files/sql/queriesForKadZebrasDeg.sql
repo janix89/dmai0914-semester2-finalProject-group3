@@ -80,7 +80,7 @@ mType int  not null
 create Table OrderLine(
 id int identity(1,1) primary key(id),
 quantity int  not null,
-oId int foreign key (oId) references SaleOrder(id) on delete cascade on update cascade  not null,
+oId int not null,
 meId int not null,
 /*mType int not null,*/
 isDone bit not null

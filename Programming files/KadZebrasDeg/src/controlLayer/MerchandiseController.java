@@ -58,7 +58,8 @@ public class MerchandiseController {
 	public Merchandise findMerchandise(String name){
 		for(int x = 0; x < dBCourse.getAllCourses().size(); x++){
 			if(name.equals(dBCourse.getAllCourses().get(x).getName())){
-				return dBCourse.getAllCourses().get(x);
+				
+				return dBCourse.getAllCourses().get(x);				
 			}
 		}
 		for(int x = 0; x < dBMiscellaneous.getAllMiscellaneous().size(); x++){

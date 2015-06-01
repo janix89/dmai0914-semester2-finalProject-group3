@@ -771,6 +771,10 @@ public class WaiterUILeftPanel extends JPanel {
 
 		Order order = new Order();
 		order.setOrderId(orderController.getAllOrders().size());
+		order.setActive(true);
+		//order.setId(id);
+		order.setTotalPrice(0);
+	
 		try {
 			orderController.insertOrder(order);
 			/*

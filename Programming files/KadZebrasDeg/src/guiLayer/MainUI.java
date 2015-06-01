@@ -14,8 +14,14 @@ import modelLayer.Course;
 import modelLayer.Drink;
 import modelLayer.Merchandise;
 import modelLayer.Miscellaneous;
+import modelLayer.Order;
+import modelLayer.OrderLine;
+import modelLayer.Reservation;
 import controlLayer.MerchandiseController;
+import controlLayer.OrderController;
 import controlLayer.ReservationController;
+import dbLayer.DBOrder;
+import dbLayer.DBOrderLine;
 import exceptionsLayer.DatabaseException;
 
 public class MainUI extends JFrame {
@@ -27,6 +33,7 @@ public class MainUI extends JFrame {
 	// private JDialog dialog;
 	private ReservationController reservationController;
 	private MerchandiseController merchandiseController;
+	private OrderController orderController;
 	private String name;
 	public MainUI() {
 
@@ -34,6 +41,7 @@ public class MainUI extends JFrame {
 
 		setPanelsForMainUI();
 		// addMenuBar();
+		orderController = new OrderController();
 		reservationController = new ReservationController();
 		merchandiseController = new MerchandiseController();
 		setLayout(new BorderLayout());
@@ -573,7 +581,7 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							rightPanel = new OrderEndUIRightPanel();
+							//rightPanel = new OrderEndUIRightPanel();
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
 							setOrderEndUIRightPanel();
@@ -672,7 +680,7 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							rightPanel = new OrderEndUIRightPanel();
+							//rightPanel = new OrderEndUIRightPanel();
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -688,7 +696,7 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							rightPanel = new OrderEndUIRightPanel();
+							//rightPanel = new OrderEndUIRightPanel();
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -704,7 +712,7 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							rightPanel = new OrderEndUIRightPanel();
+							//rightPanel = new OrderEndUIRightPanel();
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -720,7 +728,7 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							rightPanel = new OrderEndUIRightPanel();
+							//rightPanel = new OrderEndUIRightPanel();
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -735,7 +743,17 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							rightPanel = new OrderEndUIRightPanel();
+							ArrayList<Merchandise> allMerchandise=merchandiseController.getAllMerchandise();
+							ArrayList<Merchandise> allMerchandiseDesert = new ArrayList<>();
+							for (Merchandise m: allMerchandise){
+								if(((Course)m).getTypeOfCourse().equals("Desert")){
+									allMerchandiseDesert.add(m);
+								}
+							}
+							rightPanel = new OrderEndUIRightPanel(allMerchandiseDesert);
+							
+							
+							//((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandiseDesert);
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -762,7 +780,7 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							rightPanel = new OrderEndUIRightPanel();
+							//rightPanel = new OrderEndUIRightPanel();
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -778,7 +796,7 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							rightPanel = new OrderEndUIRightPanel();
+							//rightPanel = new OrderEndUIRightPanel();
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -796,16 +814,34 @@ public class MainUI extends JFrame {
 	public void setOrderEndUIRightPanel() {
 		((OrderEndUIRightPanel) rightPanel)
 				.setListenerForEverything(new ListenerForEverything() {
-
+					
 					@Override
 					public void AnyEventOcurred(AnyEvent anyEvent)
 							throws DatabaseException {
 						String nameOfCourse = anyEvent.getButtonTrigered();
 						int dialog = JOptionPane
 								.showConfirmDialog(MainUI.this,
-										"Are you shure you want to add this Merchandise?");
+										"Are you sure you want to add this Merchandise?");
+						
 						if (dialog == 0) {
 							System.out.println("It means yes!");
+							Reservation resTemp = reservationController.findReservationByName(name);
+							System.out.println("ResTEmp: "+resTemp.getCustomerName());
+							System.out.println("ResTEmp: "+resTemp.getOrder().getOrderId());
+							int orderId =resTemp.getOrder().getOrderId();
+							Order order = orderController.findOrderById(orderId);
+							
+							order = resTemp.getOrder();
+							System.out.println("OrderID: "+orderId);
+							
+							orderController.setOrder(order);
+							orderController.findMerchandise(nameOfCourse);
+							((MakeOrderUILeftPanel)leftPanel).setOrderList(resTemp.getOrder().getOrderLines());
+							((MakeOrderUILeftPanel)leftPanel).refresh();
+							orderController.addMerchandises(1);
+							System.out.println("Order Stuff MainUI: "+order.getId());
+							orderController.saveOrder();
+							
 						} else {
 							System.out.println("It means no!");
 						}

@@ -22,10 +22,19 @@ public class DBOrderLine implements IFDBOrderLine {
 	public int insertOrderLine(OrderLine orderLine) throws DatabaseException {
 		int rc = -1;
 		String query = "";
-		query = "INSERT INTO ORDERLINE(quantity, oId, meId, isDone) VALUES ('"
-				+ orderLine.getQuantity() + "','" + orderLine.getOrderId()
-				+ "','" + orderLine.getMerchandise().getId() + "','"
-				+ orderLine.isDone() + "')";
+		if(orderLine.isDone()){
+		
+		query = "INSERT INTO ORDERLINE(quantity, oId, meId, isDone) VALUES ("
+				+ orderLine.getQuantity() + "," + orderLine.getOrderId()
+				+ "," + orderLine.getMerchandise().getId() + ","
+				+ 1 + ")";
+		}else{
+			query = "INSERT INTO ORDERLINE(quantity, oId, meId, isDone) VALUES ("
+					+ orderLine.getQuantity() + "," + orderLine.getOrderId()
+					+ "," + orderLine.getMerchandise().getId() + ","
+					+ 0 + ")";
+		}
+		
 
 		System.out.println("insert : " + query);
 		try {
@@ -48,10 +57,14 @@ public class DBOrderLine implements IFDBOrderLine {
 
 	@Override
 	public OrderLine findOrderLine(int id) throws DatabaseException {
-		String wClause = "  id = '" + id + "'";
+		String wClause = "  id = " + id + "";
 		return singleWhere(wClause);
 	}
-
+	@Override
+	public ArrayList<OrderLine> findOrderLineByOrderId(int orderId) throws DatabaseException {
+		String wClause = "  oId = " + orderId + "";
+		return miscWhere(wClause);
+	}
 	@Override
 	public int updateOrderLine(int id, OrderLine ol) {
 		// New: using a prepared statement (note, this prepared statement is not
@@ -183,7 +196,7 @@ public class DBOrderLine implements IFDBOrderLine {
 	private int findMerchandiseType(int id) throws DatabaseException {
 		int mType = 0;
 		String query = "";
-		query = "Select mType from Merchandise where id=" + id;
+		query = "Select mType from Merchandise where mId=" + id;
 		System.out.println("insert : " + query);
 		try {
 			Statement stmt = con.createStatement();

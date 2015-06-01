@@ -2,21 +2,21 @@ package guiLayer;
 
 import java.util.ArrayList;
 
-import javax.swing.JButton;
 import javax.swing.table.AbstractTableModel;
 
-import modelLayer.Order;
+import modelLayer.Course;
+import modelLayer.Drink;
+import modelLayer.Miscellaneous;
+import modelLayer.OrderLine;
 
 public class MakeOrderMenuTableModel extends AbstractTableModel {
 	
-	private ArrayList<Order> al;
+	private ArrayList<OrderLine> ol;
 	private String[] colNames = {"Name", "Type", "Type of course", "Quantity"};
 
 	
 	public MakeOrderMenuTableModel() {
-		al = new ArrayList<Order>();
-	
-		
+		ol = new ArrayList<>();		
 	}
 
 	@Override
@@ -28,21 +28,35 @@ public class MakeOrderMenuTableModel extends AbstractTableModel {
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return al.size();
+		return ol.size();
 	}
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		Order order = al.get(rowIndex);
+		OrderLine orderLine = ol.get(rowIndex);
 		switch(columnIndex) {
 		case 0:
-			return "Change this";
+			return orderLine.getMerchandise().getName();
 		case 1:
-			return "Change this";
+			if(orderLine.getMerchandise() instanceof Course == true){
+				return "Course";
+			}
+			if(orderLine.getMerchandise() instanceof Drink == true){
+				return "Drink";
+			}
+			if(orderLine.getMerchandise() instanceof Miscellaneous == true){
+				return "Miscellaneous";
+			}
+			
 		case 2:
-			return "Change this";
+			if(orderLine.getMerchandise() instanceof Course == true){ 
+				return ((Course)orderLine.getMerchandise()).getTypeOfCourse();
+				}
+			else{
+				return "N/A";
+			}
 		case 3:
-			return "Change this";
+			return orderLine.getQuantity();
 		default:
 			return null;
 		}
@@ -75,6 +89,10 @@ public class MakeOrderMenuTableModel extends AbstractTableModel {
 		default:
 			return null;
 		}
+	}
+	public void setOrderList(ArrayList<OrderLine>  ol){
+		this.ol = ol;
+		fireTableDataChanged();
 	}
 
 }
