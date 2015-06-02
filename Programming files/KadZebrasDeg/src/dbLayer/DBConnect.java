@@ -1,19 +1,19 @@
 package dbLayer;
 
-import java.sql.*;
-
-import dbLayer.DBConnect;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
 
 public class DBConnect {
 
-	private static final String driver = "jdbc:sqlserver://localhost:1433";
-	// "jdbc:sqlserver://kraka.ucn.dk:1433";
-	// private static final String driver = "jdbc:sqlserver://localhost:1433";
-	private static final String databaseName = ";databaseName=KadZebrasDeg";
+	private static final String driver = "jdbc:sqlserver://kraka.ucn.dk:1433";
+	// "jdbc:sqlserver://localhost:1433";
+	//private static final String driver = "jdbc:sqlserver://localhost:1433";
+	private static final String databaseName = ";databaseName=dmai0914_2Sem_3";
 	// SQL Server
-	private static String userName = ";user=sa";
-	// private static String userName = "; user=company";
-	private static String password = ";password=secret";
+	//private static String userName = ";user=sa";
+	private static String userName = "; user=dmai0914_2Sem_3";
+	private static String password = ";password=IsAllowed";
 
 	private DatabaseMetaData dma;
 	private static Connection con;

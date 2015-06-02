@@ -41,6 +41,7 @@ public class StaffUIRightPanel extends JPanel {
 	private JLabel cprNoLbl;
 	private JTextField cprNoTF;
 	
+	
 	 public StaffUIRightPanel(){
 		 sc = new StaffController();
 	        //setPreferredSize(new Dimension(400,0));
@@ -63,6 +64,8 @@ public class StaffUIRightPanel extends JPanel {
 			exists = new Label("Exists : ");
 			cprNoLbl = new JLabel("CPR No: ");
 			cprNoTF = new JTextField(10);
+			cprNoTF.setVisible(false);
+			cprNoLbl.setVisible(false);
 			
 			String[] names = new String[sc.getAllStaff().size()];
 			for(int i=0;i<sc.getAllStaff().size();i++){

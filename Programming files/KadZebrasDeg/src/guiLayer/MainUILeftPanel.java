@@ -34,6 +34,9 @@ public class MainUILeftPanel extends JPanel {
 		merchandiseMenuBtn = new JButton("Merchandise Menu");
 		exitBtn = new JButton("Exit");
 		staffBtn = new JButton("Staff Menu");
+		managerMenuBtn.setEnabled(false);
+		tableMenuBtn.setEnabled(true);
+		chefMenuBtn.setEnabled(false);
 
 		exitBtn.setPreferredSize(new Dimension(150, 25));
 		managerMenuBtn.setPreferredSize(new Dimension(150, 25));

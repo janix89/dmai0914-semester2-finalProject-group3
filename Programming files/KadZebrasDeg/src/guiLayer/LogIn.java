@@ -23,7 +23,7 @@ public class LogIn extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tfUsername;
-	private JPasswordField passwordField;
+	private JPasswordField passwordField ;
 	private DBLogin dbLogin;
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -62,11 +62,13 @@ public class LogIn extends JFrame {
 		contentPane.add(lblPassword);
 		
 		tfUsername = new JTextField();
+		tfUsername.setText("admin");
 		tfUsername.setBounds(157, 75, 100, 20);
 		contentPane.add(tfUsername);
 		tfUsername.setColumns(10);
 		
 		passwordField = new JPasswordField();
+		passwordField.setText("admin");
 		passwordField.setBounds(157, 103, 100, 20);
 		contentPane.add(passwordField);
 		

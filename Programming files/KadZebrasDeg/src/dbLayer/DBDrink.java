@@ -47,14 +47,14 @@ public class DBDrink implements IFDBDrink {
 	private int insertIntoMerchandise(Drink drink) throws DatabaseException {
 		int rc = -1;
 		String query = "";
-		query = "INSERT INTO DRINK(id,quantityInStock, alcoholConcentration, minQuantityInStock) VALUES ('"
+		query = "INSERT INTO DRINK(id,quantityInStock, alcoholConcentration, minQuantityInStock) VALUES ("
 				+ drink.getId()
-				+ "','"
+				+ ","
 				+ drink.getQuantityInStock()
-				+ "','"
+				+ ","
 				+ drink.getAlcoholConcetration()
-				+ "','"
-				+ drink.getMinQuantityInStock() + "')";
+				+ ","
+				+ drink.getMinQuantityInStock() + ")";
 
 		System.out.println("insert : " + query);
 		try {
@@ -158,7 +158,9 @@ public class DBDrink implements IFDBDrink {
 			while (results.next()) {
 				Drink drinkObj = new Drink();
 				drinkObj = buildDrink(results);
-				list.add(drinkObj);
+				//if(!checkIfObjectAllreadyExist(list, drinkObj)){
+					list.add(drinkObj);
+					//}
 			}// end while
 			stmt.close();
 		}// end try
@@ -194,7 +196,7 @@ public class DBDrink implements IFDBDrink {
 
 	// method to build the query
 	private String buildQuery(String wClause) {
-		String query = "SELECT *  FROM Merchandise, Drink";
+		String query = "SELECT *  FROM Merchandise inner join Drink on merchandise.mid = drink.id";
 
 		if (wClause.length() > 0)
 			query = query + " WHERE " + wClause;
@@ -213,6 +215,13 @@ public class DBDrink implements IFDBDrink {
 			drinkObj.setAlcoholConcetration(results
 					.getFloat("alcoholConcentration"));
 			drinkObj.setMinQuantityInStock(results.getInt("minQuantityInStock"));
+			if(results.getInt("mExists")==1){
+				drinkObj.setExists(true);
+			}else
+			if(results.getInt("mExists")==0){
+				drinkObj.setExists(false);
+			}
+			
 		} catch (Exception e) {
 			System.out.println("Error in building the drink object");
 		}
@@ -222,6 +231,14 @@ public class DBDrink implements IFDBDrink {
 	public Merchandise findDrinkById(int id) {
 		String wClause = "  merchandise.mId = " + id + " AND drink.id= " + id;
 		return singleWhere(wClause);
+	}
+	public boolean checkIfObjectAllreadyExist(ArrayList<Drink> list, Drink obj){
+		for(Drink c : list){
+			if(c.getName().equals(obj.getName())){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

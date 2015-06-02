@@ -27,6 +27,7 @@ public class MerchandiseController {
 	public Merchandise createMerchandise(String name, float price, int type,
 			String ingredients, boolean isVegetarian, int quantity, float ac,
 			String typeOfCourse) throws DatabaseException {
+		System.out.println("type: "+type);
 		switch (type) {
 		case 1:
 			Course m = new Course();
@@ -36,14 +37,11 @@ public class MerchandiseController {
 			m.setIsVegetarian(isVegetarian);
 			m.setTypeOfCourse(typeOfCourse);
 			try {
-				DBConnect.startTransaction();
 				if (dBCourse.insertCourse(m) != -1) {
-					DBConnect.commitTransaction();
 					return m;
 				} else
 					return null;
 			} catch (Exception e) {
-				DBConnect.rollbackTransaction();
 			}
 		case 2:
 			Miscellaneous mi = new Miscellaneous();
@@ -51,14 +49,11 @@ public class MerchandiseController {
 			mi.setName(name);
 			mi.setPrice(price);
 			try {
-				DBConnect.startTransaction();
 				if (dBMiscellaneous.insertMiscellaneous(mi) != -1) {
-					DBConnect.commitTransaction();
 					return mi;
 				} else
 					return null;
 			} catch (Exception e) {
-				DBConnect.rollbackTransaction();
 			}
 		case 3:
 			Drink d = new Drink();
@@ -66,13 +61,12 @@ public class MerchandiseController {
 			d.setName(name);
 			d.setPrice(price);
 			try {
-				DBConnect.startTransaction();
+				System.out.println("Here");
 				if (dBDrink.insertDrink(d) != -1) {
 					return d;
 				} else
 					return null;
 			} catch (Exception e) {
-				DBConnect.rollbackTransaction();
 			}
 		default:
 			return null;
@@ -104,13 +98,20 @@ public class MerchandiseController {
 	public ArrayList<Merchandise> getAllMerchandise() {
 		ArrayList<Merchandise> temp = new ArrayList<>();
 		for (Course c : dBCourse.getAllCourses()) {
+			if(!checkIfObjectAllreadyExist(temp, c)){
 			temp.add(c);
+			}
 		}
 		for (Drink d : dBDrink.getAllDrinks()) {
-			temp.add(d);
+			if(!checkIfObjectAllreadyExist(temp, d)){
+				temp.add(d);
+				}
 		}
 		for (Miscellaneous m : dBMiscellaneous.getAllMiscellaneous()) {
-			temp.add(m);
+			if(!checkIfObjectAllreadyExist(temp, m)){
+				temp.add(m);
+				}
+		
 		}
 		return temp;
 	}
@@ -123,6 +124,14 @@ public class MerchandiseController {
 		} else {
 			dBDrink.updateDrink(m.getName(), (Drink) m);
 		}
+	}
+	public boolean checkIfObjectAllreadyExist(ArrayList<Merchandise> list, Merchandise obj){
+		for(Merchandise c : list){
+			if(c.getName().equals(obj.getName())){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

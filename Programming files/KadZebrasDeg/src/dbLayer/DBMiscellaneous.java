@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelLayer.Course;
+import modelLayer.Drink;
 import modelLayer.Merchandise;
 import modelLayer.Miscellaneous;
 import exceptionsLayer.DatabaseException;
@@ -49,12 +50,12 @@ public class DBMiscellaneous implements IFDBMiscellaneous {
 			throws DatabaseException {
 		int rc = -1;
 		String query = "";
-		query = "INSERT INTO MISCELLANOUS (id, quantityInStock, minQuantityInStock) VALUES ('"
+		query = "INSERT INTO Miscellaneous (id, quantityInStock, minQuantityInStock) VALUES ("
 				+ miscellaneous.getId()
-				+ "','"
+				+ ","
 				+ miscellaneous.getQuantityInStock()
-				+ "','"
-				+ miscellaneous.getMinQuantityInStock() + "')";
+				+ ","
+				+ miscellaneous.getMinQuantityInStock() + ")";
 
 		System.out.println("insert : " + query);
 		try {
@@ -161,14 +162,16 @@ public class DBMiscellaneous implements IFDBMiscellaneous {
 			while (results.next()) {
 				Miscellaneous miscellaneousObj = new Miscellaneous();
 				miscellaneousObj = buildMiscellaneous(results);
-				list.add(miscellaneousObj);
+				
+					list.add(miscellaneousObj);
+					
 			}// end while
 			stmt.close();
 		}// end try
 		catch (Exception e) {
 			System.out.println("Query exception - select: " + e);
 			e.printStackTrace();
-		}
+		}		
 		return list;
 	}
 
@@ -192,12 +195,13 @@ public class DBMiscellaneous implements IFDBMiscellaneous {
 		catch (Exception e) {
 			System.out.println("Query exception: " + e);
 		}
+		
 		return miscellaneousObj;
 	}
 
 	// method to build the query
 	private String buildQuery(String wClause) {
-		String query = "SELECT *  FROM Merchandise, Miscellaneous";
+		String query = "SELECT *  FROM Merchandise inner join Miscellaneous on merchandise.mid = Miscellaneous.id";
 
 		if (wClause.length() > 0)
 			query = query + " WHERE " + wClause;
@@ -216,6 +220,12 @@ public class DBMiscellaneous implements IFDBMiscellaneous {
 					.getInt("quantityInStock"));
 			miscellanousObj.setMinQuantityInStock(results
 					.getInt("minQuantityInStock"));
+			if(results.getInt("mExists")==1){
+				miscellanousObj.setExists(true);
+			}else
+			if(results.getInt("mExists")==0){
+				miscellanousObj.setExists(false);
+			}
 		} catch (Exception e) {
 			System.out.println("Error in building the miscellaneous object");
 		}
@@ -226,6 +236,14 @@ public class DBMiscellaneous implements IFDBMiscellaneous {
 		String wClause = "  merchandise.mId = " + id
 				+ " AND miscellaneous.id= " + id;
 		return singleWhere(wClause);
+	}
+	public boolean checkIfObjectAllreadyExist(ArrayList<Miscellaneous> list, Miscellaneous obj){
+		for(Miscellaneous c : list){
+			if(c.getName().equals(obj.getName())){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

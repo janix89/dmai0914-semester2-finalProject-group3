@@ -365,7 +365,7 @@ public class MainUI extends JFrame {
 						if (anyEvent.getButtonTrigered().equals("createBtn")) {
 							System.out.println("create");
 							
-							if(!anyEvent.getName().equals("") && !anyEvent.getIngredients().equals(""))
+							if(!anyEvent.getName().equals(""))
 							{
 								int temp=0;
 							if(anyEvent.getTypeOfMerchandise().equals("Course")){
@@ -597,7 +597,18 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							//rightPanel = new OrderEndUIRightPanel();
+							ArrayList<Merchandise> allMerchandise=merchandiseController.getAllMerchandise();
+							ArrayList<Merchandise> allMerchandiseDesert = new ArrayList<>();
+							for (Merchandise m: allMerchandise){
+								if(m instanceof Miscellaneous){
+									allMerchandiseDesert.add(m);
+								}
+							}
+							rightPanel = new OrderEndUIRightPanel(allMerchandiseDesert);
+							
+							
+							//((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandiseDesert);
+							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
 							setOrderEndUIRightPanel();
@@ -696,7 +707,17 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							//rightPanel = new OrderEndUIRightPanel();
+							ArrayList<Merchandise> allMerchandise=merchandiseController.getAllMerchandise();
+							ArrayList<Merchandise> allMerchandiseDesert = new ArrayList<>();
+							for (Merchandise m: allMerchandise){
+								if(m instanceof Course && ((Course)m).getTypeOfCourse().equals("1st") && !((Course)m).getIsVegetarian()){
+									allMerchandiseDesert.add(m);
+								}
+							}
+							rightPanel = new OrderEndUIRightPanel(allMerchandiseDesert);
+							
+							
+							//((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandiseDesert);
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -712,7 +733,17 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							//rightPanel = new OrderEndUIRightPanel();
+							ArrayList<Merchandise> allMerchandise=merchandiseController.getAllMerchandise();
+							ArrayList<Merchandise> allMerchandiseDesert = new ArrayList<>();
+							for (Merchandise m: allMerchandise){
+								if(m instanceof Course && ((Course)m).getTypeOfCourse().equals("1st") && ((Course)m).getIsVegetarian()){
+									allMerchandiseDesert.add(m);
+								}
+							}
+							rightPanel = new OrderEndUIRightPanel(allMerchandiseDesert);
+							
+							
+							//((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandiseDesert);
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -728,7 +759,17 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							//rightPanel = new OrderEndUIRightPanel();
+							ArrayList<Merchandise> allMerchandise=merchandiseController.getAllMerchandise();
+							ArrayList<Merchandise> allMerchandiseDesert = new ArrayList<>();
+							for (Merchandise m: allMerchandise){
+								if(m instanceof Course && ((Course)m).getTypeOfCourse().equals("2nd") && !((Course)m).getIsVegetarian()){
+									allMerchandiseDesert.add(m);
+								}
+							}
+							rightPanel = new OrderEndUIRightPanel(allMerchandiseDesert);
+							
+							
+							//((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandiseDesert);
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -744,7 +785,17 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							//rightPanel = new OrderEndUIRightPanel();
+							ArrayList<Merchandise> allMerchandise=merchandiseController.getAllMerchandise();
+							ArrayList<Merchandise> allMerchandiseDesert = new ArrayList<>();
+							for (Merchandise m: allMerchandise){
+								if(m instanceof Course && ((Course)m).getTypeOfCourse().equals("1st") && ((Course)m).getIsVegetarian()){
+									allMerchandiseDesert.add(m);
+								}
+							}
+							rightPanel = new OrderEndUIRightPanel(allMerchandiseDesert);
+							
+							
+							//((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandiseDesert);
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -758,14 +809,17 @@ public class MainUI extends JFrame {
 							System.out.println("otherBtn");
 							container = getContentPane();
 							container.removeAll();
+							merchandiseController = new MerchandiseController();
 							leftPanel = new MakeOrderUILeftPanel();
 							ArrayList<Merchandise> allMerchandise=merchandiseController.getAllMerchandise();
 							ArrayList<Merchandise> allMerchandiseDesert = new ArrayList<>();
 							for (Merchandise m: allMerchandise){
-								if(((Course)m).getTypeOfCourse().equals("Desert")){
+								if(m instanceof Course && ((Course)m).getTypeOfCourse().equals("Dessert")){
 									allMerchandiseDesert.add(m);
+									
 								}
 							}
+							System.out.println("Size: " + allMerchandiseDesert.size());
 							rightPanel = new OrderEndUIRightPanel(allMerchandiseDesert);
 							
 							
@@ -796,7 +850,17 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							//rightPanel = new OrderEndUIRightPanel();
+							ArrayList<Merchandise> allMerchandise=merchandiseController.getAllMerchandise();
+							ArrayList<Merchandise> allMerchandiseDesert = new ArrayList<>();
+							for (Merchandise m: allMerchandise){
+								if(m instanceof Drink && ((Drink)m).getAlcoholConcetration() > 0){
+									allMerchandiseDesert.add(m);
+								}
+							}
+							rightPanel = new OrderEndUIRightPanel(allMerchandiseDesert);
+							
+							
+							//((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandiseDesert);
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd
@@ -812,7 +876,17 @@ public class MainUI extends JFrame {
 							container = getContentPane();
 							container.removeAll();
 							leftPanel = new MakeOrderUILeftPanel();
-							//rightPanel = new OrderEndUIRightPanel();
+							ArrayList<Merchandise> allMerchandise=merchandiseController.getAllMerchandise();
+							ArrayList<Merchandise> allMerchandiseDesert = new ArrayList<>();
+							for (Merchandise m: allMerchandise){
+								if(m instanceof Drink){
+									allMerchandiseDesert.add(m);
+								}
+							}
+							rightPanel = new OrderEndUIRightPanel(allMerchandiseDesert);
+							
+							
+							//((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandiseDesert);
 							// ((OrderEndUIRightPanel)rightPanel).setAllMerchandise(allMerchandise);
 							setPanelsForMakeOrderUILeftPanel();
 							// Here should be listeners for OrderEnd

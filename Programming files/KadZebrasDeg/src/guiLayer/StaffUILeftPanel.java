@@ -70,6 +70,8 @@ public class StaffUILeftPanel extends JPanel {
 		backBtn.setPreferredSize(new Dimension(150, 25));
 		cprNoLbl = new JLabel("CPR No: ");
 		cprNoTF = new JTextField(10);
+		cprNoTF.setVisible(false);
+		cprNoLbl.setVisible(false);
 
 		backBtn.addActionListener(new ActionListener() {
 

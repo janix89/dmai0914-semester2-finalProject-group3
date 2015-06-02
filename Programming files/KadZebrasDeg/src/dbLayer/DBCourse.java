@@ -134,7 +134,9 @@ public class DBCourse implements IFDBCourse {
 			Statement stmt = con.createStatement();
 			stmt.setQueryTimeout(5);
 			results = stmt.executeQuery(query);
+			
 			if (results.next()) {
+				
 				courseObj = buildCourse(results);
 				stmt.close();
 			} else {
@@ -159,7 +161,9 @@ public class DBCourse implements IFDBCourse {
 			while (results.next()) {
 				Course courseObj = new Course();
 				courseObj = buildCourse(results);
+				if(!checkIfObjectAllreadyExist(list, courseObj)){
 				list.add(courseObj);
+				}
 			}// end while
 			stmt.close();
 		}// end try
@@ -195,7 +199,7 @@ public class DBCourse implements IFDBCourse {
 
 	// method to build the query
 	private String buildQuery(String wClause) {
-		String query = "SELECT *  FROM Merchandise, Course";
+		String query = "SELECT *  FROM Merchandise inner join Course on merchandise.mid=course.id";
 
 		if (wClause.length() > 0)
 			query = query + " WHERE " + wClause;
@@ -214,7 +218,7 @@ public class DBCourse implements IFDBCourse {
 			cusObj.setIsVegetarian(results.getBoolean("isVegetarian"));
 			cusObj.setExists(results.getBoolean("mExists"));
 			cusObj.setTypeOfCourse(results.getString("typeOfCourse"));
-
+			
 		} catch (Exception e) {
 			System.out.println("Error in building the course object");
 		}
@@ -224,5 +228,13 @@ public class DBCourse implements IFDBCourse {
 	public Merchandise findCourseById(int id) {
 		String wClause = "  merchandise.mId = " + id + " AND course.id= " + id;
 		return singleWhere(wClause);
+	}
+	public boolean checkIfObjectAllreadyExist(ArrayList<Course> list, Course obj){
+		for(Course c : list){
+			if(c.getName().equals(obj.getName())){
+				return true;
+			}
+		}
+		return false;
 	}
 }
