@@ -13,7 +13,7 @@ public class DBLogin {
 	public DBLogin() {
 		con = DBConnect.getInstance().getDBcon();
 	}
-	public Login findDrink(String name, String password) throws DatabaseException {
+	public Login findLogin(String name, String password) throws DatabaseException {
 		String wClause = "  lLogin.username = '" + name 
 				+ "' AND lLogin.pass= '"+ password +"'";
 		return singleWhere(wClause);
