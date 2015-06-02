@@ -83,7 +83,7 @@ public class LogIn extends JFrame {
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					if(dbLogin.findDrink(tfUsername.getText(), passwordField.getText())!=null){
+					if(dbLogin.findLogin(tfUsername.getText(), passwordField.getText())!=null){
 						lblIncorect.setText("");
 						new MainUI();
 						dispose();

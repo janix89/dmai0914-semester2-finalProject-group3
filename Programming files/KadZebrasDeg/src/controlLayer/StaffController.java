@@ -2,6 +2,7 @@ package controlLayer;
 import java.util.ArrayList;
 
 import modelLayer.Staff;
+import dbLayer.DBConnect;
 import dbLayer.DBStaff;
 import exceptionsLayer.DatabaseException;
 
@@ -42,9 +43,12 @@ public class StaffController {
 		}
 		
 		try {
+			DBConnect.startTransaction();
 			dbStaff.insertStaff(staff);
+			DBConnect.commitTransaction();
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
+			DBConnect.rollbackTransaction();
 			e.printStackTrace();
 		}
 	}

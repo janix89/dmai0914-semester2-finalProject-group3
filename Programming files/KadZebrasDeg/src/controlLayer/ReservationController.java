@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import modelLayer.Order;
 import modelLayer.Reservation;
 import modelLayer.Table;
+import dbLayer.DBConnect;
 import dbLayer.DBReservation;
 import dbLayer.DBTable;
 import exceptionsLayer.DatabaseException;
@@ -14,6 +15,7 @@ public class ReservationController {
 	private TableController tableController;
 	private ArrayList<Table> chosenTables;
 	private DBTable dbTable;
+
 	public ReservationController() {
 		dbTable = new DBTable();
 		dBReservation = new DBReservation();
@@ -22,8 +24,8 @@ public class ReservationController {
 	}
 
 	public Reservation makeReservation(String customersName, String phoneNo,
-			String reservationDate, String reservedTime, int numberOfGuests, Order order)
-			throws DatabaseException {
+			String reservationDate, String reservedTime, int numberOfGuests,
+			Order order) throws DatabaseException {
 		Reservation res = new Reservation();
 		res.setCustomerName(customersName);
 		res.setPhoneNo(phoneNo);
@@ -31,7 +33,8 @@ public class ReservationController {
 		res.setReservationDate(reservationDate);
 		res.setReservedTime(reservedTime);
 		res.setOrder(order);
-		for (Table t : chosenTables) {// you add here the tables to the reservation
+		for (Table t : chosenTables) {// you add here the tables to the
+										// reservation
 			// can be improved to popup some error or smth
 			// TO BE IMPROVED
 			Table tbl = checkTables(t.getTableNo());
@@ -41,13 +44,13 @@ public class ReservationController {
 		if (confirmReservation(res) != -1)
 			return res;
 		else
-		System.out.println("Success!");
-		//Just for test
-		for(Table t : chosenTables){
+			System.out.println("Success!");
+		// Just for test
+		for (Table t : chosenTables) {
 			System.out.println("Table in arrayList : " + t.getTableNo());
 		}
-		
-			return res;
+
+		return res;
 	}
 
 	public Table checkTables(int tableNo) throws DatabaseException {
@@ -60,7 +63,15 @@ public class ReservationController {
 	}
 
 	public int confirmReservation(Reservation res) throws DatabaseException {
-		return dBReservation.insertReservation(res);
+		try {
+			DBConnect.startTransaction();
+			dBReservation.insertReservation(res);
+			DBConnect.commitTransaction();
+			return 1;
+		} catch (Exception e) {
+			DBConnect.rollbackTransaction();
+		}
+		return -1;
 	}
 
 	public Reservation findReservationByName(String name)
@@ -89,25 +100,20 @@ public class ReservationController {
 		}
 		return res;
 	}
-	public void addTableToReservation(Table table){
+
+	public void addTableToReservation(Table table) {
 		chosenTables.add(table);
-		dbTable.updateTable(chosenTables.get(chosenTables.size()-1).getTableNo(), chosenTables.get(chosenTables.size()-1));
+		dbTable.updateTable(chosenTables.get(chosenTables.size() - 1)
+				.getTableNo(), chosenTables.get(chosenTables.size() - 1));
 	}
-	
-	/** Code I added
-	public ArrayList<Table> getChosenTables(){
-		return chosenTables;
-	}
-	public void removeTableFromChosenTables(Table table){
-		chosenTables.remove(table);
-	}
-	public boolean checkIfTableHasBeenAlreadyAdded(int table){
-		for(Table t : chosenTables){
-			if(t.getTableNo() == table){
-				return true;
-			}
-		}
-		return false;
-	}
-	*/
+
+	/**
+	 * Code I added public ArrayList
+	 * <Table>
+	 * getChosenTables(){ return chosenTables; } public void
+	 * removeTableFromChosenTables(Table table){ chosenTables.remove(table); }
+	 * public boolean checkIfTableHasBeenAlreadyAdded(int table){ for(Table t :
+	 * chosenTables){ if(t.getTableNo() == table){ return true; } } return
+	 * false; }
+	 */
 }
