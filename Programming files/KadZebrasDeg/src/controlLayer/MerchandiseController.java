@@ -1,46 +1,67 @@
 package controlLayer;
 import modelLayer.*;
 import dbLayer.*;
+import exceptionsLayer.DatabaseException;
 
 public class MerchandiseController {
-	private DBMerchandise dbMerchandise;
+	private DBCourse dBCourse;
+	private DBMiscellaneous dBMiscellaneous;
+	private DBDrink dBDrink;
 	private String ingredients;
 	private boolean isVegetarian;
 	private int quantity;
 	private float percent;
 	
-	public Merchandise createMerchandise(name, price, type){
+	public Merchandise createMerchandise(String name, float price, int type) throws DatabaseException{
 		switch(type){
 		case 1:
-			Merchandise m = new Course(name,price);
+			Course m = new Course();
+			m.setName(name);
+			m.setPrice(price);
 			m.setIngredients(ingredients);
 			m.setIsVegetarian(isVegetarian);
-			if (dbMerchandise.insertCourse(m))
+			if (dBCourse.insertCourse(m) != -1)
 				return m;
 			else return null;
-			break;
 		case 2:
-			Merchandise m = new Miscellaneous(name,price);
-			m.setQuantityInStock(quantity);
-			if(dbMerchandise.insertMiscellaneous(m))
-				return m;
+			Miscellaneous mi = new Miscellaneous();
+			mi.setQuantityInStock(quantity);
+			mi.setName(name);
+			mi.setPrice(price);
+			if(dBMiscellaneous.insertMiscellaneous(mi) != -1)
+				return mi;
 			else return null;
-			break;
 		case 3:
-			Merchandise m = new Miscellaneous(name,price);
-			m.alcoholConcentration(percent);
-			if(dbMerchandise.insertDrink(m))
-				return m;
+			Drink d = new Drink();
+			d.setAlcoholConcetration(percent);
+			d.setName(name);
+			d.setPrice(price);
+			if(dBDrink.insertDrink(d) != -1)
+				return d;
 			else return null;
-			break;
 		default:
 			return null;
-			break;
 		}
 	}
 	
 	public Merchandise findMerchandise(String name){
-		return dbMerchandise.findMerchandise(name);
+		for(int x = 0; x < dBCourse.getAllCourses().size(); x++){
+			if(name.equals(dBCourse.getAllCourses().get(x))){
+				return dBCourse.getAllCourses().get(x);
+			}
+		}
+		for(int x = 0; x < dBMiscellaneous.getAllMiscellaneous().size(); x++){
+			if(name.equals(dBMiscellaneous.getAllMiscellaneous().get(x))){
+				return dBMiscellaneous.getAllMiscellaneous().get(x);
+			}
+		}
+		for(int x = 0; x < dBDrink.getAllDrinks().size(); x++){
+			if(name.equals(dBDrink.getAllDrinks().get(x))){
+				return dBDrink.getAllDrinks().get(x);
+			}
+		}
+		
+		return null;
 	}
 	
 	public void setIngredients(String ingredients){

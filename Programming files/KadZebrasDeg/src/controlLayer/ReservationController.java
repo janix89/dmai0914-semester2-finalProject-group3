@@ -10,13 +10,14 @@ import exceptionsLayer.DatabaseException;
 public class ReservationController {
 	private DBReservation dBReservation;
 	private TableController tableController;
+	private ArrayList<Table> chosenTables;
 
 	public ReservationController() {
-
+		chosenTables = new ArrayList<>();
 	}
 
 	public Reservation makeReservation(String customersName, String phoneNo,
-			String reservationDate, String reservedTime, int numberOfGuests, ArrayList<Table> tables)
+			String reservationDate, String reservedTime, int numberOfGuests)
 			throws DatabaseException {
 		Reservation res = new Reservation();
 		res.setCustomerName(customersName);
@@ -24,7 +25,7 @@ public class ReservationController {
 		res.setNumberOfGuests(numberOfGuests);
 		res.setReservationDate(reservationDate);
 		res.setReservedTime(reservedTime);
-		for (Table t : tables) {// you add here the tables to the reservation
+		for (Table t : chosenTables) {// you add here the tables to the reservation
 			// can be improved to popup some error or smth
 			// TO BE IMPROVED
 			Table tbl = checkTables(t.getTableNo());
@@ -34,7 +35,13 @@ public class ReservationController {
 		if (confirmReservation(res) != -1)
 			return res;
 		else
-			return null;
+		System.out.println("Success!");
+		//Just for test
+		for(Table t : chosenTables){
+			System.out.println("Table in arrayList : " + t.getTableNo());
+		}
+		
+			return res;
 	}
 
 	public Table checkTables(int tableNo) throws DatabaseException {
@@ -77,4 +84,24 @@ public class ReservationController {
 		}
 		return res;
 	}
+	public void addTableToReservation(Table table){
+		chosenTables.add(table);
+	}
+	
+	/** Code I added
+	public ArrayList<Table> getChosenTables(){
+		return chosenTables;
+	}
+	public void removeTableFromChosenTables(Table table){
+		chosenTables.remove(table);
+	}
+	public boolean checkIfTableHasBeenAlreadyAdded(int table){
+		for(Table t : chosenTables){
+			if(t.getTableNo() == table){
+				return true;
+			}
+		}
+		return false;
+	}
+	*/
 }
