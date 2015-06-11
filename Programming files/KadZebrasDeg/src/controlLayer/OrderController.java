@@ -58,11 +58,20 @@ public class OrderController {
 	}
 
 	public void addMerchandises(double quantity) {
+		if(merchandiseController.checkIfMerchandiseExistsInAL(mer, order)){
+			for(OrderLine ol : order.getOrderLines()){
+				if(ol.getMerchandise().getName().equals(mer.getName())){
+					ol.setQuantity(ol.getQuantity() + 1);
+				}
+			}
+		}
+		else{
 		OrderLine ol = new OrderLine();
 		ol.setMerchandise(mer);
 		ol.setQuantity(quantity);
 		ol.setOrderId(order.getOrderId());
 		order.addOrderLine(ol);
+		}
 	}
 
 	public void saveOrder() throws DatabaseException {
@@ -106,7 +115,12 @@ public class OrderController {
 
 	public Order findOrderById(int orderId) {
 		try {
-			return dbOrder.findOrder(orderId);
+			if(order == null){
+			order = dbOrder.findOrder(orderId);
+			}
+			else if(orderId != order.getOrderId()){
+				order = dbOrder.findOrder(orderId);
+			}
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

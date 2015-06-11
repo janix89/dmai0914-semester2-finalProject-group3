@@ -91,6 +91,10 @@ public class MakeOrderMenuTableModel extends AbstractTableModel {
 		}
 	}
 	public void setOrderList(ArrayList<OrderLine>  ol){
+		System.out.println("i am in serOrderList");
+		for (OrderLine o: ol){
+			System.out.println("lETS SEE THE NAME FOR LERCKJSADJH: "+o.getMerchandise().getName());
+		}
 		this.ol = ol;
 		fireTableDataChanged();
 	}

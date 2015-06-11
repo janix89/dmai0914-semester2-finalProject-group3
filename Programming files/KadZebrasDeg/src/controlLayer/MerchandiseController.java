@@ -1,13 +1,13 @@
 package controlLayer;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelLayer.Course;
 import modelLayer.Drink;
 import modelLayer.Merchandise;
 import modelLayer.Miscellaneous;
-import dbLayer.DBConnect;
+import modelLayer.Order;
+import modelLayer.OrderLine;
 import dbLayer.DBCourse;
 import dbLayer.DBDrink;
 import dbLayer.DBMiscellaneous;
@@ -128,6 +128,16 @@ public class MerchandiseController {
 	public boolean checkIfObjectAllreadyExist(ArrayList<Merchandise> list, Merchandise obj){
 		for(Merchandise c : list){
 			if(c.getName().equals(obj.getName())){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	//new added by Janis
+	public boolean checkIfMerchandiseExistsInAL(Merchandise mer, Order o){
+		for(OrderLine ol : o.getOrderLines()){
+			if(ol.getMerchandise().getName().equals(mer.getName())){
 				return true;
 			}
 		}

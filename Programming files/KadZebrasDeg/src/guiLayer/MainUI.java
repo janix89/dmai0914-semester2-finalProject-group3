@@ -132,18 +132,20 @@ public class MainUI extends JFrame {
 
 						}
 						if (anyEvent.getButtonTrigered().equals("chefMenuBtn")) {
-							/*
-							 * System.out.println("chefMenuBtn");
-							 * setTitle("Chef menu"); container =
-							 * getContentPane(); container.removeAll();
-							 * leftPanel = new ChefUIRightPanel(); rightPanel =
-							 * new ChefUILeftPanel(); //
-							 * setPanelsForWaiterUILeftPanel(); //
-							 * setTitle("Waiter menu"); setPanels(leftPanel,
-							 * rightPanel);
-							 * 
-							 * container.validate(); container.repaint();
-							 */
+							
+							  System.out.println("chefMenuBtn");
+							  setTitle("Chef menu"); 
+							  container = getContentPane(); 
+							  container.removeAll();
+							  leftPanel = new ChefUIRightPanel(); 
+							 // rightPanel = new ChefUILeftPanel(); 
+							  //setPanelsForChefUILeftPanel(); 
+							  setTitle("Chef menu"); 
+							  setPanels(leftPanel, rightPanel);
+							 
+							  container.validate(); 
+							  container.repaint();
+							 
 						}
 						if (anyEvent.getButtonTrigered().equals("tableMenuBtn")) {
 							System.out.println("tableMenuBtn");
@@ -574,6 +576,12 @@ public class MainUI extends JFrame {
 							setPanelsForCourseUIRightPanel();
 							setTitle("Course Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 
@@ -588,6 +596,12 @@ public class MainUI extends JFrame {
 							setDrinkUIRightPanel();
 							setTitle("Drink Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 
@@ -614,6 +628,12 @@ public class MainUI extends JFrame {
 							setOrderEndUIRightPanel();
 							setTitle("Merchandise Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 
@@ -621,6 +641,21 @@ public class MainUI extends JFrame {
 						if (anyEvent.getButtonTrigered().equals(
 								"confirmOrderBtn")) {
 							System.out.println("confirmOrderBtn");
+							
+							orderController.saveOrder();
+							orderController = new OrderController();
+							merchandiseController = new MerchandiseController();
+							JOptionPane.showMessageDialog(MainUI.this, "Order saved");
+							container = getContentPane();
+							container.removeAll();
+							leftPanel = new WaiterUILeftPanel();
+							rightPanel = new WaiterUIRightPanel();
+							setPanelsForWaiterUI();
+							setTitle("Waiter Menu");
+							setPanels(leftPanel, rightPanel);
+							container.validate();
+							container.repaint();
+							
 						}
 
 					}
@@ -658,6 +693,12 @@ public class MainUI extends JFrame {
 							setPanelsForMakeOrderBeginning();
 							setTitle("Order Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 						}
@@ -672,6 +713,12 @@ public class MainUI extends JFrame {
 							setPanelsForMakeOrderBeginning();
 							setTitle("Order Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 						}
@@ -686,6 +733,12 @@ public class MainUI extends JFrame {
 							setPanelsForMakeOrderBeginning();
 							setTitle("Order Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 						}
@@ -724,6 +777,12 @@ public class MainUI extends JFrame {
 							setOrderEndUIRightPanel();
 							setTitle("Merchandise Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 						}
@@ -750,6 +809,12 @@ public class MainUI extends JFrame {
 							setOrderEndUIRightPanel();
 							setTitle("Merchandise Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 						}
@@ -776,6 +841,12 @@ public class MainUI extends JFrame {
 							setOrderEndUIRightPanel();
 							setTitle("Merchandise Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 						}
@@ -802,6 +873,12 @@ public class MainUI extends JFrame {
 							setOrderEndUIRightPanel();
 							setTitle("Merchandise Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 						}
@@ -830,6 +907,12 @@ public class MainUI extends JFrame {
 							setOrderEndUIRightPanel();
 							setTitle("Merchandise Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 						}
@@ -867,6 +950,12 @@ public class MainUI extends JFrame {
 							setOrderEndUIRightPanel();
 							setTitle("Merchandise Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 						}
@@ -893,6 +982,12 @@ public class MainUI extends JFrame {
 							setOrderEndUIRightPanel();
 							setTitle("Merchandise Menu");
 							setPanels(leftPanel, rightPanel);
+							if(orderController.getOrder() != null){
+								if(!orderController.getOrder().getOrderLines().isEmpty()){
+								((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+								((MakeOrderUILeftPanel)leftPanel).refresh();
+								}
+							}
 							container.validate();
 							container.repaint();
 						}
@@ -920,17 +1015,22 @@ public class MainUI extends JFrame {
 							System.out.println("ResTEmp: "+resTemp.getOrder().getOrderId());
 							int orderId =resTemp.getOrder().getOrderId();
 							Order order = orderController.findOrderById(orderId);
+							orderController.setOrder(order);
+							//order = resTemp.getOrder();
+							//order.setOrderId(orderId);
 							
-							order = resTemp.getOrder();
 							System.out.println("OrderID: "+orderId);
 							
-							orderController.setOrder(order);
+							//orderController.setOrder(order);
 							orderController.findMerchandise(nameOfCourse);
-							((MakeOrderUILeftPanel)leftPanel).setOrderList(resTemp.getOrder().getOrderLines());
-							((MakeOrderUILeftPanel)leftPanel).refresh();
 							orderController.addMerchandises(1);
-							System.out.println("Order Stuff MainUI: "+order.getId());
-							orderController.saveOrder();
+							((MakeOrderUILeftPanel)leftPanel).setOrderList(orderController.getOrder().getOrderLines());
+							System.out.println("Size of AL: " + order.getOrderLines().size());
+							((MakeOrderUILeftPanel)leftPanel).refresh();
+							//orderController.addMerchandises(1);
+							System.out.println("Order Stuff MainUI: "+order.getOrderId());
+						
+							//orderController.saveOrder();
 							
 						} else {
 							System.out.println("It means no!");
