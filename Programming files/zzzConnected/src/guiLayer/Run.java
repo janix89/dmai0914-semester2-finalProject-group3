@@ -7,7 +7,9 @@ public class Run {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				try{
-				new MainUI();
+				LogIn lg = new LogIn();//MainUI();
+				lg.setVisible(true);
+				lg.setLocationRelativeTo(null);
 				}
 				catch(Exception e){
 					e.printStackTrace();

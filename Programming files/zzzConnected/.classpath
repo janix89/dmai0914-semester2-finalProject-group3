@@ -2,8 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/Janis/Desktop/Programming/Semester 2/session_04/jarFiles/sqljdbc4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Janis/Desktop/Programming/Semester 2/session_04/jarFiles/swing-layout-1.0.1.jar"/>
-	<classpathentry kind="lib" path="/JohnnysVersion/lib/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="Library/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="Library/swing-layout-1.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/Programe Instalate/eclipse/plugins/org.junit_4.11.0.v201303080030/junit.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://junit-team.github.io/junit/javadoc/latest/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -73,11 +73,13 @@ public class WaiterUILeftPanel extends JPanel {
 		makeReservationBtn = new JButton("Make reservation");
 		makeReservationBtn.setPreferredSize(new Dimension(150, 25));
 		searchBtn = new JButton("Search");
+		searchBtn.setEnabled(false);
 		searchBtn.setPreferredSize(new Dimension(150, 25));
 		backBtn = new JButton("Back");
 		backBtn.setPreferredSize(new Dimension(150, 25));
 		currentTime = new Date();
 		makeOrder = new JButton("Make New Order");
+		makeOrder.setEnabled(false);
 		makeOrder.setPreferredSize(new Dimension(150, 25));
 		tableController = new TableController();
 		numOfSeatsInRestaurant = new JLabel("Available seats: " + tableController.countAllAvailableSeats());

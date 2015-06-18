@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
-import controlLayer.StaffController;
 import dbLayer.DBLogin;
 import exceptionsLayer.DatabaseException;
 public class LogIn extends JFrame {
